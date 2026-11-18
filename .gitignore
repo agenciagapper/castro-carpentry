@@ -4,3 +4,4 @@ __pycache__/
 .claude/
 Claude outputs/
 /instagram/
+*.bundle
