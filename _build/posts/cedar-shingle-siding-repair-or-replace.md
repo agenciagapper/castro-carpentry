@@ -39,7 +39,7 @@ New shingles will look lighter than the old ones at first. They weather toward t
 
 Replacement makes more sense when:
 
-- Cupping, splitting or brittleness runs across most of a wall, not just a patch.
+- Cupping, splitting or brittleness runs across most of a wall rather than one small area.
 - Fasteners are failing across a large area.
 - Water is getting behind the siding, or the sheathing underneath has gone soft.
 - The same wall has needed repairs several times.

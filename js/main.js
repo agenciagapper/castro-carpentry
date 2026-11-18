@@ -63,6 +63,34 @@
     if (a) track(a.href.startsWith('tel:') ? 'phone_click' : 'email_click', { page: location.pathname });
   });
 
+  // Instagram feed (written by _build/instagram-sync.php on the server)
+  const ig = document.getElementById('instagram');
+  if (ig) {
+    fetch('/instagram/feed.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        const items = (data && data.items) || [];
+        if (items.length < 4) return;
+        const grid = ig.querySelector('[data-ig-grid]');
+        items.slice(0, 8).forEach((it) => {
+          const a = document.createElement('a');
+          a.className = 'ig__item';
+          a.href = it.permalink;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          const img = document.createElement('img');
+          img.src = it.image;
+          img.alt = it.caption || 'Castro Finish Carpentry on Instagram';
+          img.loading = 'lazy';
+          img.width = 600; img.height = 600;
+          a.appendChild(img);
+          grid.appendChild(a);
+        });
+        ig.hidden = false;
+      })
+      .catch(() => {});
+  }
+
   // Estimate form
   const form = document.getElementById('estimate-form');
   if (!form) return;
@@ -135,7 +163,7 @@
       track('generate_lead', { lead_type: 'estimate', service: form.elements.service.value, town: form.elements.town.value, page: location.pathname });
       form.reset();
       status.classList.add('is-ok');
-      status.textContent = 'Thanks — we got your request and will be in touch shortly.';
+      status.textContent = 'Thanks, we got your request and will be in touch shortly.';
       setTimeout(() => { location.href = '/thank-you/'; }, 600);
     } catch {
       status.classList.add('is-err');

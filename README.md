@@ -45,6 +45,20 @@ WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, 
 - After a successful send the visitor goes to `/thank-you/`.
 - `js/tracking.js` loads GA4, Google Ads and the Meta Pixel **only** when IDs are set in `TRACKING` and only on the production hostnames. Events: `generate_lead` (+ Ads conversion and Pixel `Lead`), `phone_click`, `email_click`.
 
+## Instagram feed (automatic)
+
+The homepage has an "On Instagram" section that stays hidden until a feed exists. It is filled by `_build/instagram-sync.php`, run on Hostinger by a cron job. No third-party widget, and the token never reaches the browser.
+
+1. The Instagram account must be **Business or Creator**.
+2. In [Meta for Developers](https://developers.facebook.com/), create an app with the **Instagram API with Instagram Login** product, add the account as a tester, and generate a **long-lived access token**.
+3. On Hostinger (SSH or File Manager), create `~/instagram-config.json` **outside** `public_html` with `{"token": "PASTE_TOKEN"}` and set its permission to 600.
+4. hPanel > Advanced > **Cron Jobs**, every hour:
+   `php /home/USER/domains/castrocarpentryinc.com/public_html/_build/instagram-sync.php`
+   (use the real path shown in hPanel).
+5. The script saves the latest 8 posts to `/instagram/` (git-ignored), writes `/instagram/feed.json`, and refreshes the token weekly so it never expires.
+
+Without a token, nothing breaks: the section simply stays hidden.
+
 ## Deploy (Hostinger)
 
 1. hPanel → Websites → castrocarpentryinc.com → **Advanced → Git**: connect this repository, branch `main`, install path `public_html` (empty the folder first: back up the WordPress files and database).
@@ -59,6 +73,7 @@ WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, 
 - [ ] **Review count:** update `REVIEW_COUNT` to match Google.
 - [ ] **Form:** will be connected to a webhook. Point the form `action` in `_build/pages/home.html` (and the fetch in `js/main.js`) at the webhook URL; all fields, including UTMs and `lead_type`, are already sent.
 - [ ] **Tracking IDs:** fill `TRACKING` when the GA4 / Google Ads / Meta Pixel IDs exist.
-- [ ] **Photos:** Estevam's portrait (About), ADU photos, and real projects per town.
+- [x] **Project photos:** first batch from the client Drive (Plymouth church, Truro renovation, Chatham deck, cottage, drone aerials) in `_build/img-src/`, shown as galleries on town and service pages.
+- [ ] **More photos:** Estevam's portrait (About), and projects for the empty Drive folders (Orleans, Eastham, West Dennis, Osterville, Marstons Mills, Provincetown).
 - [ ] **Blog:** publish regularly (1–2 posts/month) on homeowner questions, each linking to a service and a town page.
 - [ ] **Town pages:** add real projects and reviews per town in `_build/cities.py` as the client sends them.

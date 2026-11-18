@@ -6,7 +6,7 @@ there, which services matter most, and town-specific questions. Do not clone
 a page and swap the town name; Google treats that as a doorway page.
 
 When the client sends real projects or reviews from a town, add them under
-"projects" / "review" — that is the strongest signal these pages can carry.
+"projects" / "review". That is the strongest signal these pages can carry.
 
 Fields
   slug, label        URL slug (/service-areas/<slug>/) and short link text
@@ -208,6 +208,9 @@ CITIES = [
             ("Clean, protected site", "Landscaping and finished surfaces protected, daily cleanup."),
         ],
         "review": None,
+        "projects": [
+            ("chatham-deck-railing.jpg", "Second-floor deck and white railing on a Chatham home"),
+        ],
         "faq": [
             ("Do you work in North Chatham, South Chatham and Chathamport?", "Yes, all of Chatham, including North, South and West Chatham and Chathamport."),
             ("I'm not in Chatham full-time. Can you manage the job while I'm away?", "Yes. We agree the scope in writing, send photos when we find something hidden, and keep you updated through the job."),
@@ -230,7 +233,7 @@ CITIES = [
         "img_alt": "Cedar shingle wall with a balcony and new exterior trim",
         "context_title": "The Outer Cape <span class=\"accent\">needs a plan.</span>",
         "context": [
-            "Working at the end of the Cape is different. In Provincetown, many homes sit close together along narrow streets with little room for a dumpster or a lumber delivery, so staging, parking and delivery times get planned before the first day, not on it.",
+            "Working at the end of the Cape is different. In Provincetown, many homes sit close together along narrow streets with little room for a dumpster or a lumber delivery, so staging, parking and delivery times are planned before the first day.",
             "Much of Provincetown is under local historic district review, and many Truro properties sit near or inside the Cape Cod National Seashore, where building rules are stricter. Before we price a job, we check what review it is likely to need.",
             "Homes here, from Provincetown's East and West End to Truro's bluffs and dunes, take wind, sand and salt year-round. Trim, decks, balconies and window flashing wear fastest, and rentals put extra traffic on stairs and railings.",
         ],
@@ -253,6 +256,12 @@ CITIES = [
             ("Staging planned upfront", "Deliveries, parking and material storage worked out before the job starts."),
             ("Off-season for rentals", "We aim to finish rental work outside peak season, around your booking calendar."),
             ("Photo updates", "Useful if you're off-Cape while the work happens."),
+        ],
+        "projects": [
+            ("truro-interior-framing.jpg", "New interior walls framed during a whole-house renovation in Truro"),
+            ("truro-door-casing.jpg", "Cedar-lined closet with new door casing, Truro"),
+            ("truro-built-in-shelves.jpg", "Built-in shelving added during the Truro renovation"),
+            ("truro-fireplace.jpg", "Living room and fireplace wall, Truro renovation"),
         ],
         "review": ("Samantha Keller", "SK", "Exterior &amp; interior project · Provincetown", "Start to finish - they were simply fantastic!!"),
         "faq": [
@@ -279,10 +288,10 @@ CITIES = [
         "context": [
             "Plymouth is the largest town in Massachusetts by land area, and the housing covers everything: historic homes near downtown and the waterfront, beach cottages in Manomet and White Horse Beach, and newer neighborhoods like the Pinehills and the developments off Route 3.",
             "On newer homes, the work is usually decks, composite and PVC trim, and door and window upgrades. On older and waterfront homes, it's rot repair behind trim and siding, and flashing at windows that face the water.",
-            "Our shop in Sandwich is a short drive over the Sagamore Bridge, so Plymouth is a regular part of our service area, not a long trip.",
+            "Our shop in Sandwich is a short drive over the Sagamore Bridge, so Plymouth is a regular part of our service area. Recent work here includes new siding, roofing and window trim on a church.",
         ],
         "watch": [
-            "Deck framing, stairs and railings on homes built in the last 20–30 years",
+            "Deck framing, stairs and railings on homes built in the last 20 to 30 years",
             "PVC and composite trim joints that have opened up",
             "Window and door flashing on waterfront homes in Manomet and White Horse Beach",
             "Rot behind trim on older homes near downtown",
@@ -301,8 +310,15 @@ CITIES = [
             ("Newer-home upgrades", "Composite decking, PVC trim and door upgrades are routine work for us."),
             ("Itemized estimate", "Scope and price in writing before work starts."),
         ],
+        "projects": [
+            ("plymouth-church-gable-housewrap.jpg", "Housewrap and new windows going in on a church in Plymouth"),
+            ("plymouth-church-siding-gable.jpg", "New siding and rake trim on the same Plymouth church"),
+            ("plymouth-church-window-trim.jpg", "Window trim and flashing detail, Plymouth"),
+            ("plymouth-church-roofing.jpg", "Roofing work on the Plymouth church project"),
+        ],
         "review": None,
         "faq": [
+            ("Have you worked in Plymouth before?", "Yes. Recent work includes new siding, roofing and window trim on a church in Plymouth, shown above."),
             ("Do you work in Plymouth even though it's off-Cape?", "Yes. Plymouth is part of our regular service area, a short drive over the Sagamore Bridge from our Sandwich shop."),
             ("Do you work in the Pinehills and Manomet?", "Yes, all of Plymouth, including downtown, North Plymouth, Manomet, Cedarville, White Horse Beach and the Pinehills."),
             ("Can you replace my deck boards with composite?", "Often, yes, if the framing is solid. We check the structure first and tell you honestly whether boards alone make sense."),

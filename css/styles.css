@@ -536,3 +536,16 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aside-card p{color:var(--ink-muted);font-size:.95rem}
 .aside-card__link{font-weight:600;color:var(--castro-blue);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
 @media (max-width:900px){.article-layout{grid-template-columns:1fr}.article-aside{position:static}}
+
+/* ---------- project gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.gallery__item{margin:0;border-radius:var(--radius-md);overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.08)}
+.gallery__item img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.gallery__item figcaption{padding:12px 14px;font-size:.88rem;color:var(--ink-muted);line-height:1.4}
+
+/* ---------- instagram ---------- */
+.ig__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.ig__item{display:block;border-radius:12px;overflow:hidden;aspect-ratio:1}
+.ig__item img{width:100%;height:100%;object-fit:cover;transition:transform .3s var(--ease)}
+.ig__item:hover img{transform:scale(1.04)}
+@media (max-width:760px){.ig__grid{grid-template-columns:repeat(2,1fr)}}

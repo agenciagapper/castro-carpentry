@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Castro Finish Carpentry — static site builder.
+Castro Finish Carpentry: static site builder.
 
 Every page shares one header, footer and icon set, defined here once.
 Edit content in this file (or in _build/pages/home.html for the homepage),
@@ -100,15 +100,15 @@ SERVICES = [
         "short": "Trim",
         "title": "Exterior Trim Repair on Cape Cod",
         "h1": "Exterior trim repair, <span class=\"page-hero__accent\">done right at the edges.</span>",
-        "lead": "Rot repair, fascia and soffits, corner boards and window trim — with clean lines, tight joints, and a clear estimate. Free on-site visit.",
+        "lead": "Rot repair, fascia and soffits, corner boards and window trim, with clean lines, tight joints and a clear estimate. Free on-site visit.",
         "img": "siding-cedar-balcony.jpg",
         "img_alt": "Cedar shingle wall with balcony and fresh exterior trim",
         "img2": "siding-white-colonial.jpg",
         "img2_alt": "White colonial with crisp window trim and black shutters",
-        "summary": "Replacement, repairs, and detailed finishing inside and out — straight lines, tight joints, clean transitions, and hidden rot fixed before we close up.",
+        "summary": "Repairs, replacement and detailed finishing inside and out. Straight lines, tight joints, clean transitions, and hidden rot fixed before we close up.",
         "why_title": "Trim is your home's <span class=\"accent\">first line of defense.</span>",
         "why": [
-            "On a Cape Cod house, trim takes the first hit from wind-driven rain and salt air. Leaks start at the corners, seams, and transitions — and once moisture gets behind a board, it quietly softens the framing underneath.",
+            "On a Cape Cod house, trim takes the first hit from wind-driven rain and salt air. Leaks start at the corners, seams and transitions. Once moisture gets behind a board, it slowly softens the wood and framing underneath.",
             "That's why we don't just nail new boards over old problems. We open it up, fix what's underneath, and then install trim that's fitted, fastened, and sealed to last.",
         ],
         "points": [
@@ -130,7 +130,7 @@ SERVICES = [
         "diff_title": "The Castro difference",
         "diff": [
             ("Finish-carpentry detail", "Straight alignment, tight joints and clean transitions you can see from the street."),
-            ("Rot-first repairs", "Hidden damage is addressed before anything gets closed up — no covering problems."),
+            ("Rot-first repairs", "We fix hidden damage before anything gets closed up."),
             ("Coastal-ready protection", "Detailing for wind-driven rain and moisture, with materials chosen for salt air."),
             ("Material guidance", "Wood or PVC, recommended for your exposure, budget and the look of your home."),
         ],
@@ -143,10 +143,15 @@ SERVICES = [
             ("Corner boards & vertical seams", "Open joints and splitting."),
             ("Roofline transitions & returns", "Where water likes to sneak in."),
         ],
+        "gallery": [
+            ("plymouth-church-siding-gable.jpg", "Rake and corner trim on new siding, Plymouth"),
+            ("truro-door-casing.jpg", "New door casing in a Truro renovation"),
+            ("truro-built-in-shelves.jpg", "Interior finish carpentry: built-in shelving, Truro"),
+        ],
         "warning": ("Trim problems spread fast", "Watch for peeling paint, dark staining, soft spots, and gaps at corners or rooflines. Catching it early usually means a smaller, simpler repair."),
         "faq": [
             ("Do you offer free on-site trim estimates?", "Yes. We visit, inspect fascia, soffits, corners and windows, and give you an itemized scope and estimate."),
-            ("Do you do repairs, or only full replacement?", "Both. We repair what's still sound and replace when that's the safer long-term fix — and we'll explain why."),
+            ("Do you do repairs, or only full replacement?", "Both. We repair what's still sound and replace when that's the safer long-term fix. Either way, we'll explain why."),
             ("What trim materials do you use?", "Common exterior materials used on the Cape, including wood and PVC. We recommend based on exposure, budget and look."),
             ("Do you repair fascia and soffits too?", "Yes. They're some of the most common failure points in coastal weather."),
             ("How long does a trim project take?", "It depends on how many areas need work and whether there's hidden rot. You'll get a timeline after the visit."),
@@ -158,20 +163,26 @@ SERVICES = [
         "short": "Siding",
         "title": "Siding Contractor on Cape Cod, MA",
         "h1": "Siding repair &amp; installation <span class=\"page-hero__accent\">built for Cape Cod weather.</span>",
-        "lead": "Cedar shingle, vinyl and fiber cement — repaired or replaced as a full wall system, with rot fixed properly and a clean finish. Free on-site estimate.",
+        "lead": "Cedar shingle, vinyl and fiber cement siding, repaired or replaced as a full wall system with rot fixed properly and a clean finish. Free on-site estimate.",
         "img": "siding-cedar-gable.jpg",
         "img_alt": "New cedar shingle siding on a gable end",
         "img2": "siding-cedar-balcony.jpg",
         "img2_alt": "Cedar shingle siding around a balcony and windows",
-        "summary": "Cracked, loose, or warped sections replaced with proper flashing and sealing — plus rot repair around trim and corners for real curb appeal.",
+        "gallery": [
+            ("plymouth-church-siding-gable.jpg", "New siding on a church gable, Plymouth"),
+            ("plymouth-church-siding-corner.jpg", "Siding and corner details going on, Plymouth"),
+            ("plymouth-church-gable-housewrap.jpg", "Housewrap installed before the new siding"),
+            ("cedar-cottage-exterior.jpg", "Cedar shingle cottage on Cape Cod"),
+        ],
+        "summary": "Cracked, loose or warped sections replaced with proper flashing and sealing, plus rot repair around trim and corners.",
         "why_title": "Siding is a system. <span class=\"accent\">Every layer matters.</span>",
         "why": [
-            "Good siding isn't just what you see. It's solid backing, insulation where it applies, a weather-resistive barrier, and clean transitions at every window, door, corner and trim line.",
-            "We repair the weak points, rebuild the transitions, and seal the details — so water stays out and the wall looks sharp for years.",
+            "Behind every good siding job is solid backing, insulation where it applies, a weather-resistive barrier, and clean transitions at every window, door, corner and trim line.",
+            "We repair the weak points, rebuild the transitions, and seal the details, so water stays out and the wall looks sharp for years.",
         ],
         "points": [
             "Stops water intrusion at the source",
-            "Rot repaired before it spreads — not patched over",
+            "Rot repaired properly before it spreads",
             "Straight lines, aligned courses, clean trim details",
             "Daily cleanup and a protected job site",
         ],
@@ -187,7 +198,7 @@ SERVICES = [
         "diff_title": "What you get with Castro siding work",
         "diff": [
             ("Water protection built in", "Weak points repaired, barrier reinforced where needed, transitions rebuilt."),
-            ("Rot addressed the right way", "Compromised backing or sheathing is repaired — not hidden under new siding."),
+            ("Rot addressed the right way", "Soft backing or sheathing is repaired before new siding goes on."),
             ("A finish you'll notice", "Aligned courses and clean edges around every window, door and corner."),
             ("Clear, itemized estimate", "You see the scope and price before work starts."),
         ],
@@ -201,7 +212,7 @@ SERVICES = [
         ],
         "warning": None,
         "faq": [
-            ("What types of siding do you work with?", "Cedar shingle, vinyl and fiber cement — plus the trim, fascia and soffits around them."),
+            ("What types of siding do you work with?", "Cedar shingle, vinyl and fiber cement, plus the trim, fascia and soffits around them."),
             ("Can you match my existing siding?", "When possible. If it's discontinued or has aged, we'll show you the closest option."),
             ("Can you repair one section instead of replacing everything?", "Often, yes. Many homes need a targeted repair. We'll explain when replacement is the better long-term choice."),
             ("What if there's hidden rot behind the siding?", "We document it and repair the compromised backing or sheathing before closing up."),
@@ -214,15 +225,20 @@ SERVICES = [
         "short": "Decks",
         "title": "Deck Builder on Cape Cod, MA",
         "h1": "Cape Cod deck builder: <span class=\"page-hero__accent\">solid, safe and finished.</span>",
-        "lead": "New builds, rebuilds, board replacement, railings, stairs and refinishing — in wood or composite, framed accurately and fastened tight.",
+        "lead": "New builds, rebuilds, board replacement, railings, stairs and refinishing in wood or composite, framed accurately and fastened tight.",
         "img": "deck-cable-railing.jpg",
         "img_alt": "Composite deck with black cable railing in the pines",
         "img2": "deck-black-railing.jpg",
         "img2_alt": "Grey deck with black railing and new stairs",
-        "summary": "New builds, rebuilds, board replacement, railings, stairs, and refinishing — in wood or composite, framed square and fastened tight.",
+        "gallery": [
+            ("chatham-deck-railing.jpg", "Second-floor deck and railing, Chatham"),
+            ("deck-cable-railing.jpg", "Composite deck with black cable railing"),
+            ("deck-black-railing.jpg", "Grey deck with black railing and new stairs"),
+        ],
+        "summary": "New builds, rebuilds, board replacement, railings, stairs and refinishing in wood or composite, framed square and fastened tight.",
         "why_title": "Built right from <span class=\"accent\">the framing up.</span>",
         "why": [
-            "A great deck starts underneath. We focus on framing accuracy, water management and proper fastening, so the surface stays flat and tight — no wobble, bounce or squeaks.",
+            "A great deck starts underneath. We focus on framing accuracy, water management and proper fastening, so the surface stays flat and tight without wobble, bounce or squeaks.",
             "Safety comes first: railings and stairs are built solid, and any safety issue we find gets addressed before anything cosmetic.",
         ],
         "points": [
@@ -237,7 +253,7 @@ SERVICES = [
             ("New deck builds", "Designed for your yard, your home and how you use it."),
             ("Full rebuilds", "Tear-off and rebuild when the structure has reached its limit."),
             ("Repairs & board replacement", "Boards swapped without a rebuild when the framing is solid."),
-            ("Railings", "Wood, composite, black metal or cable — built safe and straight."),
+            ("Railings", "Wood, composite, black metal or cable, built safe and straight."),
             ("Stairs", "New or rebuilt stairs with proper rise, run and support."),
             ("Refinishing", "Cleaning, repairs and refinishing to bring a tired deck back."),
         ],
@@ -245,7 +261,7 @@ SERVICES = [
         "diff": [
             ("On-site assessment", "We check the structure, the boards, railings and stairs."),
             ("Measurements & layout", "Planned around your space, access and drainage."),
-            ("Material guidance", "Wood vs. composite — look, maintenance and budget compared."),
+            ("Material guidance", "Wood vs. composite: look, maintenance and budget compared."),
             ("Final walkthrough", "We review the finished deck with you and leave the site clean."),
         ],
         "steps_title": "Step by step",
@@ -259,11 +275,11 @@ SERVICES = [
         ],
         "warning": None,
         "faq": [
-            ("Do you build new decks or only repair?", "Both — new builds, full rebuilds, repairs and upgrades."),
+            ("Do you build new decks or only repair?", "Both. We do new builds, full rebuilds, repairs and upgrades."),
             ("Can you replace boards without rebuilding the frame?", "Sometimes. If the framing is solid, we can replace boards only. We'll check and tell you honestly."),
             ("Wood or composite?", "We build with both and will walk you through the trade-offs in look, maintenance and budget."),
             ("How do you prevent wobble, bounce and squeaks?", "Careful layout, accurate framing and proper fastening."),
-            ("Do you build stairs and railings?", "Yes — new and replacement stairs and railings, built safe and straight."),
+            ("Do you build stairs and railings?", "Yes, new and replacement stairs and railings, built safe and straight."),
         ],
     },
     {
@@ -272,15 +288,20 @@ SERVICES = [
         "short": "Windows & Doors",
         "title": "Window & Door Replacement on Cape Cod",
         "h1": "Window &amp; door installation, <span class=\"page-hero__accent\">done as a system.</span>",
-        "lead": "Installation and replacement with tight seals, smooth operation and water protection at every edge — finished with clean trim.",
+        "lead": "Installation and replacement with tight seals, smooth operation and water protection at every edge, finished with clean trim.",
         "img": "siding-white-colonial.jpg",
         "img_alt": "Colonial home with new windows and black shutters",
         "img2": "siding-cedar-gable.jpg",
         "img2_alt": "Cedar gable with new windows and trim",
-        "summary": "Installation and replacement installed as a system — flashing, sealing, and square, level framing to stop drafts and leaks, finished with clean trim.",
+        "gallery": [
+            ("plymouth-church-window-trim.jpg", "New window with trim and flashing, Plymouth"),
+            ("plymouth-church-gable-housewrap.jpg", "Windows installed and wrapped before siding"),
+            ("truro-door-casing.jpg", "Interior door opening and casing, Truro"),
+        ],
+        "summary": "Windows and doors installed as a system: flashing, sealing, and square, level framing to stop drafts and leaks, finished with clean trim.",
         "why_title": "A window is only as good <span class=\"accent\">as its install.</span>",
         "why": [
-            "Most drafts and leaks around windows and doors come from the installation, not the unit. We treat every opening as a system: framing checks, flashing, sealing and insulation, then clean trim transitions.",
+            "Most drafts and leaks around windows and doors come from how they were installed. We treat every opening as a system: framing checks, flashing, sealing and insulation, then clean trim transitions.",
             "The result is a window that opens smoothly, a door that closes square, and an opening that stays dry.",
         ],
         "points": [
@@ -314,10 +335,10 @@ SERVICES = [
         ],
         "warning": None,
         "faq": [
-            ("Do you repair windows and doors or only replace them?", "Both — whichever makes the most sense for each unit."),
+            ("Do you repair windows and doors or only replace them?", "Both, whichever makes the most sense for each unit."),
             ("Can you replace a single window or door?", "Yes, and we can match the existing style and size."),
             ("What types do you install?", "Double-hung, casement, sliders, picture windows, entry doors and sliding patio doors."),
-            ("I have drafts or water around a window. Can you fix it?", "Yes. We install as a system — flashing, sealing, insulation and clean trim transitions."),
+            ("I have drafts or water around a window. Can you fix it?", "Yes. We install every opening as a system: flashing, sealing, insulation and clean trim transitions."),
             ("Do you repair the trim around windows?", "Yes, trim repair and finishing are part of what we do."),
         ],
     },
@@ -327,15 +348,21 @@ SERVICES = [
         "short": "Roofing",
         "title": "Roof Repair on Cape Cod, MA",
         "h1": "Roof repair that stops leaks <span class=\"page-hero__accent\">at the source.</span>",
-        "lead": "Leak detection, chimney and skylight flashing, storm damage and shingle repairs — with photos, clear options and an itemized estimate.",
+        "lead": "Leak detection, chimney and skylight flashing, storm damage and shingle repairs, with photos, clear options and an itemized estimate.",
         "img": "roofing-drone.jpg",
         "img_alt": "Aerial view of a Cape Cod home with a new roof",
         "img2": "roofing-install-aerial.jpg",
         "img2_alt": "Castro crew installing new shingles",
-        "summary": "Leaks stopped at the source — damaged shingles, flashing at chimneys, skylights, and valleys, storm repairs, and preventive fixes.",
+        "gallery": [
+            ("plymouth-church-roofing.jpg", "Roofing crew at work, Plymouth"),
+            ("plymouth-church-ice-water-shield.jpg", "Ice and water membrane at the eaves before shingles"),
+            ("aerial-roof-chimney.jpg", "Finished roof with chimney and skylight"),
+            ("roofing-new-shingles-aerial.jpg", "New architectural shingles from above"),
+        ],
+        "summary": "Leaks stopped at the source: damaged shingles, flashing at chimneys, skylights and valleys, storm repairs and preventive fixes.",
         "why_title": "A quick patch vs. <span class=\"accent\">a proper repair.</span>",
         "why": [
-            "Most leaks start at flashing, valleys, edges and tie-ins — not in the middle of the roof. A quick patch covers the symptom. We trace where the water gets in and rebuild the detail that failed.",
+            "Most leaks start at flashing, valleys, edges and tie-ins, rarely in the middle of the roof. A quick patch covers the symptom. We trace where the water gets in and rebuild the detail that failed.",
             "You get photos of what we found, clear options, and an itemized estimate before any work starts.",
         ],
         "points": [
@@ -375,7 +402,7 @@ SERVICES = [
         "faq": [
             ("Should I repair or replace my roof?", "Many leaks come from flashing, valleys, edges or a small damaged area. We'll tell you honestly whether a targeted repair makes sense."),
             ("What are the most common roof repairs on Cape Cod?", "Storm damage, missing or lifted shingles, chimney and skylight flashing, valley leaks, nail pops, vent boots and edge problems."),
-            ("How fast can you respond to an active leak?", "We prioritize active leaks when we can. Timing depends on weather and schedule — we'll set the soonest available visit."),
+            ("How fast can you respond to an active leak?", "We prioritize active leaks when we can. Timing depends on weather and schedule, and we'll set the soonest available visit."),
             ("Will the repair match my existing shingles?", "When possible. Otherwise we'll show you the closest option."),
             ("Can you help with an insurance claim?", "We provide photos and documentation. You work with your insurer on approvals and coverage."),
         ],
@@ -387,10 +414,15 @@ SERVICES = [
         "title": "ADU Builder on Cape Cod, MA",
         "h1": "ADU construction &amp; garage conversions <span class=\"page-hero__accent\">on Cape Cod.</span>",
         "lead": "Turn unused space into a fully independent living unit: garage conversions, in-law suites and backyard cottages, with a clear estimate and a finish you'll be proud of.",
-        "img": "roofing-porch-aerial.jpg",
-        "img_alt": "Aerial view of a Cape Cod home and porch",
-        "img2": "hero-cape-house.jpg",
-        "img2_alt": "Cape Cod home with a new roof and front porch",
+        "img": "cedar-cottage-exterior.jpg",
+        "img_alt": "Small cedar shingle cottage on Cape Cod",
+        "img2": "cottage-interior-finish.jpg",
+        "img2_alt": "Cottage interior with new windows and finished walls",
+        "gallery": [
+            ("cedar-cottage-exterior.jpg", "Cedar shingle cottage on Cape Cod"),
+            ("cottage-interior-finish.jpg", "Interior finish work inside the cottage"),
+            ("cottage-bathroom.jpg", "New bathroom with vanity in the cottage"),
+        ],
         "summary": "Garage conversions, in-law suites, attached additions and backyard cottages, now allowed by right in most Massachusetts single-family zones.",
         "why_title": "What is an ADU, <span class=\"accent\">and why now?</span>",
         "why": [
@@ -523,7 +555,7 @@ def footer():
       <div class="footer__brand">
         <img src="assets/logos/logo-castro-azul-adesivo-400.png" alt="Castro Carpentry logo" width="96" height="97">
         <p class="footer__quote">“We don't just build with wood. We build with values.”</p>
-        <p class="footer__sig">— Estevam Castro</p>
+        <p class="footer__sig">Estevam Castro, founder</p>
       </div>
       <nav aria-label="Services">
         <h2 class="footer__h">Services</h2>
@@ -845,6 +877,21 @@ def city_path(c):
     return f'{url("areas")}{c["slug"]}/'
 
 
+def gallery(items, title, eyebrow="Recent work"):
+    if not items:
+        return ""
+    figs = "".join(
+        f'<figure class="gallery__item"><img src="assets/img/{img}" alt="{escape(cap)}" width="1120" height="1400" loading="lazy">'
+        f'<figcaption>{cap}</figcaption></figure>' for img, cap in items)
+    return f'''
+    <section class="section section--tight" aria-label="{escape(re.sub("<[^>]+>", "", title))}">
+      <div class="container">
+{section_head(eyebrow, title)}        <div class="gallery">{figs}</div>
+      </div>
+    </section>
+'''
+
+
 def areas_chips():
     from cities import CITIES
     links = "".join(f'<a href="{city_path(c)}">{c["label"]}</a>' for c in CITIES)
@@ -920,6 +967,7 @@ def service_page(s):
       </div>
     </section>
 
+{gallery(s.get("gallery"), f'Recent {s["short"].lower()} <span class="accent">projects.</span>')}
     <section class="section section--tight" aria-labelledby="areas-title">
       <div class="container">
         <h2 id="areas-title" class="h3">Where we do {s["short"].lower()} work</h2>
@@ -939,7 +987,7 @@ def service_page(s):
       </div>
     </section>
 '''
-    body += cta_band(f'Need {s["short"].lower()} work?', "Get a free on-site visit and a clear, itemized estimate — no surprises.")
+    body += cta_band(f'Need {s["short"].lower()} work?', "Get a free on-site visit and a clear, itemized estimate with no surprises.")
     path = url(s["slug"])
     service_ld = {
         "@type": "Service", "@id": f"{SITE}{path}#service", "name": re.sub("<[^>]+>", "", s["name"]).replace("&amp;", "&"),
@@ -977,7 +1025,7 @@ def services_page():
 ''')
     body = page_hero([("services.html", "Services")], "What we do",
                      'Full-service finish carpentry <span class="page-hero__accent">&amp; repairs, all in one place.</span>',
-                     "From one rotted trim board to a full deck rebuild — one accountable team, built for Cape Cod homes and coastal weather.",
+                     "From one rotted trim board to a full deck rebuild, one accountable team that knows Cape Cod homes and coastal weather.",
                      "hero-cape-house.jpg", "Cape Cod home with new roof and porch")
     body += f'''
     <section class="section" aria-label="Our services">
@@ -1007,7 +1055,7 @@ def services_page():
 
 def about_page():
     different = [
-        ("Built for Cape Cod homes", "Cedar shingle, salt air and Nor'easters — we know what these houses need."),
+        ("Built for Cape Cod homes", "Cedar shingle, salt air and nor'easters. We know what these houses need."),
         ("Craftsmanship you can see", "Straight lines, tight joints and clean transitions."),
         ("Clear estimates, no surprises", "Itemized scope and pricing before we start."),
         ("Clean, organized job sites", "Your home protected and cleaned up daily."),
@@ -1018,7 +1066,7 @@ def about_page():
     ]
     approach = [
         ("Guidance first", "We explain your options before recommending anything."),
-        ("We solve the root problem", "Rot and water are fixed at the source, not covered up."),
+        ("We solve the root problem", "We trace rot and water damage to the source and fix it there."),
         ("Respect for your home &amp; routine", "Protected surfaces, tidy site, considerate crew."),
         ("Built for durability", "Materials and details chosen to last on the coast."),
         ("Pride in the final look", "We're not done until it looks right."),
@@ -1029,7 +1077,7 @@ def about_page():
         for i, (t, d) in enumerate(approach, 1))
     body = page_hero([("about.html", "About")], "Our story",
                      'Built on values. <span class="page-hero__accent">Led by Estevam Castro.</span>',
-                     "A Cape Cod family business since 2013 — built day by day with hard work, faith and dedication.",
+                     "A Cape Cod family business since 2013, built day by day with hard work, faith and dedication.",
                      "roofing-porch-aerial.jpg", "Aerial view of a finished roof over a porch", ctas=False)
     body += f'''
     <section class="section" aria-labelledby="story-title">
@@ -1038,13 +1086,13 @@ def about_page():
           <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Since 2013</p>
           <h2 id="story-title" class="h2">Born from a dream. <span class="accent">Built day by day.</span></h2>
           <div class="prose">
-            <p>Castro Carpentry Inc. started in 2013 as a small family business. Over more than twelve years, the team has grown — but the way we work hasn't changed.</p>
+            <p>Castro Carpentry Inc. started in 2013 as a small family business. Over more than twelve years, the team has grown, but the way we work hasn't changed.</p>
             <p>Estevam Castro, our founder, is a husband, a father of two, and someone who genuinely loves the work. To him, carpentry is about discipline, purpose and leaving something that lasts.</p>
-            <p>Today Castro is a solid, reliable and respected name across Cape Cod — known for transparency, reliability and precision. No shortcuts, no hidden costs, and work delivered on schedule.</p>
+            <p>Today Castro is a solid, reliable and respected name across Cape Cod, known for transparency, reliability and precision. No shortcuts, no hidden costs, and work delivered on schedule.</p>
           </div>
           <blockquote class="quote">
             <p>“We don't just build with wood. We build with values.”</p>
-            <footer>— Estevam Castro, founder</footer>
+            <footer>Estevam Castro, founder</footer>
           </blockquote>
         </div>
         <figure class="portrait">
@@ -1074,7 +1122,7 @@ def about_page():
         <div>
           <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our approach</p>
           <h2 id="approach-title" class="h2">How we work <span class="accent">on every job.</span></h2>
-          <p class="lead">Transparency, reliability and precision — from the first conversation to the final walkthrough.</p>
+          <p class="lead">Transparency, reliability and precision, from the first conversation to the final walkthrough.</p>
           <div class="row-btns"><a class="btn btn--primary" href="process.html">See our process {ARROW}</a></div>
         </div>
         <ol class="vsteps">{appr_html}</ol>
@@ -1095,7 +1143,7 @@ def about_page():
 
 def process_page():
     steps = [
-        ("Tell us what you need", "Share the project and the town it's in — by the form, phone or email. Photos help us understand it faster."),
+        ("Tell us what you need", "Share the project and the town it's in by form, phone or email. Photos help us understand it faster."),
         ("Quick follow-up", "We get back to you fast to ask the right questions and set a time to come out."),
         ("On-site check", "When needed, we visit to measure, check framing and hidden damage, and talk through materials."),
         ("Clear quote &amp; next steps", "You get an itemized estimate in writing, repair options where they apply, and a realistic timeline."),
@@ -1106,7 +1154,7 @@ def process_page():
     during = [
         ("Protected home", "Surfaces covered, access planned and your routine respected."),
         ("Daily cleanup", "The site is left organized at the end of every day."),
-        ("Clear updates", "You'll know what's happening and what's next — without chasing us."),
+        ("Clear updates", "You'll know what's happening and what's next without having to chase us."),
         ("Root problems fixed", "If we find hidden rot or water damage, we show you and explain options before moving on."),
         ("Detail-driven finish", "Tight joints, straight lines and clean transitions."),
         ("Final walkthrough", "We review the finished work together before we call it done."),
@@ -1128,8 +1176,8 @@ def process_page():
         <div class="split__copy">
           <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Your estimate</p>
           <h2 id="receive-title" class="h2">What you receive <span class="accent">after the visit.</span></h2>
-          <p class="lead">Everything you need to make a confident decision — and plan timing and budget.</p>
-          {checklist(["Photos and a clear explanation of what we found", "Repair options where they apply — the best fix vs. a budget fix", "An itemized estimate for labor and materials", "A realistic timeline and what to expect on install day"])}
+          <p class="lead">Everything you need to make a confident decision and plan timing and budget.</p>
+          {checklist(["Photos and a clear explanation of what we found", "Repair options where they apply: the best fix and a budget fix", "An itemized estimate for labor and materials", "A realistic timeline and what to expect on install day"])}
         </div>
         <figure class="stack-img"><img src="assets/img/roofing-new-shingles-aerial.jpg" alt="Aerial view of a newly shingled roof" width="1120" height="1400" loading="lazy"></figure>
       </div>
@@ -1137,11 +1185,11 @@ def process_page():
 
     <section class="section" aria-labelledby="during-title">
       <div class="container">
-{section_head("During the project", 'Professional work. <span class="accent">Clean results. Zero stress.</span>')}        <ul class="features features--grid">{during_html}</ul>
+{section_head("During the project", 'Professional work, <span class="accent">clean site, clear updates.</span>')}        <ul class="features features--grid">{during_html}</ul>
       </div>
     </section>
 '''
-    body += cta_band("Start with step one.", "Tell us what you need — it takes two minutes.")
+    body += cta_band("Start with step one.", "Tell us what you need. It takes about two minutes.")
     return layout(url("process"), f"How Our Free Estimates Work | {BUSINESS}",
                   "How Castro's free estimates and projects work: quick follow-up, on-site check, itemized quote, protected home, daily cleanup and a final walkthrough.",
                   "process", body, preload="deck-cable-railing.jpg",
@@ -1179,7 +1227,7 @@ def reviews_page():
     cards = "".join(review_card(*r) for r in REVIEWS)
     body = page_hero([("reviews.html", "Reviews")], "Reviews",
                      'What Cape Cod homeowners <span class="page-hero__accent">are saying.</span>',
-                     f"{RATING} stars across {REVIEW_COUNT} Google reviews — from single repairs to full exterior projects.",
+                     f"{RATING} stars across {REVIEW_COUNT} Google reviews, from single repairs to full exterior projects.",
                      "siding-white-colonial.jpg", "White shingle colonial with black shutters", ctas=False)
     body += f'''
     <section class="section" aria-labelledby="rev-title">
@@ -1224,9 +1272,9 @@ def financing_page():
           <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Why finance</p>
           <h2 id="fin-title" class="h2">Fix it before <span class="accent">it gets worse.</span></h2>
           <div class="prose">
-            <p>Rot, leaks and storm damage don't wait for the right time — they only get worse. Financing lets you take care of the work now and spread the cost into predictable monthly payments.</p>
+            <p>Rot, leaks and storm damage don't wait for the right time. They only get worse. Financing lets you take care of the work now and spread the cost into predictable monthly payments.</p>
           </div>
-          {checklist(["Check your options without affecting your credit score", "Fast approval — funds available in as little as 24 hours", "Affordable monthly payments", "No prepayment penalties"])}
+          {checklist(["Check your options without affecting your credit score", "Fast approval, with funds available in as little as 24 hours", "Affordable monthly payments", "No prepayment penalties"])}
           <div class="row-btns"><a class="btn btn--primary" href="#check-options">Check your options {ARROW}</a></div>
         </div>
         <figure class="stack-img"><img src="assets/img/deck-black-railing.jpg" alt="Grey deck with black railing and new stairs" width="1050" height="1400" loading="lazy"></figure>
@@ -1260,7 +1308,7 @@ def financing_page():
           <h2 id="fin-faq" class="h2">Financing <span class="accent">questions.</span></h2>
         </header>
 {faq_list([
-    ("Will checking my options affect my credit score?", "No — you can check your options without affecting your credit score."),
+    ("Will checking my options affect my credit score?", "No. You can check your options without affecting your credit score."),
     ("How fast is approval?", "Approval is fast, and funds can be available in as little as 24 hours."),
     ("Can I pay it off early?", "Yes. There are no prepayment penalties."),
     ("How do I get started?", "Request a free estimate and mention you're interested in financing. We'll walk you through the next steps."),
@@ -1278,7 +1326,7 @@ def faq_page():
     general = [
         ("Do you offer free estimates?", "Yes. We provide free on-site estimates, and every quote is itemized so you can see exactly what's included."),
         ("Which towns do you serve?", "We're based in Sandwich, MA and work across Cape Cod, from the Upper Cape to Provincetown, plus Plymouth. See our <a href=\"areas.html\">service areas</a>, or tell us your town or ZIP and we'll confirm."),
-        ("Are you licensed and insured?", "Yes — licensed (HIC/CSL) and insured in Massachusetts, and BBB accredited. A certificate of insurance is available on request."),
+        ("Are you licensed and insured?", "Yes. We're licensed (HIC/CSL) and insured in Massachusetts, and BBB accredited. A certificate of insurance is available on request."),
         ("Do you repair, or only replace?", "Both. If a repair will hold up, we'll recommend it. If replacement is the safer long-term fix, we'll explain why."),
         ("How long will my project take?", "It depends on scope. After the site visit you'll get a realistic timeline in writing."),
         ("Do you offer financing?", "Yes. Ask about it with your estimate, or see our <a href=\"financing.html\">financing page</a>."),
@@ -1306,7 +1354,7 @@ def faq_page():
       </div>
     </section>
 '''
-    body += cta_band("Still have a question?", "Call us or send a message — we'll get back to you quickly.")
+    body += cta_band("Still have a question?", "Call us or send a message, and we'll get back to you quickly.")
     all_items = [q for _, _, items in groups for q in items]
     return layout(url("faq"), f"FAQ: Estimates, Towns & Services | {BUSINESS}",
                   "Answers about free estimates, the towns we serve, licensing, financing, and our trim, siding, deck, window, roofing and ADU work on Cape Cod.",
@@ -1408,6 +1456,7 @@ def city_page(c, form_html):
       </div>
     </section>
 
+{gallery(c.get("projects"), f'Our work <span class="accent">in {c["label"]}.</span>')}
     <section class="section section--warm" aria-labelledby="svc-title">
       <div class="container">
 {section_head("Services", f'What we do <span class="accent">in {c["label"]}.</span>')}        <ul class="tiles">{svc_tiles}</ul>
@@ -1466,7 +1515,7 @@ def areas_page():
     body = page_hero([("areas.html", "Service areas")], "Service areas",
                      'Cape Cod carpentry, <span class="page-hero__accent">from Sandwich to Provincetown.</span>',
                      "Our shop is in Sandwich. We work across the Upper, Mid, Lower and Outer Cape, and over the bridge in Plymouth.",
-                     "roofing-drone.jpg", "Aerial view of a Cape Cod home with a new roof")
+                     "aerial-home-in-pines.jpg", "Aerial view of a renovated Cape Cod home among pine trees")
     body += f"""
     <section class="section" aria-labelledby="towns-title">
       <div class="container">
@@ -1485,7 +1534,7 @@ def areas_page():
     body += cta_band()
     return layout(url("areas"), f"Service Areas: Cape Cod & Plymouth | {BUSINESS}",
                   "Castro Finish Carpentry serves all of Cape Cod from Sandwich to Provincetown, plus Plymouth. Find your town: Dennis, Orleans, Chatham, Truro and more.",
-                  "areas", body, preload="roofing-drone.jpg",
+                  "areas", body, preload="aerial-home-in-pines.jpg",
                   schema=[breadcrumb_ld([("/", "Home"), (url("areas"), "Service areas")])])
 
 
