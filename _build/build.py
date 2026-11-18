@@ -1289,12 +1289,13 @@ def financing_page():
 
     <section class="section" id="check-options" aria-labelledby="fin-apply">
       <div class="container">
-{section_head("Check your options", 'See what you qualify for <span class="accent">in minutes.</span>', "Checking your options won't affect your credit score. Financing is provided through our partner Enhancify and its lenders, subject to approval.")}        <div class="finance-widget">
-          <div id="fullpagewidget" data-color1="#004d93" data-color2="#00213f" data-coBrandedColor="#FFFFFF" data-page="{ENHANCIFY_PAGE}" data-hideLink="0"></div>
-          <noscript><p>Turn on JavaScript to see financing options, or call us at <a href="{TEL}">{PHONE}</a>.</p></noscript>
-        </div>
-        <script src="https://www.enhancify.com/fullpagewidget/" defer></script>
+{section_head("Check your options", 'See what you qualify for <span class="accent">in minutes.</span>', "Checking your options won't affect your credit score. Financing is provided through our partner Enhancify and its lenders, subject to approval.")}      </div>
+      <!-- Enhancify's widget sizes itself to the whole viewport, so it sits outside .container -->
+      <div class="finance-widget">
+        <div id="fullpagewidget" data-color1="#004d93" data-color2="#00213f" data-coBrandedColor="#FFFFFF" data-page="{ENHANCIFY_PAGE}" data-hideLink="0"></div>
+        <noscript><p>Turn on JavaScript to see financing options, or call us at <a href="{TEL}">{PHONE}</a>.</p></noscript>
       </div>
+      <script src="https://www.enhancify.com/fullpagewidget/" defer></script>
     </section>
 
     <section class="section section--warm process" aria-labelledby="fin-steps">
