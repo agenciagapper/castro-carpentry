@@ -18,6 +18,7 @@ python3 -m http.server 5173 # preview at http://localhost:5173
 | Phone, email, address, review count, tracking IDs | constants at the top of `_build/build.py` |
 | Services (trim, siding, decks, windows & doors, roofing, ADU) | `SERVICES` in `_build/build.py` |
 | Town pages (`/service-areas/…`) | `_build/cities.py` |
+| Blog posts (`/blog/…`) | one Markdown file per post in `_build/posts/` (front matter: title, seo_title, description, date, category, img, img_alt, service) |
 | Homepage body | `_build/pages/home.html` |
 | Photos | drop a JPG in `_build/img-src/` and reference it by name; the build makes WebP versions |
 | Styles / scripts | `css/styles.css`, `js/main.js`, `js/tracking.js` (edit directly) |
@@ -28,7 +29,7 @@ python3 -m http.server 5173 # preview at http://localhost:5173
 Old WordPress URLs are kept, so nothing that ranked today needs a redirect:
 `/trim/`, `/siding/`, `/roofing/`, `/decking/`, `/windows-and-doors/`, `/adu/`, `/services/`, `/about-us/`, `/contact-us/`, `/financing-options/`, `/terms-of-service-privacy-policy/`.
 
-New pages: `/process/`, `/reviews/`, `/faq/`, `/service-areas/` and one page per town (Sandwich, Dennis, Orleans, Chatham, Provincetown & Truro, Plymouth), plus `/thank-you/` (noindex).
+New pages: `/process/`, `/reviews/`, `/faq/`, `/blog/` (4 starter articles), `/service-areas/` and one page per town (Sandwich, Dennis, Orleans, Chatham, Provincetown & Truro, Plymouth), plus `/thank-you/` (noindex).
 WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, `?wpr_templates=…`, old sitemaps) are 301'd or return 410 via `.htaccess`.
 
 ## SEO built in
@@ -59,4 +60,5 @@ WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, 
 - [ ] **Form:** will be connected to a webhook. Point the form `action` in `_build/pages/home.html` (and the fetch in `js/main.js`) at the webhook URL; all fields, including UTMs and `lead_type`, are already sent.
 - [ ] **Tracking IDs:** fill `TRACKING` when the GA4 / Google Ads / Meta Pixel IDs exist.
 - [ ] **Photos:** Estevam's portrait (About), ADU photos, and real projects per town.
+- [ ] **Blog:** publish regularly (1–2 posts/month) on homeowner questions, each linking to a service and a town page.
 - [ ] **Town pages:** add real projects and reviews per town in `_build/cities.py` as the client sends them.

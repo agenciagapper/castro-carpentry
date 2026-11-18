@@ -70,6 +70,7 @@ URLS = {
     "reviews": "/reviews/",
     "faq": "/faq/",
     "areas": "/service-areas/",
+    "blog": "/blog/",
     "privacy": "/terms-of-service-privacy-policy/",
     "thanks": "/thank-you/",
 }
@@ -443,10 +444,10 @@ SVC = {s["slug"]: s for s in SERVICES}
 NAV = [
     ("services.html", "Services", "services"),
     ("about.html", "About", "about"),
-    ("process.html", "Process", "process"),
     ("reviews.html", "Reviews", "reviews"),
     ("financing.html", "Financing", "financing"),
     ("faq.html", "FAQ", "faq"),
+    ("blog.html", "Blog", "blog"),
     ("contact.html", "Contact", "contact"),
 ]
 
@@ -539,6 +540,7 @@ def footer():
           <li><a href="financing.html">Financing</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="areas.html">Service areas</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -1570,6 +1572,163 @@ def notfound_page():
 
 
 # --------------------------------------------------------------------------
+# Blog (_build/posts/*.md)
+# --------------------------------------------------------------------------
+POSTS_DIR = BUILD / "posts"
+
+
+def _inline(t):
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', t)
+    return t
+
+
+def md_to_html(text):
+    """Small Markdown subset: ## / ### headings, paragraphs, - and 1. lists, **bold**, [links](url)."""
+    out, para, items, kind = [], [], [], None
+
+    def flush():
+        nonlocal para, items, kind
+        if para:
+            out.append(f"<p>{_inline(' '.join(para))}</p>")
+            para = []
+        if items:
+            out.append(f"<{kind}>" + "".join(f"<li>{_inline(i)}</li>" for i in items) + f"</{kind}>")
+            items, kind = [], None
+
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            flush()
+        elif s.startswith("### "):
+            flush(); out.append(f"<h3>{_inline(s[4:])}</h3>")
+        elif s.startswith("## "):
+            flush(); out.append(f"<h2>{_inline(s[3:])}</h2>")
+        elif s.startswith("- "):
+            if para or kind == "ol":
+                flush()
+            kind = "ul"; items.append(s[2:])
+        elif re.match(r"\d+\. ", s):
+            if para or kind == "ul":
+                flush()
+            kind = "ol"; items.append(re.sub(r"^\d+\. ", "", s))
+        else:
+            if items:
+                flush()
+            para.append(s)
+    flush()
+    return "\n".join(out)
+
+
+def load_posts():
+    posts = []
+    for f in sorted(POSTS_DIR.glob("*.md")):
+        raw = f.read_text()
+        _, front, body = raw.split("---", 2)
+        meta = {}
+        for line in front.strip().splitlines():
+            k, v = line.split(":", 1)
+            meta[k.strip()] = v.strip().strip('"')
+        meta["slug"] = f.stem
+        meta["path"] = f'{url("blog")}{f.stem}/'
+        meta["html"] = md_to_html(body)
+        meta["words"] = len(re.sub(r"[#*\[\]()-]", " ", body).split())
+        posts.append(meta)
+    return sorted(posts, key=lambda p: (p["date"], p["title"]), reverse=True)
+
+
+def _post_date(p):
+    return date.fromisoformat(p["date"]).strftime("%B %-d, %Y")
+
+
+def post_card(p):
+    return f'''          <article class="svc">
+            <div class="svc__media"><img src="assets/img/{p["img"]}" alt="{escape(p["img_alt"])}" width="1120" height="1400" loading="lazy"></div>
+            <div class="svc__body">
+              <p class="post-meta">{p["category"]} · {_post_date(p)}</p>
+              <h3 class="svc__title"><a class="post-card__link" href="{p["path"]}">{p["title"]}</a></h3>
+              <p>{p["description"]}</p>
+              <a class="svc__link" href="{p["path"]}" aria-hidden="true" tabindex="-1">Read article {ARROW}</a>
+            </div>
+          </article>
+'''
+
+
+def post_page(p, posts):
+    s = SVC[p["service"]]
+    minutes = max(2, round(p["words"] / 220))
+    related = [x for x in posts if x["slug"] != p["slug"]][:3]
+    body = page_hero([("blog.html", "Blog"), (p["path"], p["category"])], f'{p["category"]} · {_post_date(p)} · {minutes} min read',
+                     p["title"], p["description"], p["img"], p["img_alt"], ctas=False)
+    body += f'''
+    <section class="section" aria-label="Article">
+      <div class="container article-layout">
+        <article class="article prose">
+{p["html"]}
+          <p class="post-byline">By the {BUSINESS} team · Sandwich, MA · Published {_post_date(p)}</p>
+        </article>
+        <aside class="article-aside">
+          <div class="aside-card">
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Free estimate</p>
+            <h2 class="h3">Need {s["short"].lower()} work?</h2>
+            <p>We'll come out, look at it with you and send a clear, itemized estimate.</p>
+            <a class="btn btn--primary btn--block" href="contact.html">Get a free estimate {ARROW}</a>
+            <a class="btn btn--outline btn--block" href="{TEL}">{ico("phone")}{PHONE}</a>
+            <a class="aside-card__link" href="{s["slug"]}.html">About our {s["name"].lower()} work {ARROW}</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--warm" aria-labelledby="more-title">
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>Keep reading<span class="eyebrow__line" aria-hidden="true"></span></p>
+          <h2 id="more-title" class="h2">More from <span class="accent">the blog.</span></h2>
+        </header>
+        <div class="services__grid">
+{"".join(post_card(r) for r in related)}        </div>
+      </div>
+    </section>
+'''
+    body += cta_band()
+    article_ld = {
+        "@type": "BlogPosting", "@id": f"{SITE}{p['path']}#article", "headline": p["title"],
+        "description": p["description"], "datePublished": p["date"], "dateModified": p.get("updated", p["date"]),
+        "image": f"{SITE}/assets/img/{Path(p['img']).stem}.webp", "url": SITE + p["path"],
+        "mainEntityOfPage": SITE + p["path"], "author": {"@id": BIZ_ID}, "publisher": {"@id": BIZ_ID},
+        "about": {"@id": f'{SITE}{url(p["service"])}#service'}, "wordCount": p["words"],
+    }
+    crumbs = [("/", "Home"), (url("blog"), "Blog"), (p["path"], p["title"])]
+    return layout(p["path"], p["seo_title"], p["description"], "blog", body, preload=p["img"],
+                  schema=[article_ld, breadcrumb_ld(crumbs)], og_type="article")
+
+
+def blog_page(posts):
+    cards = "".join(post_card(p) for p in posts)
+    body = page_hero([("blog.html", "Blog")], "Blog",
+                     'Cape Cod home repair, <span class="page-hero__accent">explained.</span>',
+                     "Practical advice on trim, siding, decks, windows, roofs and ADUs for Cape Cod homes, from the team at Castro Finish Carpentry.",
+                     "siding-white-colonial.jpg", "White shingle colonial with black shutters", ctas=False)
+    body += f'''
+    <section class="section" aria-label="Articles">
+      <div class="container">
+        <div class="services__grid">
+{cards}        </div>
+      </div>
+    </section>
+'''
+    body += cta_band()
+    blog_ld = {"@type": "Blog", "@id": f"{SITE}{url('blog')}#blog", "name": f"{BUSINESS} Blog", "url": SITE + url("blog"),
+               "publisher": {"@id": BIZ_ID},
+               "blogPost": [{"@id": f"{SITE}{p['path']}#article"} for p in posts]}
+    return layout(url("blog"), f"Cape Cod Home Repair Blog | {BUSINESS}",
+                  "Practical advice for Cape Cod homeowners on exterior trim, cedar siding, decks, windows, roof repairs and ADUs, from a Sandwich, MA finish carpenter.",
+                  "blog", body, preload="siding-white-colonial.jpg",
+                  schema=[blog_ld, breadcrumb_ld([("/", "Home"), (url("blog"), "Blog")])])
+
+
+# --------------------------------------------------------------------------
 # Site files
 # --------------------------------------------------------------------------
 def build_images():
@@ -1746,6 +1905,10 @@ def main():
         pages[url(s["slug"])] = service_page(s)
     for c in CITIES:
         pages[city_path(c)] = city_page(c, "          " + form)
+    posts = load_posts()
+    pages[url("blog")] = blog_page(posts)
+    for post in posts:
+        pages[post["path"]] = post_page(post, posts)
     indexable = list(pages)
     pages[url("thanks")] = thanks_page()
     pages["/404.html"] = notfound_page()
