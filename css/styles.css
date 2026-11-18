@@ -251,7 +251,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .qa p{padding:0 22px 20px;color:var(--ink-muted)}
 
 /* ---------- estimate ---------- */
-.estimate{background:var(--castro-navy-deep) url("../assets/img/roofing-install-drone.jpg") center/cover;position:relative;isolation:isolate;padding-block:var(--section-y);color:#fff}
+.estimate{background:var(--castro-navy-deep) url("../assets/img/roofing-install-drone-800.webp") center/cover;position:relative;isolation:isolate;padding-block:var(--section-y);color:#fff}
 .estimate::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,33,63,.97) 0%,rgba(0,33,63,.9) 50%,rgba(0,33,63,.82) 100%)}
 .estimate__inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:center}
 .contact-list{display:grid;gap:14px;margin-top:32px}
@@ -498,3 +498,20 @@ button,input,select,textarea{font:inherit;color:inherit}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- service areas (footer row, chips, city pages) ---------- */
+.footer__areas{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding-block:18px;border-top:1px solid rgba(255,255,255,.12)}
+.footer__areas a{min-height:32px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips a,.chips span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:2px solid var(--ink);border-radius:999px;font-weight:500;text-decoration:none;color:var(--ink);background:#fff}
+.chips a:hover{border-color:var(--castro-blue);color:var(--castro-blue)}
+.chips span{border-color:rgba(0,0,0,.15);color:var(--ink-muted)}
+.tile--link{display:block;text-decoration:none;color:inherit}
+.tile--link .svc__link{margin-top:14px}
+.local-note{margin-top:24px;padding:20px 22px;border-left:4px solid var(--castro-blue);background:var(--paper-warm);border-radius:0 var(--radius-md) var(--radius-md) 0}
+.local-note h3{font-family:var(--font-display);text-transform:uppercase;font-size:1rem;margin-bottom:6px}
+.city-review{max-width:760px;margin-inline:auto}
+.prose a{color:var(--castro-blue)}
+.section--tight{padding-block:clamp(36px,4.5vw,64px)}
+.section--tight .lead{margin-block:6px 18px}
+.section-head--center + .chips{justify-content:center}

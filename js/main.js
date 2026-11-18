@@ -33,9 +33,46 @@
     });
   }
 
+  // Attribution: keep UTMs / click IDs from the landing page until the form is sent
+  const ATTR_KEY = 'castro_attr';
+  const ATTR_FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+  const store = {
+    get() { try { return JSON.parse(localStorage.getItem(ATTR_KEY)) || {}; } catch { return {}; } },
+    set(v) { try { localStorage.setItem(ATTR_KEY, JSON.stringify(v)); } catch { /* storage blocked */ } },
+  };
+  (() => {
+    const qs = new URLSearchParams(location.search);
+    const fresh = {};
+    ATTR_FIELDS.forEach((k) => { if (qs.get(k)) fresh[k] = qs.get(k); });
+    const saved = store.get();
+    const expired = !saved.ts || Date.now() - saved.ts > 90 * 864e5;
+    if (Object.keys(fresh).length || expired) {
+      const ref = document.referrer && !document.referrer.includes(location.hostname) ? document.referrer : '';
+      store.set({ ...fresh, landing_page: location.pathname + location.search, referrer: ref, ts: Date.now() });
+    }
+  })();
+
+  // Events for analytics (no-ops until tracking.js is configured)
+  const track = (name, params = {}) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: name, ...params });
+    if (typeof window.castroTrack === 'function') window.castroTrack(name, params);
+  };
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (a) track(a.href.startsWith('tel:') ? 'phone_click' : 'email_click', { page: location.pathname });
+  });
+
   // Estimate form
   const form = document.getElementById('estimate-form');
   if (!form) return;
+  const fill = () => {
+    const attr = store.get();
+    const set = (n, v) => { if (form.elements[n]) form.elements[n].value = v || ''; };
+    ATTR_FIELDS.concat(['landing_page', 'referrer']).forEach((k) => set(k, attr[k]));
+    set('page_url', location.pathname);
+  };
+  fill();
   const status = form.querySelector('.form__status');
   const btn = form.querySelector('button[type="submit"]');
   const rules = {
@@ -76,6 +113,7 @@
     const fields = Object.keys(rules).map((n) => form.elements[n]);
     const invalid = fields.filter((f) => !check(f));
     if (invalid.length) { invalid[0].focus(); return; }
+    fill();
 
     if (form.elements.access_key.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
       status.classList.add('is-err');
@@ -94,9 +132,11 @@
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.success === false) throw new Error(data.message || 'Request failed');
+      track('generate_lead', { lead_type: 'estimate', service: form.elements.service.value, town: form.elements.town.value, page: location.pathname });
       form.reset();
       status.classList.add('is-ok');
       status.textContent = 'Thanks — we got your request and will be in touch shortly.';
+      setTimeout(() => { location.href = '/thank-you/'; }, 600);
     } catch {
       status.classList.add('is-err');
       status.textContent = 'Something went wrong sending your request. Please call (508) 566-1618.';

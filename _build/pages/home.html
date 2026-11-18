@@ -6,7 +6,7 @@
         <div class="hero__copy">
           <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Finish carpentry &amp; home repairs · Cape Cod, MA</p>
           <h1 id="hero-title" class="hero__title">
-            Finish carpentry done right.
+            Cape Cod finish carpentry, done right.
             <span class="hero__title-accent">No stress. No surprises.</span>
           </h1>
           <p class="hero__lead">Trim, siding, decks, windows and doors, and roofing repairs — with clear itemized estimates, a clean job site, and fast communication from start to finish.</p>
@@ -17,7 +17,7 @@
           <ul class="hero__trust">
             <li><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Licensed &amp; insured in MA</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg>BBB accredited</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>5.0 on Google</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>{{RATING}}★ · {{REVIEW_COUNT}} Google reviews</li>
           </ul>
         </div>
       </div>
@@ -27,7 +27,7 @@
     <section class="stats" aria-label="Castro at a glance">
       <div class="container stats__grid">
         <div class="stat"><p class="stat__num">12+</p><p class="stat__label">Years on Cape Cod</p></div>
-        <div class="stat"><p class="stat__num">61</p><p class="stat__label">Google reviews</p></div>
+        <div class="stat"><p class="stat__num">{{REVIEW_COUNT}}</p><p class="stat__label">Google reviews</p></div>
         <div class="stat"><p class="stat__num">5.0<span class="stat__star" aria-hidden="true">★</span></p><p class="stat__label">Average rating</p></div>
       </div>
     </section>
@@ -155,7 +155,7 @@
         <header class="section-head section-head--center">
           <p class="eyebrow eyebrow--center eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span>Reviews<span class="eyebrow__line" aria-hidden="true"></span></p>
           <h2 id="reviews-title" class="h2 h2--light">What Cape Cod homeowners <span class="accent accent--light">are saying.</span></h2>
-          <p class="rating"><span class="stars" aria-hidden="true">★★★★★</span> <strong>5.0</strong> on Google · 61 reviews</p>
+          <p class="rating"><span class="stars" aria-hidden="true">★★★★★</span> <strong>{{RATING}}</strong> on Google · {{REVIEW_COUNT}} reviews</p>
         </header>
 
         <div class="reviews__grid">
@@ -261,7 +261,19 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <!-- Service areas -->
+    <section class="section" aria-labelledby="areas-home-title">
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>Where we work<span class="eyebrow__line" aria-hidden="true"></span></p>
+          <h2 id="areas-home-title" class="h2">From Sandwich <span class="accent">to Provincetown.</span></h2>
+          <p class="lead">Our shop is in Sandwich, and we work across the Upper, Mid, Lower and Outer Cape, plus Plymouth.</p>
+        </header>
+        {{AREAS_CHIPS}}
+      </div>
+    </section>
+
+<section class="section faq" id="faq" aria-labelledby="faq-title">
       <div class="container faq__inner">
         <header class="section-head section-head--center">
           <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>FAQ<span class="eyebrow__line" aria-hidden="true"></span></p>
@@ -275,7 +287,7 @@
           </details>
           <details class="qa">
             <summary>Which towns do you serve?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <p>We're based in Sandwich, MA and work across Cape Cod — from the Upper Cape all the way to Provincetown. Tell us your town or ZIP and we'll confirm.</p>
+            <p>We're based in Sandwich, MA and work across Cape Cod, from the Upper Cape all the way to Provincetown, plus Plymouth. See our <a href="areas.html">service areas</a>, or tell us your town or ZIP and we'll confirm.</p>
           </details>
           <details class="qa">
             <summary>Do you repair, or only replace?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -322,6 +334,17 @@
           <input type="hidden" name="subject" value="New estimate request — castrocarpentryinc.com">
           <input type="hidden" name="from_name" value="Castro Finish Carpentry website">
           <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="lead_type" value="estimate">
+          <input type="hidden" name="page_url" value="">
+          <input type="hidden" name="landing_page" value="">
+          <input type="hidden" name="referrer" value="">
+          <input type="hidden" name="utm_source" value="">
+          <input type="hidden" name="utm_medium" value="">
+          <input type="hidden" name="utm_campaign" value="">
+          <input type="hidden" name="utm_term" value="">
+          <input type="hidden" name="utm_content" value="">
+          <input type="hidden" name="gclid" value="">
+          <input type="hidden" name="fbclid" value="">
 
           <h3 class="form__title">Get your free estimate</h3>
 
@@ -359,6 +382,7 @@
                 <option>Decks</option>
                 <option>Windows &amp; doors</option>
                 <option>Roofing repairs</option>
+                <option>ADU / garage conversion</option>
                 <option>Other / not sure</option>
               </select>
               <p class="field__err" id="f-service-err"></p>

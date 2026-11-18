@@ -8,22 +8,73 @@ then run:
 
     python3 _build/build.py
 
-It writes plain .html files to the project root. Upload the root folder
-(everything except _build/ and .claude/) to any static host.
+It writes clean-URL pages (folder/index.html) to the project root, plus
+sitemap.xml, robots.txt, 404.html and .htaccess. The repo root is what
+Hostinger serves; _build/ is blocked by .htaccess.
 """
 import json
+import sys
 import re
+import shutil
+from datetime import date
 from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = Path(__file__).resolve().parent / "pages"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+BUILD = Path(__file__).resolve().parent
+PAGES = BUILD / "pages"
+IMG_SRC = BUILD / "img-src"
+IMG_OUT = ROOT / "assets" / "img"
 
+SITE = "https://castrocarpentryinc.com"   # canonical: https, no www, trailing slash
+BUSINESS = "Castro Finish Carpentry"
 PHONE = "(508) 566-1618"
 TEL = "tel:+15085661618"
 EMAIL = "ecastrocarpentry@gmail.com"
-ADDRESS = "15 Jan Sebastian Dr, Unit 4, Sandwich, MA 02563"
+# NAP must match the Google Business Profile exactly — confirm before launch.
+STREET = "15 Jan Sebastian Dr, Unit 4"
+CITY = "Sandwich"
+ZIP = "02563"
+ADDRESS = f"{STREET}, {CITY}, MA {ZIP}"
+REVIEW_COUNT = 61          # keep in sync with the Google Business Profile
+RATING = "5.0"
 MAPS = "https://www.google.com/maps/search/?api=1&amp;query=Castro+Finish+Carpentry+Cape+Cod+MA"
+MAP_Q = "Castro+Finish+Carpentry+Inc,+" + ADDRESS.replace(",", "").replace(" ", "+")
+
+# Tracking — leave empty until the IDs exist. Tags load only on PROD_HOSTS.
+TRACKING = {
+    "ga4": "",            # e.g. G-XXXXXXX
+    "ads": "",            # e.g. AW-123456789
+    "ads_lead_label": "", # Google Ads conversion label for the estimate form
+    "meta_pixel": "",     # e.g. 1234567890
+    "prod_hosts": ["castrocarpentryinc.com", "www.castrocarpentryinc.com"],
+}
+
+# Clean URLs. Old WordPress slugs are kept so existing links and rankings carry over.
+URLS = {
+    "index": "/",
+    "services": "/services/",
+    "trim": "/trim/",
+    "siding": "/siding/",
+    "decks": "/decking/",
+    "windows-doors": "/windows-and-doors/",
+    "roofing": "/roofing/",
+    "adu": "/adu/",
+    "about": "/about-us/",
+    "contact": "/contact-us/",
+    "financing": "/financing-options/",
+    "process": "/process/",
+    "reviews": "/reviews/",
+    "faq": "/faq/",
+    "areas": "/service-areas/",
+    "privacy": "/terms-of-service-privacy-policy/",
+    "thanks": "/thank-you/",
+}
+
+
+def url(key):
+    return URLS[key]
 INSTAGRAM = "https://www.instagram.com/castrocarpentry2024/"
 GOOGLE_REVIEWS = "https://www.google.com/search?q=Castro+Finish+Carpentry+Inc#lrd=0x88a81f1d101b294d:0x9cced1d130698f39,1"
 GOOGLE_WRITE = "https://www.google.com/search?q=Castro+Finish+Carpentry+Inc#lrd=0x88a81f1d101b294d:0x9cced1d130698f39,3"
@@ -44,8 +95,8 @@ SERVICES = [
         "slug": "trim",
         "name": "Trim & finish carpentry",
         "short": "Trim",
-        "title": "Exterior Trim Repair & Replacement on Cape Cod",
-        "h1": "Exterior trim, <span class=\"page-hero__accent\">done right at the edges.</span>",
+        "title": "Exterior Trim Repair on Cape Cod",
+        "h1": "Exterior trim repair, <span class=\"page-hero__accent\">done right at the edges.</span>",
         "lead": "Rot repair, fascia and soffits, corner boards and window trim — with clean lines, tight joints, and a clear estimate. Free on-site visit.",
         "img": "siding-cedar-balcony.jpg",
         "img_alt": "Cedar shingle wall with balcony and fresh exterior trim",
@@ -102,8 +153,8 @@ SERVICES = [
         "slug": "siding",
         "name": "Siding repair & installation",
         "short": "Siding",
-        "title": "Siding Repair & Replacement on Cape Cod",
-        "h1": "Siding built for <span class=\"page-hero__accent\">Cape Cod weather.</span>",
+        "title": "Siding Contractor on Cape Cod, MA",
+        "h1": "Siding repair &amp; installation <span class=\"page-hero__accent\">built for Cape Cod weather.</span>",
         "lead": "Cedar shingle, vinyl and fiber cement — repaired or replaced as a full wall system, with rot fixed properly and a clean finish. Free on-site estimate.",
         "img": "siding-cedar-gable.jpg",
         "img_alt": "New cedar shingle siding on a gable end",
@@ -158,8 +209,8 @@ SERVICES = [
         "slug": "decks",
         "name": "Decks, repairs & upgrades",
         "short": "Decks",
-        "title": "Deck Building, Repairs & Upgrades on Cape Cod",
-        "h1": "Decks that feel solid <span class=\"page-hero__accent\">and look finished.</span>",
+        "title": "Deck Builder on Cape Cod, MA",
+        "h1": "Cape Cod deck builder: <span class=\"page-hero__accent\">solid, safe and finished.</span>",
         "lead": "New builds, rebuilds, board replacement, railings, stairs and refinishing — in wood or composite, framed accurately and fastened tight.",
         "img": "deck-cable-railing.jpg",
         "img_alt": "Composite deck with black cable railing in the pines",
@@ -216,8 +267,8 @@ SERVICES = [
         "slug": "windows-doors",
         "name": "Windows & doors",
         "short": "Windows & Doors",
-        "title": "Window & Door Installation and Replacement on Cape Cod",
-        "h1": "Windows & doors, <span class=\"page-hero__accent\">installed as a system.</span>",
+        "title": "Window & Door Replacement on Cape Cod",
+        "h1": "Window &amp; door installation, <span class=\"page-hero__accent\">done as a system.</span>",
         "lead": "Installation and replacement with tight seals, smooth operation and water protection at every edge — finished with clean trim.",
         "img": "siding-white-colonial.jpg",
         "img_alt": "Colonial home with new windows and black shutters",
@@ -271,8 +322,8 @@ SERVICES = [
         "slug": "roofing",
         "name": "Roofing repairs",
         "short": "Roofing",
-        "title": "Roof Repairs on Cape Cod",
-        "h1": "Roof repairs that stop leaks <span class=\"page-hero__accent\">at the source.</span>",
+        "title": "Roof Repair on Cape Cod, MA",
+        "h1": "Roof repair that stops leaks <span class=\"page-hero__accent\">at the source.</span>",
         "lead": "Leak detection, chimney and skylight flashing, storm damage and shingle repairs — with photos, clear options and an itemized estimate.",
         "img": "roofing-drone.jpg",
         "img_alt": "Aerial view of a Cape Cod home with a new roof",
@@ -324,6 +375,60 @@ SERVICES = [
             ("How fast can you respond to an active leak?", "We prioritize active leaks when we can. Timing depends on weather and schedule — we'll set the soonest available visit."),
             ("Will the repair match my existing shingles?", "When possible. Otherwise we'll show you the closest option."),
             ("Can you help with an insurance claim?", "We provide photos and documentation. You work with your insurer on approvals and coverage."),
+        ],
+    },
+    {
+        "slug": "adu",
+        "name": "ADUs &amp; garage conversions",
+        "short": "ADUs",
+        "title": "ADU Builder on Cape Cod, MA",
+        "h1": "ADU construction &amp; garage conversions <span class=\"page-hero__accent\">on Cape Cod.</span>",
+        "lead": "Turn unused space into a fully independent living unit: garage conversions, in-law suites and backyard cottages, with a clear estimate and a finish you'll be proud of.",
+        "img": "roofing-porch-aerial.jpg",
+        "img_alt": "Aerial view of a Cape Cod home and porch",
+        "img2": "hero-cape-house.jpg",
+        "img2_alt": "Cape Cod home with a new roof and front porch",
+        "summary": "Garage conversions, in-law suites, attached additions and backyard cottages, now allowed by right in most Massachusetts single-family zones.",
+        "why_title": "What is an ADU, <span class=\"accent\">and why now?</span>",
+        "why": [
+            "An Accessory Dwelling Unit (ADU) is a small, independent home on the same lot as your main house, with its own kitchen, bathroom and entrance. It works for aging parents, adult children, guests or long-term rental income.",
+            "Since February 2025, Massachusetts law allows one ADU by right in single-family zoning districts. A building permit and code compliance are still required, and towns can set local rules on things like setbacks and parking.",
+        ],
+        "points": [
+            "Up to 900 sq ft, or half the size of the main home, whichever is smaller",
+            "No special permit required in single-family zones",
+            "No owner-occupancy requirement under state law",
+            "Building permit and code compliance still required",
+        ],
+        "handle_title": "ADU options we build",
+        "handle": [
+            ("Garage conversions", "Your garage already has a foundation, walls and a roof. We turn it into warm living space: insulation, framing, windows, doors, flooring and interior finish."),
+            ("In-law suites", "A private space inside your existing home, including basement or attic units, for family who want to stay close."),
+            ("Attached additions", "A connected unit with its own entrance, built to match your home's style."),
+            ("Detached backyard cottages", "A standalone home on your lot, designed to fit the Cape Cod look and handle Cape Cod weather."),
+        ],
+        "diff_title": "The Castro Standard for ADUs",
+        "diff": [
+            ("Finish-carpentry detail", "Solid framing, proper flashing and sealing, tight trim lines and openings set square."),
+            ("Licensed trades coordinated", "Plumbing, electrical and HVAC handled by licensed trades, coordinated by us."),
+            ("One team, start to finish", "One point of contact managing the job, with a clean site and fast communication."),
+            ("Rental income or family space", "Planned around how you'll use it: renting, family close by, or more room for your own home."),
+        ],
+        "steps_title": "How an ADU project works",
+        "steps": [
+            ("Free consultation", "We visit, look at your space and talk through the options."),
+            ("Clear, itemized estimate", "Straightforward scope and pricing, so you know what to expect."),
+            ("Permits & planning", "We help you through the building permit process with your town."),
+            ("Construction", "Organized job site, daily cleanup and regular updates."),
+            ("Final walkthrough", "We don't finish until every detail looks right."),
+        ],
+        "warning": ("Septic comes up early on the Cape", "Many Cape Cod homes use septic systems, and adding a bedroom may require a septic review or upgrade. We talk this through at the first visit, so there are no surprises."),
+        "faq": [
+            ("Do I need a special permit to build an ADU in Massachusetts?", "In most single-family zoning districts, no. ADUs up to 900 sq ft are allowed by right. You'll still need a building permit, and your town may have local rules on things like setbacks and parking."),
+            ("How big can my ADU be?", "Up to 900 sq ft or half the size of your main home, whichever is smaller."),
+            ("Can I rent out my ADU?", "In general, yes. State law doesn't require the owner to live on the property. Some towns limit short-term rentals, so check your town's rules."),
+            ("What about septic on Cape Cod?", "Adding a bedroom may require a septic review or upgrade. We'll talk through this early, so there are no surprises."),
+            ("How long does an ADU project take?", "It depends on the type of ADU and the permit timeline in your town. You'll get a clear schedule with your estimate."),
         ],
     },
 ]
@@ -406,7 +511,9 @@ def header(active):
 
 
 def footer():
+    from cities import CITIES
     svc_links = "\n          ".join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SERVICES)
+    area_links = " ".join(f'<a href="{city_path(c)}">{c["label"]}</a>' for c in CITIES)
     return f'''
   <footer class="footer">
     <div class="container footer__grid">
@@ -429,6 +536,7 @@ def footer():
           <li><a href="reviews.html">Reviews</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="faq.html">FAQ</a></li>
+          <li><a href="areas.html">Service areas</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -442,8 +550,12 @@ def footer():
         </ul>
       </div>
     </div>
+    <nav class="container footer__areas" aria-label="Service areas">
+      <a href="areas.html"><strong>Service areas:</strong></a>
+      {area_links}
+    </nav>
     <div class="container footer__bottom">
-      <p>© <span id="year">2026</span> Castro Finish Carpentry · Licensed &amp; insured in MA · BBB accredited</p>
+      <p>© <span id="year">2026</span> Castro Finish Carpentry Inc · Licensed &amp; insured in MA · BBB accredited · <a href="privacy.html">Privacy &amp; terms</a></p>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
@@ -481,44 +593,94 @@ SPRITE = '''
   </svg>
 '''
 
-JSON_LD = {
-    "@context": "https://schema.org",
+BIZ_ID = f"{SITE}/#business"
+TOWNS_SERVED = ["Sandwich", "Bourne", "Falmouth", "Mashpee", "Barnstable", "Yarmouth", "Dennis", "Brewster",
+                "Harwich", "Chatham", "Orleans", "Eastham", "Wellfleet", "Truro", "Provincetown", "Plymouth"]
+
+BUSINESS_LD = {
     "@type": "HomeAndConstructionBusiness",
-    "name": "Castro Finish Carpentry",
-    "url": "https://castrocarpentryinc.com/",
+    "@id": BIZ_ID,
+    "name": BUSINESS,
+    "legalName": "Castro Finish Carpentry Inc",
+    "url": f"{SITE}/",
+    "logo": f"{SITE}/assets/logos/logo-castro-azul-400.png",
+    "image": f"{SITE}/assets/img/og-image.jpg",
     "telephone": "+1-508-566-1618",
     "email": EMAIL,
-    "address": {"@type": "PostalAddress", "streetAddress": "15 Jan Sebastian Dr, Unit 4", "addressLocality": "Sandwich",
-                "addressRegion": "MA", "postalCode": "02563", "addressCountry": "US"},
-    "areaServed": "Cape Cod, MA",
-    "founder": "Estevam Castro",
+    "address": {"@type": "PostalAddress", "streetAddress": STREET, "addressLocality": CITY,
+                "addressRegion": "MA", "postalCode": ZIP, "addressCountry": "US"},
+    "areaServed": [{"@type": "City", "name": f"{t}, MA"} for t in TOWNS_SERVED]
+                  + [{"@type": "Place", "name": "Cape Cod, MA"}],
+    "founder": {"@type": "Person", "name": "Estevam Castro"},
     "foundingDate": "2013",
-    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "61"},
     "sameAs": [INSTAGRAM],
 }
 
+LEAD_HTML = f'''<!-- Generated by _build/build.py: edit content there (homepage body: _build/pages/home.html), then run: python3 _build/build.py -->'''
 
-def layout(filename, title, description, active, body, preload=None):
-    pre = f'\n  <link rel="preload" href="assets/img/{preload}" as="image">' if preload else ""
-    ld = ""
-    if filename == "index.html":
-        ld = '\n  <script type="application/ld+json">' + json.dumps(JSON_LD) + "</script>"
-    return f'''<!DOCTYPE html>
-<!-- Generated by _build/build.py: edit content there (homepage body: _build/pages/home.html), then run: python3 _build/build.py -->
-<html lang="en">
+
+def breadcrumb_ld(crumbs):
+    """crumbs: list of (path, name), home first."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": re.sub("<[^>]+>", "", n).replace("&amp;", "&"), "item": SITE + p}
+        for i, (p, n) in enumerate(crumbs, 1)]}
+
+
+def faq_ld(items):
+    clean = lambda t: re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")
+    return {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": clean(q), "acceptedAnswer": {"@type": "Answer", "text": clean(a)}}
+        for q, a in items]}
+
+
+def tracking_head():
+    t = TRACKING
+    if not (t["ga4"] or t["ads"] or t["meta_pixel"]):
+        return ""
+    cfg = json.dumps({k: t[k] for k in ("ga4", "ads", "ads_lead_label", "meta_pixel", "prod_hosts")})
+    return f'''
+  <script>window.CASTRO_TRACKING={cfg};</script>
+  <script src="/js/tracking.js" defer></script>'''
+
+
+def layout(path, title, description, active, body, preload=None, schema=None, noindex=False, og_type="website"):
+    """path: the page's clean URL ("/trim/"). schema: list of JSON-LD nodes for this page."""
+    canonical = SITE + path
+    pre = ""
+    if preload:
+        stem = Path(preload).stem
+        pre = (f'\n  <link rel="preload" as="image" href="/assets/img/{stem}.webp" '
+               f'imagesrcset="/assets/img/{stem}-800.webp 800w, /assets/img/{stem}.webp 1600w" imagesizes="100vw" fetchpriority="high">')
+    graph = [BUSINESS_LD] + (schema or [])
+    ld = '\n  <script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False) + "</script>"
+    robots = '\n  <meta name="robots" content="noindex, follow">' if noindex else ""
+    canon = "" if noindex else f'\n  <link rel="canonical" href="{canonical}">'
+    t, d = escape(title, quote=True), escape(description, quote=True)
+    html = f'''<!DOCTYPE html>
+{LEAD_HTML}
+<html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title}</title>
-  <meta name="description" content="{escape(description)}">
+  <title>{t}</title>
+  <meta name="description" content="{d}">{robots}{canon}
   <meta name="theme-color" content="#004d93">
-  <meta property="og:title" content="{escape(title)}">
-  <meta property="og:description" content="{escape(description)}">
-  <meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="assets/logos/logo-castro-azul-400.png">
-  <link rel="preload" href="assets/fonts/Jost-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>{pre}
-  <link rel="stylesheet" href="css/styles.css">{ld}
+  <meta property="og:site_name" content="{BUSINESS}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="{og_type}">
+  <meta property="og:title" content="{t}">
+  <meta property="og:description" content="{d}">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:image" content="{SITE}/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/logos/icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/Jost-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>{pre}
+  <link rel="stylesheet" href="/css/styles.css">{ld}{tracking_head()}
 </head>
 <body>
 {header(active)}
@@ -526,23 +688,56 @@ def layout(filename, title, description, active, body, preload=None):
 {body}
   </main>
 {footer()}{SPRITE}
-  <script src="js/main.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>
 '''
+    return finalize(html)
+
+
+# --------------------------------------------------------------------------
+# Post-processing: clean links, absolute asset paths, responsive WebP images
+# --------------------------------------------------------------------------
+IMG_SIZES = {}  # stem -> (w, h) of the 1600px version, filled by build_images()
+
+
+def _img(m):
+    tag = m.group(0)
+    src = re.search(r'src="/assets/img/([\w-]+)\.jpg"', tag)
+    if not src:
+        return tag
+    stem = src.group(1)
+    big = "hero__bg" in tag or "page-hero__bg" in tag
+    sizes = "100vw" if big else "(max-width: 760px) 100vw, 50vw"
+    new = (f'src="/assets/img/{stem}.webp" srcset="/assets/img/{stem}-800.webp 800w, '
+           f'/assets/img/{stem}.webp 1600w" sizes="{sizes}"')
+    tag = tag.replace(src.group(0), new)
+    if stem in IMG_SIZES:  # true intrinsic size keeps the aspect ratio honest (no CLS)
+        w, h = IMG_SIZES[stem]
+        tag = re.sub(r'width="\d+"', f'width="{w}"', tag)
+        tag = re.sub(r'height="\d+"', f'height="{h}"', tag)
+    return tag
+
+
+def finalize(html):
+    keys = "|".join(sorted((re.escape(k) for k in URLS), key=len, reverse=True))
+    html = re.sub(rf'href="({keys})\.html(#[^"]*)?"', lambda m: f'href="{URLS[m.group(1)]}{m.group(2) or ""}"', html)
+    html = re.sub(r'(src|href)="(assets|css|js)/', r'\1="/\2/', html)
+    html = re.sub(r"<img\b[^>]*>", _img, html)
+    return html
 
 
 # --------------------------------------------------------------------------
 # Shared blocks
 # --------------------------------------------------------------------------
-def page_hero(crumbs, eyebrow, h1, lead, img, img_alt, ctas=True):
+def page_hero(crumbs, eyebrow, h1, lead, img, img_alt, ctas=True, cta_href="contact.html"):
     trail = ['<li><a href="index.html">Home</a></li>']
     for href, label in crumbs[:-1]:
         trail.append(f'<li><a href="{href}">{label}</a></li>')
     trail.append(f'<li aria-current="page">{crumbs[-1][1]}</li>')
     buttons = f'''
           <div class="hero__ctas">
-            <a class="btn btn--primary btn--lg" href="contact.html">Get a free estimate {ARROW}</a>
+            <a class="btn btn--primary btn--lg" href="{cta_href}">Get a free estimate {ARROW}</a>
             <a class="btn btn--ghost-light btn--lg" href="{TEL}">{ico("phone")}{PHONE}</a>
           </div>''' if ctas else ""
     return f'''    <section class="page-hero" aria-labelledby="page-title">
@@ -630,6 +825,26 @@ def svc_card(s, link_label="Learn more"):
 # --------------------------------------------------------------------------
 # Pages
 # --------------------------------------------------------------------------
+SERVICE_DESC = {
+    "trim": f"Exterior trim repair on Cape Cod: rotted fascia, soffits, corner boards and window trim fixed with tight joints. Free on-site estimate: {PHONE}.",
+    "siding": f"Cedar shingle, vinyl and fiber cement siding repaired or replaced on Cape Cod, with hidden rot fixed properly. Free itemized estimate: {PHONE}.",
+    "decks": f"Cape Cod deck builder: new decks, rebuilds, board replacement, railings and stairs in wood or composite. Free on-site estimate: {PHONE}.",
+    "windows-doors": f"Window and door installation and replacement on Cape Cod, flashed and sealed as a system with clean trim. Free estimate: {PHONE}.",
+    "roofing": f"Roof repair on Cape Cod: leaks traced to the source, chimney and skylight flashing, storm damage and shingles. Free estimate: {PHONE}.",
+    "adu": f"ADU builder on Cape Cod: garage conversions, in-law suites and backyard cottages, now allowed by right in Massachusetts. Free estimate: {PHONE}.",
+}
+
+
+def city_path(c):
+    return f'{url("areas")}{c["slug"]}/'
+
+
+def areas_chips():
+    from cities import CITIES
+    links = "".join(f'<a href="{city_path(c)}">{c["label"]}</a>' for c in CITIES)
+    return f'<div class="chips">{links}<a href="areas.html">All service areas →</a></div>'
+
+
 def service_page(s):
     handle = "".join(
         f'<li class="tile"><h3>{t}</h3><p>{d}</p></li>' for t, d in s["handle"]
@@ -699,6 +914,14 @@ def service_page(s):
       </div>
     </section>
 
+    <section class="section section--tight" aria-labelledby="areas-title">
+      <div class="container">
+        <h2 id="areas-title" class="h3">Where we do {s["short"].lower()} work</h2>
+        <p class="lead">Based in Sandwich, serving all of Cape Cod and Plymouth.</p>
+        {areas_chips()}
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="related-title">
       <div class="container">
         <header class="section-head section-head--center">
@@ -711,11 +934,19 @@ def service_page(s):
     </section>
 '''
     body += cta_band(f'Need {s["short"].lower()} work?', "Get a free on-site visit and a clear, itemized estimate — no surprises.")
+    path = url(s["slug"])
+    service_ld = {
+        "@type": "Service", "@id": f"{SITE}{path}#service", "name": re.sub("<[^>]+>", "", s["name"]).replace("&amp;", "&"),
+        "serviceType": s["title"].split(" on Cape Cod")[0], "url": SITE + path, "provider": {"@id": BIZ_ID},
+        "areaServed": BUSINESS_LD["areaServed"], "description": s["lead"],
+    }
+    crumbs = [("/", "Home"), (url("services"), "Services"), (path, s["short"])]
+    full_title = f'{s["title"]} | {BUSINESS}'
+    if len(full_title) > 60:
+        full_title = f'{s["title"]} | Castro Carpentry'
     return layout(
-        f'{s["slug"]}.html',
-        f'{s["title"]} | Castro Finish Carpentry',
-        f'{s["lead"]} Call {PHONE}.',
-        s["slug"], body, preload=s["img"],
+        path, full_title, SERVICE_DESC[s["slug"]], s["slug"], body, preload=s["img"],
+        schema=[service_ld, breadcrumb_ld(crumbs), faq_ld(s["faq"])],
     )
 
 
@@ -762,9 +993,10 @@ def services_page():
     </section>
 '''
     body += cta_band()
-    return layout("services.html", "Services | Castro Finish Carpentry — Cape Cod",
-                  "Trim, siding, decks, windows and doors, and roofing repairs across Cape Cod. One accountable team, clear itemized estimates.",
-                  "services", body, preload="hero-cape-house.jpg")
+    return layout(url("services"), f"Carpentry Services on Cape Cod | {BUSINESS}",
+                  "Trim, siding, decks, windows and doors, roof repairs and ADUs across Cape Cod. One accountable team and clear, itemized estimates.",
+                  "services", body, preload="hero-cape-house.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("services"), "Services")])])
 
 
 def about_page():
@@ -820,7 +1052,7 @@ def about_page():
     <section class="stats" aria-label="Castro at a glance">
       <div class="container stats__grid">
         <div class="stat"><p class="stat__num">12+</p><p class="stat__label">Years on Cape Cod</p></div>
-        <div class="stat"><p class="stat__num">61</p><p class="stat__label">Google reviews</p></div>
+        <div class="stat"><p class="stat__num">{REVIEW_COUNT}</p><p class="stat__label">Google reviews</p></div>
         <div class="stat"><p class="stat__num">5.0<span class="stat__star" aria-hidden="true">★</span></p><p class="stat__label">Average rating</p></div>
       </div>
     </section>
@@ -849,9 +1081,10 @@ def about_page():
     </section>
 '''
     body += cta_band("Let's talk about your project.")
-    return layout("about.html", "About Us | Castro Finish Carpentry — Cape Cod",
+    return layout(url("about"), f"About Us | {BUSINESS}, Sandwich MA",
                   "Castro Carpentry started in 2013 as a family business led by Estevam Castro. Licensed, insured and BBB accredited finish carpentry on Cape Cod.",
-                  "about", body, preload="roofing-porch-aerial.jpg")
+                  "about", body, preload="roofing-porch-aerial.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("about"), "About")])])
 
 
 def process_page():
@@ -903,9 +1136,10 @@ def process_page():
     </section>
 '''
     body += cta_band("Start with step one.", "Tell us what you need — it takes two minutes.")
-    return layout("process.html", "How It Works | Castro Finish Carpentry — Cape Cod",
+    return layout(url("process"), f"How Our Free Estimates Work | {BUSINESS}",
                   "How Castro's free estimates and projects work: quick follow-up, on-site check, itemized quote, protected home, daily cleanup and a final walkthrough.",
-                  "process", body, preload="deck-cable-railing.jpg")
+                  "process", body, preload="deck-cable-railing.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("process"), "Process")])])
 
 
 REVIEWS = [
@@ -939,7 +1173,7 @@ def reviews_page():
     cards = "".join(review_card(*r) for r in REVIEWS)
     body = page_hero([("reviews.html", "Reviews")], "Reviews",
                      'What Cape Cod homeowners <span class="page-hero__accent">are saying.</span>',
-                     "5.0 stars across 61 Google reviews — from single repairs to full exterior projects.",
+                     f"{RATING} stars across {REVIEW_COUNT} Google reviews — from single repairs to full exterior projects.",
                      "siding-white-colonial.jpg", "White shingle colonial with black shutters", ctas=False)
     body += f'''
     <section class="section" aria-labelledby="rev-title">
@@ -948,7 +1182,7 @@ def reviews_page():
           <div>
             <p class="rating-card__num">5.0</p>
             <p class="stars stars--lg" aria-label="5 out of 5 stars">★★★★★</p>
-            <p class="rating-card__sub">Based on 61 Google reviews</p>
+            <p class="rating-card__sub">Based on {REVIEW_COUNT} Google reviews</p>
           </div>
           <div class="rating-card__copy">
             <h2 id="rev-title" class="h3">Real projects. Real neighbors.</h2>
@@ -966,9 +1200,10 @@ def reviews_page():
     </section>
 '''
     body += cta_band("Join our happy homeowners.")
-    return layout("reviews.html", "Reviews | Castro Finish Carpentry — 5.0 on Google",
-                  "Castro Finish Carpentry is rated 5.0 stars across 61 Google reviews by Cape Cod homeowners.",
-                  "reviews", body, preload="siding-white-colonial.jpg")
+    return layout(url("reviews"), f"Reviews: {RATING} Stars on Google | {BUSINESS}",
+                  f"{BUSINESS} is rated {RATING} stars across {REVIEW_COUNT} Google reviews from Cape Cod homeowners. Read what they say about trim, siding, deck and window work.",
+                  "reviews", body, preload="siding-white-colonial.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("reviews"), "Reviews")])])
 
 
 def financing_page():
@@ -1017,15 +1252,16 @@ def financing_page():
     </section>
 '''
     body += cta_band("Ask about financing with your free estimate.")
-    return layout("financing.html", "Financing | Castro Finish Carpentry — Cape Cod",
-                  "Project financing for trim, siding, deck, window and roofing work on Cape Cod. Check options without affecting your credit, fast approval, no prepayment penalties.",
-                  "financing", body, preload="roofing-drone.jpg")
+    return layout(url("financing"), f"Home Improvement Financing | {BUSINESS}",
+                  "Finance trim, siding, deck, window and roof work on Cape Cod. Check options without affecting your credit, fast approval, no prepayment penalties.",
+                  "financing", body, preload="roofing-drone.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("financing"), "Financing")])])
 
 
 def faq_page():
     general = [
         ("Do you offer free estimates?", "Yes. We provide free on-site estimates, and every quote is itemized so you can see exactly what's included."),
-        ("Which towns do you serve?", "We're based in Sandwich, MA and work across Cape Cod — from the Upper Cape to Provincetown. Tell us your town or ZIP and we'll confirm."),
+        ("Which towns do you serve?", "We're based in Sandwich, MA and work across Cape Cod, from the Upper Cape to Provincetown, plus Plymouth. See our <a href=\"areas.html\">service areas</a>, or tell us your town or ZIP and we'll confirm."),
         ("Are you licensed and insured?", "Yes — licensed (HIC/CSL) and insured in Massachusetts, and BBB accredited. A certificate of insurance is available on request."),
         ("Do you repair, or only replace?", "Both. If a repair will hold up, we'll recommend it. If replacement is the safer long-term fix, we'll explain why."),
         ("How long will my project take?", "It depends on scope. After the site visit you'll get a realistic timeline in writing."),
@@ -1055,9 +1291,11 @@ def faq_page():
     </section>
 '''
     body += cta_band("Still have a question?", "Call us or send a message — we'll get back to you quickly.")
-    return layout("faq.html", "FAQ | Castro Finish Carpentry — Cape Cod",
-                  "Answers about free estimates, service area, licensing, financing, and our trim, siding, deck, window, door and roofing work on Cape Cod.",
-                  "faq", body, preload="siding-cedar-gable.jpg")
+    all_items = [q for _, _, items in groups for q in items]
+    return layout(url("faq"), f"FAQ: Estimates, Towns & Services | {BUSINESS}",
+                  "Answers about free estimates, the towns we serve, licensing, financing, and our trim, siding, deck, window, roofing and ADU work on Cape Cod.",
+                  "faq", body, preload="siding-cedar-gable.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("faq"), "FAQ")]), faq_ld(all_items)])
 
 
 def contact_page(form_html):
@@ -1092,39 +1330,418 @@ def contact_page(form_html):
     </section>
 
     <section class="map" aria-label="Map">
-      <iframe title="Map showing Castro Finish Carpentry in Sandwich, MA" src="https://www.google.com/maps?q=Castro+Finish+Carpentry+Inc,+15+Jan+Sebastian+Dr+Unit+4,+Sandwich,+MA+02563&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe title="Map showing Castro Finish Carpentry in Sandwich, MA" src="https://www.google.com/maps?q={MAP_Q}&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 '''
-    return layout("contact.html", "Contact & Free Estimate | Castro Finish Carpentry — Cape Cod",
-                  f"Request a free estimate for trim, siding, decks, windows and doors, or roofing repairs on Cape Cod. Call {PHONE}.",
-                  "contact", body, preload="hero-cape-house.jpg")
+    return layout(url("contact"), f"Free Estimate & Contact | {BUSINESS}",
+                  f"Request a free on-site estimate for trim, siding, decks, windows and doors, roof repairs or an ADU anywhere on Cape Cod. Call {PHONE}.",
+                  "contact", body, preload="hero-cape-house.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("contact"), "Contact")])])
 
 
 def home_page():
     body = (PAGES / "home.html").read_text()
-    return layout("index.html", "Castro Finish Carpentry | Finish Carpentry & Home Repairs on Cape Cod",
-                  "Trim, siding, decks, windows and doors, and roofing repairs across Cape Cod. Clear itemized estimates, clean job sites, fast communication. Licensed & insured in MA.",
-                  "home", body, preload="hero-cape-house.jpg")
+    body = (body.replace("{{REVIEW_COUNT}}", str(REVIEW_COUNT)).replace("{{RATING}}", RATING)
+                .replace("{{AREAS_CHIPS}}", areas_chips()))
+    website = {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "name": BUSINESS, "publisher": {"@id": BIZ_ID}}
+    return layout("/", f"Finish Carpenter on Cape Cod, MA | {BUSINESS}",
+                  "Cape Cod finish carpentry: trim, siding, decks, windows and doors, roof repairs and ADUs. Itemized estimates, clean job sites. Licensed & insured in MA.",
+                  "home", body, preload="hero-cape-house.jpg", schema=[website])
+
+
+def city_page(c, form_html):
+    from cities import CITIES
+    by_slug = {x["slug"]: x for x in CITIES}
+    path = city_path(c)
+    town = c["town"]
+    context = "".join(f"<p>{p}</p>" for p in c["context"])
+    note = ""
+    if c["note"]:
+        nt, nd = c["note"]
+        note = f'<aside class="local-note"><h3>{nt}</h3><p>{nd}</p></aside>'
+    svc_tiles = "".join(
+        f'<li><a class="tile tile--link" href="{slug}.html"><h3>{SVC[slug]["name"]}</h3><p>{line}</p>'
+        f'<span class="svc__link">{SVC[slug]["short"]} in {c["label"]} {ARROW}</span></a></li>'
+        for slug, line in c["services"])
+    logi = "".join(f'<li class="feature"><span class="feature__ico">{ico("check")}</span><div><h3>{t}</h3><p>{d}</p></div></li>'
+                   for t, d in c["logistics"])
+    review = ""
+    if c["review"]:
+        review = (f'\n    <section class="section section--tight" aria-label="Review from {c["label"]}">\n'
+                  f'      <div class="container city-review">\n{review_card(*c["review"])}      </div>\n    </section>\n')
+    nearby = "".join(f'<a href="{city_path(by_slug[n])}">{by_slug[n]["label"]}</a>' for n in c["nearby"])
+    town_form = form_html.replace('name="town" type="text"', f'name="town" type="text" value="{c["label"]}"', 1)
+    town_form = town_form.replace('<h3 class="form__title">Get your free estimate</h3>',
+                                  f'<h3 class="form__title">Free estimate in {c["label"]}</h3>', 1)
+    body = page_hero([("areas.html", "Service areas"), (path, c["label"])], f'{c["region"]} · {town}, MA',
+                     f'{c["h1"]}, <span class="page-hero__accent">{c["h1_accent"]}</span>', c["lead"], c["img"], c["img_alt"],
+                     cta_href="#estimate")
+    body += f"""
+    <section class="section" aria-labelledby="ctx-title">
+      <div class="container split split--top">
+        <div class="split__copy">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Working in {town}</p>
+          <h2 id="ctx-title" class="h2">{c["context_title"]}</h2>
+          <div class="prose">{context}</div>
+        </div>
+        <div>
+          <h2 class="h3">What we check first on {c["label"]} homes</h2>
+          {checklist(c["watch"])}
+          {note}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" aria-labelledby="svc-title">
+      <div class="container">
+{section_head("Services", f'What we do <span class="accent">in {c["label"]}.</span>')}        <ul class="tiles">{svc_tiles}</ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="logi-title">
+      <div class="container">
+{section_head("How it works", f'Jobs in {c["label"]}, <span class="accent">planned properly.</span>')}        <ul class="features features--grid">{logi}</ul>
+      </div>
+    </section>
+{review}
+    <section class="section section--warm faq" aria-labelledby="faq-title">
+      <div class="container faq__inner">
+        <header class="section-head section-head--center">
+          <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>FAQ<span class="eyebrow__line" aria-hidden="true"></span></p>
+          <h2 id="faq-title" class="h2">{c["label"]} <span class="accent">questions, answered.</span></h2>
+        </header>
+{faq_list(c["faq"])}      </div>
+    </section>
+
+    <section class="section" aria-labelledby="est-title" id="estimate">
+      <div class="container contact-layout">
+        <div class="contact-side">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Free estimate</p>
+          <h2 id="est-title" class="h2">Planning a project <span class="accent">in {c["label"]}?</span></h2>
+          <p class="lead">Tell us what you need. We'll follow up quickly, set a visit and send an itemized estimate.</p>
+          <ul class="contact-cards">
+            <li><a class="contact-card" href="{TEL}">{ico("phone", "contact-card__ico")}<span><strong>Call now</strong>{PHONE}</span></a></li>
+          </ul>
+          <h2 class="h3" style="margin-top:32px">Nearby towns we serve</h2>
+          <div class="chips">{nearby}<a href="areas.html">All service areas</a></div>
+        </div>
+        <div class="contact-form">
+{town_form}
+        </div>
+      </div>
+    </section>
+"""
+    service_ld = {"@type": "Service", "@id": f"{SITE}{path}#service",
+                  "name": f"Carpentry and exterior repairs in {town}, MA", "serviceType": "Finish carpentry",
+                  "provider": {"@id": BIZ_ID}, "url": SITE + path,
+                  "areaServed": [{"@type": "City", "name": f"{t.strip()}, MA"} for t in town.split(" and ")]}
+    crumbs = [("/", "Home"), (url("areas"), "Service areas"), (path, c["label"])]
+    return layout(path, c["title"], c["desc"], "areas", body, preload=c["img"],
+                  schema=[service_ld, breadcrumb_ld(crumbs), faq_ld(c["faq"])])
+
+
+def areas_page():
+    from cities import CITIES, OTHER_TOWNS
+    tiles = "".join(
+        f'<li><a class="tile tile--link" href="{city_path(c)}"><h3>{c["label"]}</h3>'
+        f'<p>{c["region"]}. {c["lead"]}</p><span class="svc__link">{c["label"]} page {ARROW}</span></a></li>'
+        for c in CITIES)
+    others = "".join(f"<span>{t}</span>" for t in OTHER_TOWNS)
+    body = page_hero([("areas.html", "Service areas")], "Service areas",
+                     'Cape Cod carpentry, <span class="page-hero__accent">from Sandwich to Provincetown.</span>',
+                     "Our shop is in Sandwich. We work across the Upper, Mid, Lower and Outer Cape, and over the bridge in Plymouth.",
+                     "roofing-drone.jpg", "Aerial view of a Cape Cod home with a new roof")
+    body += f"""
+    <section class="section" aria-labelledby="towns-title">
+      <div class="container">
+{section_head("Town by town", 'Where we <span class="accent">work most.</span>', "Each page covers the homes, weather and local rules we plan around in that town.")}        <ul class="tiles">{tiles}</ul>
+      </div>
+    </section>
+
+    <section class="section section--warm section--tight" aria-labelledby="also-title">
+      <div class="container">
+        <h2 id="also-title" class="h3">We also serve</h2>
+        <p class="lead">Not on the list? Tell us your town or ZIP and we'll confirm.</p>
+        <div class="chips">{others}</div>
+      </div>
+    </section>
+"""
+    body += cta_band()
+    return layout(url("areas"), f"Service Areas: Cape Cod & Plymouth | {BUSINESS}",
+                  "Castro Finish Carpentry serves all of Cape Cod from Sandwich to Provincetown, plus Plymouth. Find your town: Dennis, Orleans, Chatham, Truro and more.",
+                  "areas", body, preload="roofing-drone.jpg",
+                  schema=[breadcrumb_ld([("/", "Home"), (url("areas"), "Service areas")])])
+
+
+def privacy_page():
+    def sec(t, items):
+        return f'<h3 class="h3">{t}</h3>' + "".join(items)
+
+    def P(t):
+        return f"<p>{t}</p>"
+
+    def L(*xs):
+        return "<ul>" + "".join(f"<li>{x}</li>" for x in xs) + "</ul>"
+
+    privacy = "".join([
+        P(f"{BUSINESS} (“we,” “us,” “our”) respects your privacy. This policy explains how we collect, use, share and protect information when you visit our website, contact us or request an estimate."),
+        sec("1. Information we collect", [
+            P("<strong>Information you provide.</strong> When you fill out a form, call or email us, you may provide your name, phone number, email, town/ZIP or address, and project details."),
+            P("<strong>Information collected automatically.</strong> When you browse the site we may collect your IP address, device and browser type, pages visited, referral source, campaign parameters (such as UTM tags or ad click IDs), and cookies or similar technologies.")]),
+        sec("2. How we use it", [L("Respond to requests and provide estimates", "Communicate about your project, scheduling and next steps",
+                                   "Understand which pages and ads bring people to us, and improve the website",
+                                   "Protect against spam, fraud and misuse", "Comply with legal obligations")]),
+        sec("3. How we share it", [P("We do not sell your personal information. We share it only with service providers that help run our website and communications (hosting, form delivery, email, analytics and advertising measurement), when required by law, or in a business transfer where permitted by law.")]),
+        sec("4. Cookies, analytics and advertising", [P("We may use Google Analytics, Google Ads and Meta (Facebook) pixels to measure visits and the results of our advertising. These services may set cookies and collect information under their own privacy policies. You can control cookies in your browser settings and opt out of personalized ads in your Google and Meta account settings.")]),
+        sec("5. Data retention", [P("We keep personal information only as long as reasonably necessary to respond to your request, provide services, keep business records and meet legal, accounting or tax requirements.")]),
+        sec("6. Your choices", [P("You may ask to access, correct or delete the information we hold about you, or opt out of non-essential communications, by contacting us below.")]),
+        sec("7. Security", [P("We take reasonable steps to protect your information, but no transmission or storage system is 100% secure.")]),
+        sec("8. Children", [P("This website is not intended for children under 13, and we do not knowingly collect their information.")]),
+    ])
+    terms = "".join([
+        sec("Services and estimates", [P("Information on this website is general. Form, phone or email requests are requests for contact or estimates and do not create a binding agreement. Scope, timeline and price are confirmed in writing before a project begins.")]),
+        sec("No professional advice", [P("Website content is not legal, financial or engineering advice. Every project depends on site conditions and local requirements.")]),
+        sec("Communications", [P("By submitting your contact information, you authorize us to contact you by phone, text or email about your request. Carrier rates may apply. You can opt out of non-essential messages at any time.")]),
+        sec("Intellectual property", [P(f"Website text, design, logos and images are owned by or licensed to {BUSINESS} and may not be copied without written permission.")]),
+        sec("Third-party links", [P("We are not responsible for the content or privacy practices of third-party sites such as maps or review platforms.")]),
+        sec("Disclaimer and liability", [P(f"The website is provided “as is.” To the extent permitted by law, {BUSINESS} is not liable for indirect, incidental or consequential damages arising from use of the website.")]),
+        sec("Changes and contact", [P(f'We may update these policies; the date below reflects the latest version. Questions: <a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{TEL}">{PHONE}</a>.'),
+                                    P(f"<em>Last updated: {date.today():%B %Y}</em>")]),
+    ])
+    body = page_hero([("privacy.html", "Privacy &amp; terms")], "Legal", 'Privacy policy <span class="page-hero__accent">&amp; terms of service.</span>',
+                     "How we handle your information, and the terms for using this website.", "siding-cedar-gable.jpg", "Cedar shingle gable", ctas=False)
+    body += f"""
+    <section class="section" aria-label="Privacy policy and terms">
+      <div class="container legal prose">
+        <h2 class="h2">Privacy policy</h2>
+        {privacy}
+        <h2 class="h2" style="margin-top:56px">Terms of service</h2>
+        {terms}
+      </div>
+    </section>
+"""
+    return layout(url("privacy"), f"Privacy Policy & Terms | {BUSINESS}",
+                  f"How {BUSINESS} collects, uses and protects information from website visitors and estimate requests, and the terms for using this website.",
+                  "privacy", body, schema=[breadcrumb_ld([("/", "Home"), (url("privacy"), "Privacy & terms")])])
+
+
+def thanks_page():
+    body = f"""    <section class="section" aria-labelledby="thanks-title">
+      <div class="container" style="max-width:760px;text-align:center">
+        <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>Request received<span class="eyebrow__line" aria-hidden="true"></span></p>
+        <h1 id="thanks-title" class="h2">Thanks, <span class="accent">we got your request.</span></h1>
+        <p class="lead">We'll be in touch shortly to ask a few questions and set up your free estimate. If it's urgent, give us a call.</p>
+        <div class="row-btns" style="justify-content:center">
+          <a class="btn btn--primary btn--lg" href="{TEL}">{ico("phone")}{PHONE}</a>
+          <a class="btn btn--outline btn--lg" href="reviews.html">Read our reviews</a>
+        </div>
+      </div>
+    </section>
+"""
+    return layout(url("thanks"), f"Thank You | {BUSINESS}", "Your estimate request was received.", "thanks", body, noindex=True)
+
+
+def notfound_page():
+    links = "".join(f'<a href="{s["slug"]}.html">{s["short"]}</a>' for s in SERVICES)
+    body = f"""    <section class="section" aria-labelledby="nf-title">
+      <div class="container" style="max-width:820px;text-align:center">
+        <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>404<span class="eyebrow__line" aria-hidden="true"></span></p>
+        <h1 id="nf-title" class="h2">This page <span class="accent">isn't here.</span></h1>
+        <p class="lead">It may have moved when we rebuilt the site. Try one of these, or call us at <a href="{TEL}">{PHONE}</a>.</p>
+        <div class="chips" style="justify-content:center;margin-top:24px"><a href="index.html">Home</a>{links}<a href="areas.html">Service areas</a><a href="contact.html">Free estimate</a></div>
+      </div>
+    </section>
+"""
+    return layout("/404.html", f"Page Not Found | {BUSINESS}", "This page could not be found.", "404", body, noindex=True)
+
+
+# --------------------------------------------------------------------------
+# Site files
+# --------------------------------------------------------------------------
+def build_images():
+    """_build/img-src/*.jpg -> assets/img/<name>.webp (max 1600w) + <name>-800.webp; og-image.jpg; favicons."""
+    try:
+        from PIL import Image
+    except ImportError:
+        print("Pillow not installed: images not regenerated (pip install pillow)")
+        return
+    IMG_OUT.mkdir(parents=True, exist_ok=True)
+    for src in sorted(IMG_SRC.glob("*.jpg")):
+        im = Image.open(src).convert("RGB")
+        for width, name, q in ((1600, src.stem, 72), (800, f"{src.stem}-800", 70)):
+            w = min(width, im.width)
+            h = round(im.height * w / im.width)
+            if width == 1600:
+                IMG_SIZES[src.stem] = (w, h)
+            out = IMG_OUT / f"{name}.webp"
+            if not out.exists() or out.stat().st_mtime < src.stat().st_mtime:
+                im.resize((w, h), Image.LANCZOS).save(out, "WEBP", quality=q, method=6)
+    og = IMG_OUT / "og-image.jpg"
+    if not og.exists():
+        im = Image.open(IMG_SRC / "hero-cape-house.jpg").convert("RGB")
+        tw, th = 1200, 630
+        scale = max(tw / im.width, th / im.height)
+        im = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
+        left, top = (im.width - tw) // 2, (im.height - th) // 2
+        im.crop((left, top, left + tw, top + th)).save(og, "JPEG", quality=82, optimize=True)
+    logos = ROOT / "assets" / "logos"
+    if not (ROOT / "favicon.ico").exists():
+        logo = Image.open(logos / "logo-castro-azul-400.png").convert("RGBA")
+        logo.save(ROOT / "favicon.ico", sizes=[(32, 32), (16, 16)])
+        logo.resize((192, 192), Image.LANCZOS).save(logos / "icon-192.png")
+        bg = Image.new("RGBA", (180, 180), (255, 255, 255, 255))
+        bg.alpha_composite(logo.resize((160, 160), Image.LANCZOS), (10, 10))
+        bg.convert("RGB").save(logos / "apple-touch-icon.png")
+
+
+def sitemap(paths):
+    today = date.today().isoformat()
+    rows = "\n".join(f"  <url><loc>{SITE}{p}</loc><lastmod>{today}</lastmod></url>" for p in paths)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}\n</urlset>\n'
+
+
+ROBOTS = f"""User-agent: *
+Allow: /
+Disallow: /thank-you/
+
+Sitemap: {SITE}/sitemap.xml
+"""
+
+# Old WordPress URLs. Pages with a real equivalent keep their URL (no redirect needed).
+REDIRECTS_301 = [
+    (r"home/?", "/"),
+    (r"sitemap_index\.xml", "/sitemap.xml"),
+    (r"(page|post)-sitemap\.xml", "/sitemap.xml"),
+    (r"contact/?", "/contact-us/"),
+    (r"about/?", "/about-us/"),
+    (r"financing/?", "/financing-options/"),
+    (r"decks/?", "/decking/"),
+    (r"windows-doors/?", "/windows-and-doors/"),
+    (r"privacy-policy/?", "/terms-of-service-privacy-policy/"),
+    # .html links from the pre-launch static build
+    (r"index\.html", "/"),
+    (r"decks\.html", "/decking/"),
+    (r"windows-doors\.html", "/windows-and-doors/"),
+    (r"about\.html", "/about-us/"),
+    (r"contact\.html", "/contact-us/"),
+    (r"financing\.html", "/financing-options/"),
+    (r"(services|trim|siding|roofing|process|reviews|faq|adu)\.html", "/$1/"),
+]
+GONE_410 = [
+    r"hello-world/?", r"category/.*", r"author/.*", r"feed/?", r"comments/feed/?", r"wp-json/.*",
+    r"(wpr_templates|category|author)-sitemap\.xml", r"xmlrpc\.php",
+]
+
+
+def htaccess():
+    r301 = "\n".join(f"RewriteRule ^{src}$ {dst} [R=301,L]" for src, dst in REDIRECTS_301)
+    r410 = "\n".join(f"RewriteRule ^{src}$ - [G,L]" for src in GONE_410)
+    return HTACCESS.replace("{{R301}}", r301).replace("{{R410}}", r410)
+
+
+HTACCESS = r"""# Generated by _build/build.py: edit REDIRECTS_301 / GONE_410 there.
+# HTTPS is forced in hPanel (Hostinger), not here, to avoid redirect loops behind the CDN.
+Options -Indexes
+DirectorySlash On
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# www -> bare domain, one hop
+RewriteCond %{HTTP_HOST} ^www\.castrocarpentryinc\.com$ [NC]
+RewriteRule ^(.*)$ https://castrocarpentryinc.com/$1 [R=301,L]
+
+# Build sources and repo files are never public
+RewriteRule ^(_build|\.git)(/|$) - [F,L]
+RewriteRule ^(README\.md|\.gitignore)$ - [F,L]
+
+# WordPress query URLs (?wpr_templates=..., ?p=..., ?page_id=...)
+RewriteCond %{QUERY_STRING} (^|&)(wpr_templates|p|page_id)= [NC]
+RewriteRule ^$ - [G,L]
+
+# Old WordPress URLs
+{{R301}}
+{{R410}}
+
+# Clean URLs always end in a slash (/trim -> /trim/)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Strict-Transport-Security "max-age=31536000"
+<FilesMatch "\.(woff2|webp|jpg|png|ico|svg)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+<FilesMatch "\.html$">
+Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml text/plain
+</IfModule>
+"""
+
+
+def write(path, html):
+    """Write a page at its clean URL: "/trim/" -> trim/index.html, "/" -> index.html."""
+    if path == "/":
+        target = ROOT / "index.html"
+    elif path.endswith(".html"):
+        target = ROOT / path.lstrip("/")
+    else:
+        target = ROOT / path.strip("/") / "index.html"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(html)
 
 
 def main():
+    from cities import CITIES
+    build_images()
+    # Remove previously generated pages so renamed or removed pages don't linger.
+    for old in ROOT.glob("*.html"):
+        old.unlink()
+    for path in URLS.values():
+        if path != "/":
+            shutil.rmtree(ROOT / path.strip("/").split("/")[0], ignore_errors=True)
+
     home = (PAGES / "home.html").read_text()
     form = re.search(r'<form class="form".*?</form>', home, re.S).group(0)
-    out = {
-        "index.html": home_page(),
-        "services.html": services_page(),
-        "about.html": about_page(),
-        "process.html": process_page(),
-        "reviews.html": reviews_page(),
-        "financing.html": financing_page(),
-        "faq.html": faq_page(),
-        "contact.html": contact_page("          " + form),
+    pages = {
+        "/": home_page(),
+        url("services"): services_page(),
+        url("about"): about_page(),
+        url("process"): process_page(),
+        url("reviews"): reviews_page(),
+        url("financing"): financing_page(),
+        url("faq"): faq_page(),
+        url("contact"): contact_page("          " + form),
+        url("areas"): areas_page(),
+        url("privacy"): privacy_page(),
     }
     for s in SERVICES:
-        out[f'{s["slug"]}.html'] = service_page(s)
-    for name, html in out.items():
-        (ROOT / name).write_text(html)
-    print(f"Built {len(out)} pages: " + ", ".join(out))
+        pages[url(s["slug"])] = service_page(s)
+    for c in CITIES:
+        pages[city_path(c)] = city_page(c, "          " + form)
+    indexable = list(pages)
+    pages[url("thanks")] = thanks_page()
+    pages["/404.html"] = notfound_page()
+
+    for path, html in pages.items():
+        write(path, html)
+    (ROOT / "sitemap.xml").write_text(sitemap(indexable))
+    (ROOT / "robots.txt").write_text(ROBOTS)
+    (ROOT / ".htaccess").write_text(htaccess())
+    print(f"Built {len(pages)} pages ({len(indexable)} in sitemap)")
 
 
 if __name__ == "__main__":
