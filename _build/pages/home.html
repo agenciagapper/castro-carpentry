@@ -342,7 +342,7 @@
 
         <form class="form" id="estimate-form" action="/api/lead.php" method="POST" novalidate>
           <!-- Anti-spam: honeypots (people never see or fill these), signed token, proof-of-work. See api/lead.php -->
-          <div class="hp" aria-hidden="true">
+          <div class="hp" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">
             <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
             <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
             <label>Fax <input type="text" name="fax" tabindex="-1" autocomplete="off"></label>

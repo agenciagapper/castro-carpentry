@@ -671,6 +671,12 @@ def faq_ld(items):
         for q, a in items]}
 
 
+def asset_version(rel):
+    """Short content hash so browsers fetch CSS/JS again whenever they change."""
+    import hashlib
+    return hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()[:10]
+
+
 def tracking_head():
     t = TRACKING
     if not (t["ga4"] or t["ads"] or t["meta_pixel"]):
@@ -678,7 +684,7 @@ def tracking_head():
     cfg = json.dumps({k: t[k] for k in ("ga4", "ads", "ads_lead_label", "meta_pixel", "prod_hosts")})
     return f'''
   <script>window.CASTRO_TRACKING={cfg};</script>
-  <script src="/js/tracking.js" defer></script>'''
+  <script src="/js/tracking.js?v={asset_version("js/tracking.js")}" defer></script>'''
 
 
 def layout(path, title, description, active, body, preload=None, schema=None, noindex=False, og_type="website"):
@@ -718,7 +724,7 @@ def layout(path, title, description, active, body, preload=None, schema=None, no
   <link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/Jost-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>{pre}
-  <link rel="stylesheet" href="/css/styles.css">{ld}{tracking_head()}
+  <link rel="stylesheet" href="/css/styles.css?v={asset_version("css/styles.css")}">{ld}{tracking_head()}
 </head>
 <body>
 {header(active)}
@@ -726,7 +732,7 @@ def layout(path, title, description, active, body, preload=None, schema=None, no
 {body}
   </main>
 {footer()}{SPRITE}
-  <script src="/js/main.js" defer></script>
+  <script src="/js/main.js?v={asset_version("js/main.js")}" defer></script>
 </body>
 </html>
 '''
