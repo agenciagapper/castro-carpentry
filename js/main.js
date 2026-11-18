@@ -101,11 +101,38 @@
     set('page_url', location.pathname);
   };
   fill();
+
+  // Anti-spam: a signed token from the server plus a small proof-of-work,
+  // both prepared in the background once a person starts using the form.
+  const set = (n, v) => { if (form.elements[n]) form.elements[n].value = v; };
+  try { set('tz', Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch { /* old browser */ }
+  set('lang', navigator.language || '');
+  const sha256 = async (txt) => {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  };
+  let guard = null;
+  const prepare = () => {
+    if (!guard) {
+      guard = fetch('/api/lead.php', { headers: { Accept: 'application/json' } })
+        .then((r) => r.json())
+        .then(async ({ token }) => {
+          let n = 0;
+          while (!(await sha256(`${token}:${n}`)).startsWith('000')) n += 1;
+          set('form_token', token);
+          set('pow', String(n));
+        })
+        .catch(() => { guard = null; });
+    }
+    return guard;
+  };
+  ['focusin', 'pointerdown', 'keydown'].forEach((ev) => form.addEventListener(ev, prepare, { once: true }));
+
   const status = form.querySelector('.form__status');
   const btn = form.querySelector('button[type="submit"]');
   const rules = {
     name: (v) => v.trim().length >= 2 || 'Please enter your name.',
-    phone: (v) => v.replace(/\D/g, '').length >= 10 || 'Please enter a 10-digit phone number.',
+    phone: (v) => /^1?[2-9]\d{2}[2-9]\d{6}$/.test(v.replace(/\D/g, '')) || 'Please enter a 10-digit US phone number.',
     email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || 'Please enter a valid email.',
     town: (v) => v.trim().length >= 2 || 'Which town or ZIP is the project in?',
     service: (v) => v !== '' || 'Please choose a service.',
@@ -143,31 +170,31 @@
     if (invalid.length) { invalid[0].focus(); return; }
     fill();
 
-    if (form.elements.access_key.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-      status.classList.add('is-err');
-      status.textContent = 'Online requests are being set up. Please call (508) 566-1618 or email ecastrocarpentry@gmail.com.';
-      return;
-    }
-
     const label = btn.innerHTML;
     btn.disabled = true;
     btn.textContent = 'Sending…';
     try {
+      await prepare();
+      if (!form.elements.form_token.value) throw new Error('');
       const res = await fetch(form.action, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new FormData(form),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || data.success === false) throw new Error(data.message || 'Request failed');
+      if (!res.ok || data.success === false) {
+        (data.fields || []).forEach((n) => { const f = form.elements[n]; if (f) { f.closest('.field')?.classList.add('is-invalid'); f.setAttribute('aria-invalid', 'true'); } });
+        throw new Error(data.message || '');
+      }
       track('generate_lead', { lead_type: 'estimate', service: form.elements.service.value, town: form.elements.town.value, page: location.pathname });
       form.reset();
       status.classList.add('is-ok');
       status.textContent = 'Thanks, we got your request and will be in touch shortly.';
       setTimeout(() => { location.href = '/thank-you/'; }, 600);
-    } catch {
+    } catch (err) {
       status.classList.add('is-err');
-      status.textContent = 'Something went wrong sending your request. Please call (508) 566-1618.';
+      status.textContent = (err && err.message) || 'Something went wrong sending your request. Please call (508) 566-1618.';
+      guard = null; set('form_token', ''); set('pow', ''); prepare();
     } finally {
       btn.disabled = false;
       btn.innerHTML = label;

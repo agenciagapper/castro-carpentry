@@ -1822,12 +1822,53 @@ def sitemap(paths):
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}\n</urlset>\n'
 
 
-ROBOTS = f"""User-agent: *
-Allow: /
-Disallow: /thank-you/
+# Search engines and AI assistants are welcome. Each named group repeats the
+# rules because a crawler follows only the most specific group that matches it.
+AI_CRAWLERS = [
+    "Googlebot", "Bingbot", "Applebot", "DuckDuckBot",
+    "GPTBot", "OAI-SearchBot", "ChatGPT-User",                  # OpenAI
+    "ClaudeBot", "Claude-SearchBot", "Claude-User",             # Anthropic
+    "PerplexityBot", "Perplexity-User",                         # Perplexity
+    "Google-Extended", "Applebot-Extended",                     # Gemini / Apple Intelligence
+    "Amazonbot", "Meta-ExternalAgent", "DuckAssistBot", "MistralAI-User", "CCBot",
+]
+_RULES = "Allow: /\nDisallow: /thank-you/\nDisallow: /api/\n"
+ROBOTS = ("# castrocarpentryinc.com: open to search engines and AI assistants.\n"
+          "# Summary for language models: /llms.txt\n\n"
+          + "".join(f"User-agent: {b}\n" for b in AI_CRAWLERS) + _RULES
+          + "\nUser-agent: *\n" + _RULES + f"\nSitemap: {SITE}/sitemap.xml\n")
 
-Sitemap: {SITE}/sitemap.xml
-"""
+
+def llms_txt(posts):
+    from cities import CITIES, OTHER_TOWNS
+    strip = lambda t: re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")
+    lines = [
+        f"# {BUSINESS}",
+        "",
+        f"> Finish carpentry and exterior repair contractor based in {CITY}, Massachusetts, serving all of Cape Cod "
+        f"(from Sandwich to Provincetown) and Plymouth since 2013. Licensed (HIC/CSL) and insured in MA, BBB accredited, "
+        f"rated {RATING} stars on Google ({REVIEW_COUNT} reviews). Free on-site estimates.",
+        "",
+        f"- Phone: {PHONE}",
+        f"- Email: {EMAIL}",
+        f"- Address: {ADDRESS}",
+        f"- Founder: Estevam Castro",
+        f"- Free estimate: {SITE}{url('contact')}",
+        "",
+        "## Services",
+        "",
+    ]
+    lines += [f"- [{strip(s['name'])}]({SITE}{url(s['slug'])}): {strip(s['summary'])}" for s in SERVICES]
+    lines += ["", "## Service areas", ""]
+    lines += [f"- [{c['label']}, MA]({SITE}{city_path(c)}): {c['lead']}" for c in CITIES]
+    lines += [f"- Also serving: {', '.join(strip(t) for t in OTHER_TOWNS)}."]
+    lines += ["", "## Guides", ""]
+    lines += [f"- [{p['title']}]({SITE}{p['path']}): {p['description']}" for p in posts]
+    lines += ["", "## Company", "",
+              f"- [About]({SITE}{url('about')})", f"- [How estimates work]({SITE}{url('process')})",
+              f"- [Reviews]({SITE}{url('reviews')})", f"- [Financing]({SITE}{url('financing')})",
+              f"- [FAQ]({SITE}{url('faq')})", ""]
+    return "\n".join(lines)
 
 # Old WordPress URLs. Pages with a real equivalent keep their URL (no redirect needed).
 REDIRECTS_301 = [
@@ -1874,6 +1915,16 @@ RewriteEngine On
 # www -> bare domain, one hop
 RewriteCond %{HTTP_HOST} ^www\.castrocarpentryinc\.com$ [NC]
 RewriteRule ^(.*)$ https://castrocarpentryinc.com/$1 [R=301,L]
+
+# The form endpoint: only browsers may post to it
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} (curl|python|wget|libwww|httpclient|go-http|java/|scrapy) [NC]
+RewriteRule ^api/ - [F,L]
+RewriteRule ^api/(?!lead\.php$) - [F,L]
+
+# WordPress probes (the old site is gone): answer 410 and move on
+RewriteRule ^(wp-login\.php|wp-admin|wp-content|wp-includes|wp-config\.php|\.env)(/|$) - [G,L]
 
 # Build sources and repo files are never public
 RewriteRule ^(_build|\.git)(/|$) - [F,L]
@@ -1966,6 +2017,7 @@ def main():
         write(path, html)
     (ROOT / "sitemap.xml").write_text(sitemap(indexable))
     (ROOT / "robots.txt").write_text(ROBOTS)
+    (ROOT / "llms.txt").write_text(llms_txt(posts))
     (ROOT / ".htaccess").write_text(htaccess())
     print(f"Built {len(pages)} pages ({len(indexable)} in sitemap)")
 

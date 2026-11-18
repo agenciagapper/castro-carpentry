@@ -12,6 +12,16 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.castrocarpentryinc\.com$ [NC]
 RewriteRule ^(.*)$ https://castrocarpentryinc.com/$1 [R=301,L]
 
+# The form endpoint: only browsers may post to it
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} (curl|python|wget|libwww|httpclient|go-http|java/|scrapy) [NC]
+RewriteRule ^api/ - [F,L]
+RewriteRule ^api/(?!lead\.php$) - [F,L]
+
+# WordPress probes (the old site is gone): answer 410 and move on
+RewriteRule ^(wp-login\.php|wp-admin|wp-content|wp-includes|wp-config\.php|\.env)(/|$) - [G,L]
+
 # Build sources and repo files are never public
 RewriteRule ^(_build|\.git)(/|$) - [F,L]
 RewriteRule ^(README\.md|\.gitignore)$ - [F,L]

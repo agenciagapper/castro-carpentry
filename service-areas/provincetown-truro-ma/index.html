@@ -185,12 +185,18 @@
           <div class="chips"><a href="/service-areas/orleans-ma/">Orleans</a><a href="/service-areas/chatham-ma/">Chatham</a><a href="/service-areas/">All service areas</a></div>
         </div>
         <div class="contact-form">
-          <form class="form" id="estimate-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <!-- Web3Forms: create a free key for ecastrocarpentry@gmail.com at https://web3forms.com and paste it below -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New estimate request: castrocarpentryinc.com">
-          <input type="hidden" name="from_name" value="Castro Finish Carpentry website">
-          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <form class="form" id="estimate-form" action="/api/lead.php" method="POST" novalidate>
+          <!-- Anti-spam: honeypots (people never see or fill these), signed token, proof-of-work. See api/lead.php -->
+          <div class="hp" aria-hidden="true">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+            <label>Fax <input type="text" name="fax" tabindex="-1" autocomplete="off"></label>
+            <label><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"> I am a robot</label>
+          </div>
+          <input type="hidden" name="form_token" value="">
+          <input type="hidden" name="pow" value="">
+          <input type="hidden" name="tz" value="">
+          <input type="hidden" name="lang" value="">
           <input type="hidden" name="lead_type" value="estimate">
           <input type="hidden" name="page_url" value="">
           <input type="hidden" name="landing_page" value="">

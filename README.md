@@ -41,9 +41,48 @@ WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, 
 
 ## Leads and tracking
 
-- The estimate form posts to Web3Forms. Each lead includes `lead_type`, `page_url`, `landing_page`, `referrer`, UTMs, `gclid` and `fbclid` (kept in localStorage for 90 days from the landing visit).
+- The estimate form posts to `/api/lead.php` on our own server (see **Spam protection** below), which forwards to the webhook. Each lead includes `lead_type`, `page_url`, `landing_page`, `referrer`, UTMs, `gclid` and `fbclid` (kept in localStorage for 90 days from the landing visit).
 - After a successful send the visitor goes to `/thank-you/`.
 - `js/tracking.js` loads GA4, Google Ads and the Meta Pixel **only** when IDs are set in `TRACKING` and only on the production hostnames. Events: `generate_lead` (+ Ads conversion and Pixel `Lead`), `phone_click`, `email_click`.
+
+## Spam protection (form)
+
+The form never talks to a third party directly. It posts to `api/lead.php` on Hostinger, which checks every request and only then forwards it. The webhook URL stays on the server, so bots can't find it in the page and post to it directly.
+
+| Layer | What it stops |
+|---|---|
+| 4 honeypot fields (website, company, fax, "I am a robot"), hidden off-screen | Bots that fill every field |
+| Signed token from the server, valid 4 s to 2 h, single use | Scripts that post without loading the page, instant submits, replays |
+| Proof-of-work solved in the browser (a fraction of a second for a person) | Mass posting at scale |
+| Rate limit per connection: 3 per hour, 6 per day | Floods |
+| US phone validation (10 digits, valid area code) | Most foreign submissions (real people see an error and can fix it) |
+| Content filters: non-Latin scripts, multiple links, SEO/crypto/marketing pitches, digits in the name | Spam pitches |
+| Foreign signals: Cloudflare country (when present), browser time zone outside the Americas, browser language other than English/Portuguese/Spanish, ZIP outside MA, bot user agents | International bot traffic |
+| Duplicate phone within 15 minutes | Double submits |
+| `.htaccess`: only browsers may POST to `/api/`, WordPress probes get 410 | Scanners |
+
+Bots that are caught get a fake "success" reply, so they don't learn what stopped them. Nothing real is lost: borderline cases are saved to `~/castro-data/quarantine.log`, every accepted lead to `leads.log`, and every rejection reason (no personal data) to `rejected.log`.
+
+**Server config** (outside `public_html`), `~/castro-config.json`, permission 600:
+
+```json
+{
+  "webhook": "https://your-webhook-url",
+  "notify_email": "ecastrocarpentry@gmail.com",
+  "email_copy": false
+}
+```
+
+A random `secret` is added automatically on the first request. Leads are POSTed to `webhook` as JSON; if it's empty or fails, they're emailed to `notify_email`. Set `email_copy` to `true` to also get an email when the webhook works.
+
+**Optional, strongest country filter:** put the domain behind Cloudflare (free plan). The script then reads the visitor's real country and drops non-US/CA submissions, and Cloudflare's WAF can challenge foreign traffic on `/api/` only. Leave "Block AI bots" **off** in Cloudflare so AI assistants can still read the site.
+
+## Visible to AI assistants
+
+- `robots.txt` explicitly allows Google, Bing, Apple, DuckDuckGo and the AI crawlers (OpenAI GPTBot/OAI-SearchBot/ChatGPT-User, Anthropic ClaudeBot/Claude-SearchBot/Claude-User, PerplexityBot, Google-Extended, Applebot-Extended, Amazonbot, Meta, Mistral, Common Crawl). Only `/api/` and `/thank-you/` are off-limits.
+- `llms.txt` (generated) summarizes the business, services, towns and guides with links, for language models.
+- Every page has the full text in the HTML (no JavaScript needed) plus structured data (business, services, FAQ, articles).
+- In hPanel, keep any "bot protection" or challenge page **off** for normal pages, or AI crawlers and Google get blocked.
 
 ## Instagram feed (automatic)
 
@@ -71,7 +110,7 @@ Without a token, nothing breaks: the section simply stays hidden.
 - [x] **Address:** matches the Google Business Profile (15 Jan Sebastian Dr, Unit 4, Sandwich; map link and coordinates in `build.py`).
 - [x] **Financing:** Enhancify widget (page id `9933241`, same as the old site) embedded on `/financing-options/`.
 - [ ] **Review count:** update `REVIEW_COUNT` to match Google.
-- [ ] **Form:** will be connected to a webhook. Point the form `action` in `_build/pages/home.html` (and the fetch in `js/main.js`) at the webhook URL; all fields, including UTMs and `lead_type`, are already sent.
+- [ ] **Form webhook:** put the webhook URL in `~/castro-config.json` on the server (see below). Until then, leads are emailed to `notify_email` and always saved to `~/castro-data/leads.log`.
 - [ ] **Tracking IDs:** fill `TRACKING` when the GA4 / Google Ads / Meta Pixel IDs exist.
 - [x] **Project photos:** first batch from the client Drive (Plymouth church, Truro renovation, Chatham deck, cottage, drone aerials) in `_build/img-src/`, shown as galleries on town and service pages.
 - [ ] **More photos:** Estevam's portrait (About), and projects for the empty Drive folders (Orleans, Eastham, West Dennis, Osterville, Marstons Mills, Provincetown).
