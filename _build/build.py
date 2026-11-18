@@ -32,14 +32,16 @@ BUSINESS = "Castro Finish Carpentry"
 PHONE = "(508) 566-1618"
 TEL = "tel:+15085661618"
 EMAIL = "ecastrocarpentry@gmail.com"
-# NAP must match the Google Business Profile exactly — confirm before launch.
+# NAP matches the Google Business Profile (pin: 41.7187514, -70.4833347, Sandwich Industrial Park).
 STREET = "15 Jan Sebastian Dr, Unit 4"
 CITY = "Sandwich"
 ZIP = "02563"
 ADDRESS = f"{STREET}, {CITY}, MA {ZIP}"
 REVIEW_COUNT = 61          # keep in sync with the Google Business Profile
 RATING = "5.0"
-MAPS = "https://www.google.com/maps/search/?api=1&amp;query=Castro+Finish+Carpentry+Cape+Cod+MA"
+MAPS = "https://maps.app.goo.gl/t4gNrfsZBs1kw5et7"  # Google Business Profile
+GEO = (41.7187514, -70.4833347)
+ENHANCIFY_PAGE = "9933241"  # financing widget id (from the old site)
 MAP_Q = "Castro+Finish+Carpentry+Inc,+" + ADDRESS.replace(",", "").replace(" ", "+")
 
 # Tracking — leave empty until the IDs exist. Tags load only on PROD_HOSTS.
@@ -611,6 +613,8 @@ BUSINESS_LD = {
                 "addressRegion": "MA", "postalCode": ZIP, "addressCountry": "US"},
     "areaServed": [{"@type": "City", "name": f"{t}, MA"} for t in TOWNS_SERVED]
                   + [{"@type": "Place", "name": "Cape Cod, MA"}],
+    "geo": {"@type": "GeoCoordinates", "latitude": GEO[0], "longitude": GEO[1]},
+    "hasMap": MAPS,
     "founder": {"@type": "Person", "name": "Estevam Castro"},
     "foundingDate": "2013",
     "sameAs": [INSTAGRAM],
@@ -1221,9 +1225,19 @@ def financing_page():
             <p>Rot, leaks and storm damage don't wait for the right time — they only get worse. Financing lets you take care of the work now and spread the cost into predictable monthly payments.</p>
           </div>
           {checklist(["Check your options without affecting your credit score", "Fast approval — funds available in as little as 24 hours", "Affordable monthly payments", "No prepayment penalties"])}
-          <!-- TODO: add lender name, application link and required disclosures -->
+          <div class="row-btns"><a class="btn btn--primary" href="#check-options">Check your options {ARROW}</a></div>
         </div>
         <figure class="stack-img"><img src="assets/img/deck-black-railing.jpg" alt="Grey deck with black railing and new stairs" width="1050" height="1400" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="check-options" aria-labelledby="fin-apply">
+      <div class="container">
+{section_head("Check your options", 'See what you qualify for <span class="accent">in minutes.</span>', "Checking your options won't affect your credit score. Financing is provided through our partner Enhancify and its lenders, subject to approval.")}        <div class="finance-widget">
+          <div id="fullpagewidget" data-color1="#004d93" data-color2="#00213f" data-coBrandedColor="#FFFFFF" data-page="{ENHANCIFY_PAGE}" data-hideLink="0"></div>
+          <noscript><p>Turn on JavaScript to see financing options, or call us at <a href="{TEL}">{PHONE}</a>.</p></noscript>
+        </div>
+        <script src="https://www.enhancify.com/fullpagewidget/" defer></script>
       </div>
     </section>
 
@@ -1231,7 +1245,7 @@ def financing_page():
       <div class="container">
 {section_head("How it works", 'Simple from <span class="accent">start to finish.</span>')}        <ol class="steps steps--3">
           <li class="step"><span class="step__num">01</span><h3 class="step__title">Get your estimate</h3><p>We visit and give you a clear, itemized quote.</p></li>
-          <li class="step"><span class="step__num">02</span><h3 class="step__title">Check your options</h3><p>Ask us about financing and see what plans are available to you.</p></li>
+          <li class="step"><span class="step__num">02</span><h3 class="step__title">Check your options</h3><p>Use the form above or ask us about financing to see what plans are available to you.</p></li>
           <li class="step"><span class="step__num">03</span><h3 class="step__title">Start your project</h3><p>Once approved, we get you on the schedule.</p></li>
         </ol>
       </div>

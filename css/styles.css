@@ -515,3 +515,4 @@ button,input,select,textarea{font:inherit;color:inherit}
 .section--tight{padding-block:clamp(36px,4.5vw,64px)}
 .section--tight .lead{margin-block:6px 18px}
 .section-head--center + .chips{justify-content:center}
+.finance-widget{max-width:1000px;margin-inline:auto;min-height:420px}

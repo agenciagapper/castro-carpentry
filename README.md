@@ -53,10 +53,10 @@ WordPress leftovers (`/home/`, `/hello-world/`, `/category/…`, `/author/…`, 
 
 ## Before launch — to do
 
-- [ ] **Address:** set `STREET`/`ZIP` to exactly what the Google Business Profile shows (old site: 1 Golf Links Cir; this build: 15 Jan Sebastian Dr, Unit 4).
+- [x] **Address:** matches the Google Business Profile (15 Jan Sebastian Dr, Unit 4, Sandwich; map link and coordinates in `build.py`).
+- [x] **Financing:** Enhancify widget (page id `9933241`, same as the old site) embedded on `/financing-options/`.
 - [ ] **Review count:** update `REVIEW_COUNT` to match Google.
-- [ ] **Form key:** create a Web3Forms key for ecastrocarpentry@gmail.com and replace `YOUR_WEB3FORMS_ACCESS_KEY` in `_build/pages/home.html`.
-- [ ] **Tracking IDs:** fill `TRACKING` (GA4, Google Ads + lead label, Meta Pixel).
-- [ ] **Financing:** lender name, application link and disclosures in `financing_page()`.
+- [ ] **Form:** will be connected to a webhook. Point the form `action` in `_build/pages/home.html` (and the fetch in `js/main.js`) at the webhook URL; all fields, including UTMs and `lead_type`, are already sent.
+- [ ] **Tracking IDs:** fill `TRACKING` when the GA4 / Google Ads / Meta Pixel IDs exist.
 - [ ] **Photos:** Estevam's portrait (About), ADU photos, and real projects per town.
 - [ ] **Town pages:** add real projects and reviews per town in `_build/cities.py` as the client sends them.
