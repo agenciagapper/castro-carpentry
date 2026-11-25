@@ -1,0 +1,31 @@
+{
+ "other_towns": [
+  "Bourne",
+  "Falmouth",
+  "Mashpee",
+  "Barnstable & Hyannis",
+  "Yarmouth",
+  "Brewster",
+  "Harwich",
+  "Eastham",
+  "Wellfleet"
+ ],
+ "towns_served": [
+  "Sandwich",
+  "Bourne",
+  "Falmouth",
+  "Mashpee",
+  "Barnstable",
+  "Yarmouth",
+  "Dennis",
+  "Brewster",
+  "Harwich",
+  "Chatham",
+  "Orleans",
+  "Eastham",
+  "Wellfleet",
+  "Truro",
+  "Provincetown",
+  "Plymouth"
+ ]
+}

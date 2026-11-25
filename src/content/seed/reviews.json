@@ -1,0 +1,119 @@
+[
+ {
+  "name": "David DiCicco",
+  "project": "Roof, roof deck & bathroom",
+  "text": "Attention to detail at its finest! … Their work is second to none.",
+  "rating": 5,
+  "position": 1,
+  "home": 1,
+  "area": ""
+ },
+ {
+  "name": "Susan Savage",
+  "project": "Bay window & siding",
+  "text": "The Castro crew is punctual, clean and respectful to both home and home owner.",
+  "rating": 5,
+  "position": 2,
+  "home": 1,
+  "area": ""
+ },
+ {
+  "name": "Samantha Keller",
+  "project": "Exterior & interior project · Provincetown",
+  "text": "Start to finish - they were simply fantastic!!",
+  "rating": 5,
+  "position": 3,
+  "home": 1,
+  "area": ""
+ },
+ {
+  "name": "R P",
+  "project": "Home renovation",
+  "text": "Extremely professional, honest and did excellent work at a fair price.",
+  "rating": 5,
+  "position": 4,
+  "home": 1,
+  "area": ""
+ },
+ {
+  "name": "Katherine Dow",
+  "project": "Deck",
+  "text": "Great focus on detail and beautiful finish work.",
+  "rating": 5,
+  "position": 5,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Kathi DelloRusso",
+  "project": "Porch enclosure",
+  "text": "…so happy with the workmanship and the final result of the porch enclosure.",
+  "rating": 5,
+  "position": 6,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Dan DePompei",
+  "project": "Interior staircase",
+  "text": "Estevam and his staff are creative, communicative and competitive.",
+  "rating": 5,
+  "position": 7,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Barbara Walsh",
+  "project": "Google review",
+  "text": "Steven and his team are true professionals.",
+  "rating": 5,
+  "position": 8,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Scott Lysko",
+  "project": "Google review",
+  "text": "Professional and courteous every step of the way.",
+  "rating": 5,
+  "position": 9,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Diana Daley",
+  "project": "Basement refinish",
+  "text": "Their customer service is exceptional.",
+  "rating": 5,
+  "position": 10,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Kate Tracey",
+  "project": "Inside & outside renovation",
+  "text": "The experience was outstanding.",
+  "rating": 5,
+  "position": 11,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Kara Jordan",
+  "project": "Custom woodworking",
+  "text": "I couldn't be more pleased with the results.",
+  "rating": 5,
+  "position": 12,
+  "home": 0,
+  "area": ""
+ },
+ {
+  "name": "Samantha Keller",
+  "project": "Exterior & interior project · Provincetown",
+  "text": "Start to finish - they were simply fantastic!!",
+  "rating": 5,
+  "position": 13,
+  "home": 0,
+  "area": "provincetown-truro-ma"
+ }
+]

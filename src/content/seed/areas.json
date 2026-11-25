@@ -1,0 +1,560 @@
+[
+ {
+  "slug": "sandwich-ma",
+  "position": 1,
+  "active": 1,
+  "data": {
+   "label": "Sandwich",
+   "town": "Sandwich",
+   "region": "Upper Cape",
+   "seo_title": "Finish Carpenter in Sandwich, MA | Castro Finish Carpentry",
+   "seo_description": "Sandwich-based finish carpenter since 2013: exterior trim, cedar siding, decks, windows and doors, roof repairs and ADUs. Free on-site estimate: (508) 566-1618.",
+   "h1": "Finish carpenter in Sandwich, MA",
+   "h1_accent": "your neighbors since 2013.",
+   "lead": "Our shop is here in Sandwich. Trim, siding, decks, windows and doors, roof repairs and ADUs for homes in Sandwich Village, East Sandwich, Forestdale and South Sandwich.",
+   "image": "hero-cape-house",
+   "image_alt": "Cape Cod house with a new roof and front porch",
+   "context_title": "Working on",
+   "context_accent": "Sandwich homes.",
+   "context": "Sandwich is the oldest town on Cape Cod, and it shows in the houses. Along Route 6A and around the village you'll find antique capes and colonials with original trim profiles worth keeping. In Forestdale and South Sandwich, most homes are newer capes, colonials and ranches where the work is usually decks, siding sections, windows and doors.\n\nHouses near Town Neck, Scorton and the bay side take salt wind off Cape Cod Bay. That's where we see fascia, corner boards and window trim fail first, often with soft sheathing behind them that only shows up once the old board comes off.\n\nBecause we're based in town, Sandwich is where small jobs make the most sense for us too: one rotted sill, a door that won't close, a few courses of cedar shingle.",
+   "watch": [
+    {
+     "text": "Original trim on older village homes: repair and match before replacing"
+    },
+    {
+     "text": "Bay-facing walls: fascia, corner boards and window heads"
+    },
+    {
+     "text": "Deck ledgers and stairs on homes built in the 1980s and 90s"
+    },
+    {
+     "text": "Doors and windows that drag or leak after years of seasonal movement"
+    }
+   ],
+   "note_title": "Old King's Highway historic district",
+   "note_text": "Much of Sandwich north of Route 6 sits in the Old King's Highway Regional Historic District, where exterior changes visible from a public way generally need approval from the town's historic committee before work starts. We'll flag it at the estimate and plan materials and timing around it.",
+   "services": [
+    {
+     "service": "trim",
+     "text": "Exterior and interior trim, including matching profiles on older village homes."
+    },
+    {
+     "service": "siding",
+     "text": "Cedar shingle repairs and re-shingling, plus vinyl and fiber cement."
+    },
+    {
+     "service": "decking",
+     "text": "New decks, rebuilds, railings and stairs for Forestdale and South Sandwich homes."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Replacement windows and doors, flashed and trimmed as one job."
+    },
+    {
+     "service": "roofing",
+     "text": "Leak repairs, flashing and storm damage."
+    },
+    {
+     "service": "adu",
+     "text": "Garage conversions and in-law suites under the new state ADU rules."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Small jobs welcome",
+     "text": "Sandwich is home base, so single repairs and short jobs are easy to fit in."
+    },
+    {
+     "title": "Fast site visits",
+     "text": "We can usually get out to see a Sandwich project sooner than one at the far end of the Cape."
+    },
+    {
+     "title": "Itemized estimate",
+     "text": "Scope and price in writing before anything starts."
+    }
+   ],
+   "gallery": [],
+   "nearby": [
+    {
+     "area": "dennis-ma"
+    },
+    {
+     "area": "plymouth-ma"
+    }
+   ]
+  }
+ },
+ {
+  "slug": "dennis-ma",
+  "position": 2,
+  "active": 1,
+  "data": {
+   "label": "Dennis",
+   "town": "Dennis",
+   "region": "Mid Cape",
+   "seo_title": "Finish Carpenter in Dennis, MA | Castro Finish Carpentry",
+   "seo_description": "Finish carpenter and deck builder in Dennis, MA, from Dennis Port to East Dennis. Trim, decks, siding and windows. Free estimate: (508) 566-1618.",
+   "h1": "Finish carpenter & deck builder in Dennis, MA",
+   "h1_accent": "from bay side to sound side.",
+   "lead": "Decks, exterior trim, siding, windows and doors for homes in Dennis Village, East Dennis, South Dennis, West Dennis and Dennis Port, with a clear, itemized estimate.",
+   "image": "deck-cable-railing",
+   "image_alt": "Composite deck with black cable railing",
+   "context_title": "Two coasts,",
+   "context_accent": "one town.",
+   "context": "Dennis runs from Cape Cod Bay to Nantucket Sound, and the homes on each side need different things. North of Route 6, around Dennis Village, East Dennis and Sesuit Harbor, many homes sit along Route 6A in the Old King's Highway historic district, with cedar shingle, traditional trim and older windows.\n\nOn the south side, Dennis Port and West Dennis have tighter neighborhoods of capes and cottages, many of them rented in summer. Decks, stairs, railings and porch trim there take heavy use every season, and repairs need to fit between guests.\n\nEither way, the common problems are the same ones we fix across the Mid Cape: soft fascia and corner boards, deck boards and stairs past their life, and windows that leak at the head trim.",
+   "watch": [
+    {
+     "text": "Deck stairs, railings and ledger connections on rental cottages"
+    },
+    {
+     "text": "Porch trim and columns on south-side homes"
+    },
+    {
+     "text": "Cedar shingle and window trim on 6A homes in the historic district"
+    },
+    {
+     "text": "Fascia and soffits behind gutters"
+    }
+   ],
+   "note_title": "Route 6A homes",
+   "note_text": "Dennis is part of the Old King's Highway Regional Historic District. If your home is on or near 6A, visible exterior changes may need committee approval first. We'll tell you at the estimate.",
+   "services": [
+    {
+     "service": "decking",
+     "text": "Rebuilds, board replacement, railings and stairs, including rental cottages."
+    },
+    {
+     "service": "trim",
+     "text": "Fascia, soffits, corner boards and porch trim."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Window and door replacement with flashing and clean trim."
+    },
+    {
+     "service": "siding",
+     "text": "Cedar shingle repairs and full re-siding."
+    },
+    {
+     "service": "roofing",
+     "text": "Leak and flashing repairs after storms."
+    },
+    {
+     "service": "adu",
+     "text": "Garage conversions and in-law suites."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Rental-friendly scheduling",
+     "text": "For summer rentals we plan around your booking calendar, aiming for the off-season or gaps between guests."
+    },
+    {
+     "title": "Mid Cape, easy to reach",
+     "text": "Dennis is a straight run down Route 6 from our Sandwich shop."
+    },
+    {
+     "title": "Photos with your estimate",
+     "text": "You'll see what we found and why we recommend each repair."
+    }
+   ],
+   "gallery": [],
+   "nearby": [
+    {
+     "area": "sandwich-ma"
+    },
+    {
+     "area": "orleans-ma"
+    },
+    {
+     "area": "chatham-ma"
+    }
+   ]
+  }
+ },
+ {
+  "slug": "orleans-ma",
+  "position": 3,
+  "active": 1,
+  "data": {
+   "label": "Orleans",
+   "town": "Orleans",
+   "region": "Lower Cape",
+   "seo_title": "Carpenter in Orleans, MA | Castro Finish Carpentry",
+   "seo_description": "Carpenter in Orleans, MA: exterior trim, decks, cedar siding and windows for East Orleans, South Orleans and the village. Free estimate: (508) 566-1618.",
+   "h1": "Carpenter in Orleans, MA",
+   "h1_accent": "built for Atlantic weather.",
+   "lead": "Exterior trim, decks, cedar shingle siding, windows and doors for homes in Orleans village, East Orleans and South Orleans, from Nauset to Pleasant Bay.",
+   "image": "siding-cedar-gable",
+   "image_alt": "New cedar shingle siding on a gable end",
+   "context_title": "Where the Cape",
+   "context_accent": "takes the weather.",
+   "context": "Orleans sits where the Cape turns north, with Cape Cod Bay at Rock Harbor on one side and the Atlantic at Nauset on the other. Homes in East Orleans and around Pleasant Bay take wind-driven rain and salt straight off the ocean, and it shows first on the east and north walls.\n\nThe houses are mostly cedar-shingled capes, half-capes and shingle-style homes, many of them second homes. Typical work here is trim that has opened up at the corners, shingles that have cupped or split, deck boards and railings worn by salt air, and windows that let water in at the head.\n\nOn exposed elevations we often suggest PVC or cellular trim instead of wood, and stainless or coated fasteners. We'll walk you through the trade-offs in look and cost.",
+   "watch": [
+    {
+     "text": "East- and north-facing walls: trim joints, shingles, window heads"
+    },
+    {
+     "text": "Deck railings and fasteners exposed to salt air"
+    },
+    {
+     "text": "Corner boards and rake trim on shingle-style homes"
+    },
+    {
+     "text": "Sliding doors and sills facing the water"
+    }
+   ],
+   "note_title": "Historic review on 6A",
+   "note_text": "Orleans is part of the Old King's Highway Regional Historic District. Visible exterior changes in the district may need approval before work starts. We'll check at the estimate.",
+   "services": [
+    {
+     "service": "trim",
+     "text": "Rot repair and PVC or wood trim on exposed elevations."
+    },
+    {
+     "service": "decking",
+     "text": "Decks, railings and stairs built for salt air."
+    },
+    {
+     "service": "siding",
+     "text": "Cedar shingle repairs and re-shingling."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Windows and sliders flashed for wind-driven rain."
+    },
+    {
+     "service": "roofing",
+     "text": "Flashing and storm repairs."
+    },
+    {
+     "service": "adu",
+     "text": "In-law suites and garage conversions."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Second homes",
+     "text": "If you're not on the Cape full-time, we agree the scope in writing and send photo updates as the job goes."
+    },
+    {
+     "title": "Weather-aware schedule",
+     "text": "Exterior work on the Lower Cape is planned around wind and rain, and you'll hear from us if a day moves."
+    },
+    {
+     "title": "Material guidance",
+     "text": "Wood vs. PVC trim and fastener choices explained for your exposure."
+    }
+   ],
+   "gallery": [],
+   "nearby": [
+    {
+     "area": "chatham-ma"
+    },
+    {
+     "area": "dennis-ma"
+    },
+    {
+     "area": "provincetown-truro-ma"
+    }
+   ]
+  }
+ },
+ {
+  "slug": "chatham-ma",
+  "position": 4,
+  "active": 1,
+  "data": {
+   "label": "Chatham",
+   "town": "Chatham",
+   "region": "Lower Cape",
+   "seo_title": "Finish Carpenter in Chatham, MA | Castro Finish Carpentry",
+   "seo_description": "Finish carpenter in Chatham, MA: exterior trim, decks, windows, doors and cedar siding. Second homes welcome, photo updates. Free estimate: (508) 566-1618.",
+   "h1": "Finish carpenter in Chatham, MA",
+   "h1_accent": "with an eye for coastal detail.",
+   "lead": "Exterior trim, decks, windows and doors, and cedar shingle siding for homes in Chatham, North Chatham, South Chatham, West Chatham and Chathamport.",
+   "image": "siding-white-colonial",
+   "image_alt": "White shingle colonial with black shutters and crisp trim",
+   "context_title": "Chatham homes",
+   "context_accent": "show every detail.",
+   "context": "Chatham sits at the elbow of the Cape, with the Atlantic on the east, Nantucket Sound to the south and Pleasant Bay to the north. Few towns get as much salt and wind from as many directions, and white trim against weathered cedar makes every open joint and every soft board easy to see.\n\nMuch of the work here is finish work: crisp window and door casings, corner boards and rakes, porch details, and decks that look as good as the house. Many homes are second homes, so the owner often isn't there while the work happens.\n\nWe handle that with a clear written scope, photos of anything hidden we find once a board comes off, and updates as the job moves, so you know what's happening without having to drive down.",
+   "watch": [
+    {
+     "text": "Window and door casings, sills and head flashing"
+    },
+    {
+     "text": "Corner boards, rakes and returns on shingle-style homes"
+    },
+    {
+     "text": "Porch columns, rails and decking"
+    },
+    {
+     "text": "Salt-air wear on fasteners and railing hardware"
+    }
+   ],
+   "note_title": "Local review in Chatham",
+   "note_text": "Some parts of Chatham have their own historic or design review for exterior changes. We'll check what applies to your street before the estimate is final.",
+   "services": [
+    {
+     "service": "trim",
+     "text": "Finish-grade exterior trim, casings and porch details."
+    },
+    {
+     "service": "decking",
+     "text": "Decks and railings that match the house, in wood or composite."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Window and door replacement with clean interior and exterior trim."
+    },
+    {
+     "service": "siding",
+     "text": "Cedar shingle repairs and re-shingling."
+    },
+    {
+     "service": "roofing",
+     "text": "Leak tracing and flashing at chimneys and skylights."
+    },
+    {
+     "service": "adu",
+     "text": "Guest suites and garage conversions."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Owners away? No problem",
+     "text": "Written scope, photo updates and a clear point of contact for second-home owners."
+    },
+    {
+     "title": "Off-season scheduling",
+     "text": "Much exterior work in Chatham is easiest to plan between fall and spring."
+    },
+    {
+     "title": "Clean, protected site",
+     "text": "Landscaping and finished surfaces protected, daily cleanup."
+    }
+   ],
+   "gallery": [
+    {
+     "image": "chatham-deck-railing",
+     "caption": "Second-floor deck and white railing on a Chatham home"
+    }
+   ],
+   "nearby": [
+    {
+     "area": "orleans-ma"
+    },
+    {
+     "area": "dennis-ma"
+    },
+    {
+     "area": "provincetown-truro-ma"
+    }
+   ]
+  }
+ },
+ {
+  "slug": "provincetown-truro-ma",
+  "position": 5,
+  "active": 1,
+  "data": {
+   "label": "Provincetown & Truro",
+   "town": "Provincetown and Truro",
+   "region": "Outer Cape",
+   "seo_title": "Carpenter in Provincetown & Truro, MA | Castro Carpentry",
+   "seo_description": "Carpenter for Provincetown and Truro: trim, decks, siding, windows and doors on the Outer Cape, with staging planned for tight lots. Call (508) 566-1618.",
+   "h1": "Carpenter in Provincetown & Truro",
+   "h1_accent": "with every job planned for the Outer Cape.",
+   "lead": "Exterior trim, decks, cedar shingle siding, windows and doors for homes and rentals in Provincetown and Truro, including North Truro.",
+   "image": "siding-cedar-balcony",
+   "image_alt": "Cedar shingle wall with a balcony and new exterior trim",
+   "context_title": "The Outer Cape",
+   "context_accent": "needs a plan.",
+   "context": "Working at the end of the Cape is different. In Provincetown, many homes sit close together along narrow streets with little room for a dumpster or a lumber delivery, so staging, parking and delivery times are planned before the first day.\n\nMuch of Provincetown is under local historic district review, and many Truro properties sit near or inside the Cape Cod National Seashore, where building rules are stricter. Before we price a job, we check what review it is likely to need.\n\nHomes here, from Provincetown's East and West End to Truro's bluffs and dunes, take wind, sand and salt year-round. Trim, decks, balconies and window flashing wear fastest, and rentals put extra traffic on stairs and railings.",
+   "watch": [
+    {
+     "text": "Balconies, decks and exterior stairs on rentals"
+    },
+    {
+     "text": "Window and door flashing on exposed walls"
+    },
+    {
+     "text": "Cedar shingle and trim worn by wind and sand"
+    },
+    {
+     "text": "Access and staging on tight lots"
+    }
+   ],
+   "note_title": "Historic and Seashore rules",
+   "note_text": "Exterior changes in much of Provincetown go through the local historic district commission, and parts of Truro have additional Seashore-area rules. We'll tell you what to expect before the estimate is final.",
+   "services": [
+    {
+     "service": "decking",
+     "text": "Decks, balconies, railings and stairs for homes and rentals."
+    },
+    {
+     "service": "trim",
+     "text": "Trim and rot repair on exposed walls."
+    },
+    {
+     "service": "siding",
+     "text": "Cedar shingle repairs and re-shingling."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Windows and doors flashed for wind-driven rain."
+    },
+    {
+     "service": "roofing",
+     "text": "Leak and flashing repairs."
+    },
+    {
+     "service": "adu",
+     "text": "In-law units and conversions where town rules allow."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Staging planned upfront",
+     "text": "Deliveries, parking and material storage worked out before the job starts."
+    },
+    {
+     "title": "Off-season for rentals",
+     "text": "We aim to finish rental work outside peak season, around your booking calendar."
+    },
+    {
+     "title": "Photo updates",
+     "text": "Useful if you're off-Cape while the work happens."
+    }
+   ],
+   "gallery": [
+    {
+     "image": "truro-interior-framing",
+     "caption": "New interior walls framed during a whole-house renovation in Truro"
+    },
+    {
+     "image": "truro-door-casing",
+     "caption": "Cedar-lined closet with new door casing, Truro"
+    },
+    {
+     "image": "truro-built-in-shelves",
+     "caption": "Built-in shelving added during the Truro renovation"
+    },
+    {
+     "image": "truro-fireplace",
+     "caption": "Living room and fireplace wall, Truro renovation"
+    }
+   ],
+   "nearby": [
+    {
+     "area": "orleans-ma"
+    },
+    {
+     "area": "chatham-ma"
+    }
+   ]
+  }
+ },
+ {
+  "slug": "plymouth-ma",
+  "position": 6,
+  "active": 1,
+  "data": {
+   "label": "Plymouth",
+   "town": "Plymouth",
+   "region": "South Shore",
+   "seo_title": "Carpenter in Plymouth, MA | Castro Finish Carpentry",
+   "seo_description": "Carpenter and deck builder in Plymouth, MA: decks, PVC trim, windows, doors and siding in Manomet, the Pinehills and downtown. Call (508) 566-1618.",
+   "h1": "Carpenter & deck builder in Plymouth, MA",
+   "h1_accent": "just over the bridge.",
+   "lead": "Decks, exterior trim, windows and doors, and siding for homes in downtown Plymouth, North Plymouth, Manomet, Cedarville, White Horse Beach and the Pinehills.",
+   "image": "deck-black-railing",
+   "image_alt": "Grey deck with black railing and new stairs",
+   "context_title": "A big town",
+   "context_accent": "with every kind of house.",
+   "context": "Plymouth is the largest town in Massachusetts by land area, and the housing covers everything: historic homes near downtown and the waterfront, beach cottages in Manomet and White Horse Beach, and newer neighborhoods like the Pinehills and the developments off Route 3.\n\nOn newer homes, the work is usually decks, composite and PVC trim, and door and window upgrades. On older and waterfront homes, it's rot repair behind trim and siding, and flashing at windows that face the water.\n\nOur shop in Sandwich is a short drive over the Sagamore Bridge, so Plymouth is a regular part of our service area. Recent work here includes new siding, roofing and window trim on a church.",
+   "watch": [
+    {
+     "text": "Deck framing, stairs and railings on homes built in the last 20 to 30 years"
+    },
+    {
+     "text": "PVC and composite trim joints that have opened up"
+    },
+    {
+     "text": "Window and door flashing on waterfront homes in Manomet and White Horse Beach"
+    },
+    {
+     "text": "Rot behind trim on older homes near downtown"
+    }
+   ],
+   "note_title": "",
+   "note_text": "",
+   "services": [
+    {
+     "service": "decking",
+     "text": "New decks, rebuilds, composite upgrades, railings and stairs."
+    },
+    {
+     "service": "trim",
+     "text": "PVC and wood trim, fascia and soffits."
+    },
+    {
+     "service": "windows-and-doors",
+     "text": "Entry doors, patio doors and window replacement."
+    },
+    {
+     "service": "siding",
+     "text": "Vinyl, fiber cement and cedar repairs and replacement."
+    },
+    {
+     "service": "roofing",
+     "text": "Leak and flashing repairs."
+    },
+    {
+     "service": "adu",
+     "text": "Garage conversions and in-law suites."
+    }
+   ],
+   "logistics": [
+    {
+     "title": "Close to our shop",
+     "text": "Plymouth is just over the Sagamore Bridge from Sandwich."
+    },
+    {
+     "title": "Newer-home upgrades",
+     "text": "Composite decking, PVC trim and door upgrades are routine work for us."
+    },
+    {
+     "title": "Itemized estimate",
+     "text": "Scope and price in writing before work starts."
+    }
+   ],
+   "gallery": [
+    {
+     "image": "plymouth-church-gable-housewrap",
+     "caption": "Housewrap and new windows going in on a church in Plymouth"
+    },
+    {
+     "image": "plymouth-church-siding-gable",
+     "caption": "New siding and rake trim on the same Plymouth church"
+    },
+    {
+     "image": "plymouth-church-window-trim",
+     "caption": "Window trim and flashing detail, Plymouth"
+    },
+    {
+     "image": "plymouth-church-roofing",
+     "caption": "Roofing work on the Plymouth church project"
+    }
+   ],
+   "nearby": [
+    {
+     "area": "sandwich-ma"
+    },
+    {
+     "area": "dennis-ma"
+    }
+   ]
+  }
+ }
+]

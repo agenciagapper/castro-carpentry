@@ -1,0 +1,277 @@
+{
+  "aerial-home-in-pines": {
+    "w": 2000,
+    "h": 1125,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "aerial-renovated-home": {
+    "w": 2000,
+    "h": 1125,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "aerial-roof-chimney": {
+    "w": 2000,
+    "h": 1125,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ]
+  },
+  "cedar-cottage-exterior": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "chatham-deck-railing": {
+    "w": 1506,
+    "h": 1760,
+    "widths": [
+      480,
+      800,
+      1200,
+      1506
+    ]
+  },
+  "cottage-bathroom": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "cottage-interior-finish": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "deck-black-railing": {
+    "w": 1050,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1050
+    ]
+  },
+  "deck-cable-railing": {
+    "w": 1400,
+    "h": 1050,
+    "widths": [
+      480,
+      800,
+      1200,
+      1400
+    ]
+  },
+  "hero-cape-house": {
+    "w": 1920,
+    "h": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "plymouth-church-gable-housewrap": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "plymouth-church-ice-water-shield": {
+    "w": 1024,
+    "h": 768,
+    "widths": [
+      480,
+      800,
+      1024
+    ]
+  },
+  "plymouth-church-roofing": {
+    "w": 768,
+    "h": 1024,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "plymouth-church-siding-corner": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "plymouth-church-siding-gable": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "plymouth-church-window-trim": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "roofing-drone": {
+    "w": 1920,
+    "h": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "roofing-install-aerial": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "roofing-install-drone": {
+    "w": 1920,
+    "h": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "roofing-new-shingles-aerial": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "roofing-porch-aerial": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "siding-cedar-balcony": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "siding-cedar-gable": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "siding-white-colonial": {
+    "w": 1120,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "truro-built-in-shelves": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "truro-door-casing": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  },
+  "truro-fireplace": {
+    "w": 1125,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1125
+    ]
+  },
+  "truro-interior-framing": {
+    "w": 1500,
+    "h": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1500
+    ]
+  }
+}

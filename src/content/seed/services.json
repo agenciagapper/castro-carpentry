@@ -1,0 +1,762 @@
+[
+ {
+  "slug": "trim",
+  "position": 1,
+  "active": 1,
+  "data": {
+   "name": "Trim & finish carpentry",
+   "short": "Trim",
+   "seo_title": "Exterior Trim Repair on Cape Cod | Castro Finish Carpentry",
+   "seo_description": "Exterior trim repair on Cape Cod: rotted fascia, soffits, corner boards and window trim fixed with tight joints. Free on-site estimate: (508) 566-1618.",
+   "h1": "Exterior trim repair,",
+   "h1_accent": "done right at the edges.",
+   "lead": "Rot repair, fascia and soffits, corner boards and window trim, with clean lines, tight joints and a clear estimate. Free on-site visit.",
+   "image": "siding-cedar-balcony",
+   "image_alt": "Cedar shingle wall with balcony and fresh exterior trim",
+   "image2": "siding-white-colonial",
+   "image2_alt": "White colonial with crisp window trim and black shutters",
+   "summary": "Repairs, replacement and detailed finishing inside and out. Straight lines, tight joints, clean transitions, and hidden rot fixed before we close up.",
+   "why_title": "Trim is your home's",
+   "why_accent": "first line of defense.",
+   "why": "On a Cape Cod house, trim takes the first hit from wind-driven rain and salt air. Leaks start at the corners, seams and transitions. Once moisture gets behind a board, it slowly softens the wood and framing underneath.\n\nThat's why we don't just nail new boards over old problems. We open it up, fix what's underneath, and then install trim that's fitted, fastened, and sealed to last.",
+   "points": [
+    {
+     "text": "Stops water at corners, seams and transitions"
+    },
+    {
+     "text": "Prevents hidden rot from reaching the framing"
+    },
+    {
+     "text": "Protects fascia and soffits from constant moisture"
+    },
+    {
+     "text": "Closes gaps that let insects and animals in"
+    },
+    {
+     "text": "Helps paint and siding last longer"
+    }
+   ],
+   "handle_title": "What we handle",
+   "handle": [
+    {
+     "title": "Fascia",
+     "text": "Rotted or soft fascia boards replaced and properly backed."
+    },
+    {
+     "title": "Soffits & vents",
+     "text": "Damaged soffits repaired with vent paths kept clear."
+    },
+    {
+     "title": "Window & door trim",
+     "text": "Casings, sills and head trim fitted tight around openings."
+    },
+    {
+     "title": "Corner boards",
+     "text": "Vertical seams and corners rebuilt square and sealed."
+    },
+    {
+     "title": "Frieze & rake boards",
+     "text": "Top edges and roofline transitions made weather-tight."
+    },
+    {
+     "title": "Interior finish trim",
+     "text": "Baseboards, casings and detailed interior finishing."
+    }
+   ],
+   "diff_title": "The Castro difference",
+   "diff": [
+    {
+     "title": "Finish-carpentry detail",
+     "text": "Straight alignment, tight joints and clean transitions you can see from the street."
+    },
+    {
+     "title": "Rot-first repairs",
+     "text": "We fix hidden damage before anything gets closed up."
+    },
+    {
+     "title": "Coastal-ready protection",
+     "text": "Detailing for wind-driven rain and moisture, with materials chosen for salt air."
+    },
+    {
+     "title": "Material guidance",
+     "text": "Wood or PVC, recommended for your exposure, budget and the look of your home."
+    }
+   ],
+   "steps_title": "The 6 areas we inspect first",
+   "steps": [
+    {
+     "title": "Fascia integrity",
+     "text": "Soft spots, rot and backing behind the gutter line."
+    },
+    {
+     "title": "Soffits & vent paths",
+     "text": "Damage, gaps and airflow."
+    },
+    {
+     "title": "Frieze boards & top edges",
+     "text": "Where wall meets roofline."
+    },
+    {
+     "title": "Window trim & head flashing",
+     "text": "The most common leak points on a wall."
+    },
+    {
+     "title": "Corner boards & vertical seams",
+     "text": "Open joints and splitting."
+    },
+    {
+     "title": "Roofline transitions & returns",
+     "text": "Where water likes to sneak in."
+    }
+   ],
+   "warning_title": "Trim problems spread fast",
+   "warning_text": "Watch for peeling paint, dark staining, soft spots, and gaps at corners or rooflines. Catching it early usually means a smaller, simpler repair.",
+   "gallery": [
+    {
+     "image": "plymouth-church-siding-gable",
+     "caption": "Rake and corner trim on new siding, Plymouth"
+    },
+    {
+     "image": "truro-door-casing",
+     "caption": "New door casing in a Truro renovation"
+    },
+    {
+     "image": "truro-built-in-shelves",
+     "caption": "Interior finish carpentry: built-in shelving, Truro"
+    }
+   ],
+   "form_option": "",
+   "home_card": "1"
+  }
+ },
+ {
+  "slug": "siding",
+  "position": 2,
+  "active": 1,
+  "data": {
+   "name": "Siding repair & installation",
+   "short": "Siding",
+   "seo_title": "Siding Contractor on Cape Cod, MA | Castro Finish Carpentry",
+   "seo_description": "Cedar shingle, vinyl and fiber cement siding repaired or replaced on Cape Cod, with hidden rot fixed properly. Free itemized estimate: (508) 566-1618.",
+   "h1": "Siding repair & installation",
+   "h1_accent": "built for Cape Cod weather.",
+   "lead": "Cedar shingle, vinyl and fiber cement siding, repaired or replaced as a full wall system with rot fixed properly and a clean finish. Free on-site estimate.",
+   "image": "siding-cedar-gable",
+   "image_alt": "New cedar shingle siding on a gable end",
+   "image2": "siding-cedar-balcony",
+   "image2_alt": "Cedar shingle siding around a balcony and windows",
+   "summary": "Cracked, loose or warped sections replaced with proper flashing and sealing, plus rot repair around trim and corners.",
+   "why_title": "Siding is a system.",
+   "why_accent": "Every layer matters.",
+   "why": "Behind every good siding job is solid backing, insulation where it applies, a weather-resistive barrier, and clean transitions at every window, door, corner and trim line.\n\nWe repair the weak points, rebuild the transitions, and seal the details, so water stays out and the wall looks sharp for years.",
+   "points": [
+    {
+     "text": "Stops water intrusion at the source"
+    },
+    {
+     "text": "Rot repaired properly before it spreads"
+    },
+    {
+     "text": "Straight lines, aligned courses, clean trim details"
+    },
+    {
+     "text": "Daily cleanup and a protected job site"
+    }
+   ],
+   "handle_title": "Ideal for Cape Cod homes that need…",
+   "handle": [
+    {
+     "title": "Cedar shingle siding",
+     "text": "Repairs, re-shingling and new cedar on classic Cape homes."
+    },
+    {
+     "title": "Vinyl siding",
+     "text": "Section repairs and full replacements."
+    },
+    {
+     "title": "Fiber cement upgrades",
+     "text": "Durable, low-maintenance siding with a crisp finish."
+    },
+    {
+     "title": "Rot around trim & corners",
+     "text": "Soft backing and sheathing found, documented and repaired."
+    },
+    {
+     "title": "Water intrusion",
+     "text": "Wind-driven rain issues traced and fixed at the source."
+    },
+    {
+     "title": "Fascia, soffit & trim",
+     "text": "Exterior trim repairs done alongside your siding."
+    }
+   ],
+   "diff_title": "What you get with Castro siding work",
+   "diff": [
+    {
+     "title": "Water protection built in",
+     "text": "Weak points repaired, barrier reinforced where needed, transitions rebuilt."
+    },
+    {
+     "title": "Rot addressed the right way",
+     "text": "Soft backing or sheathing is repaired before new siding goes on."
+    },
+    {
+     "title": "A finish you'll notice",
+     "text": "Aligned courses and clean edges around every window, door and corner."
+    },
+    {
+     "title": "Clear, itemized estimate",
+     "text": "You see the scope and price before work starts."
+    }
+   ],
+   "steps_title": "How a siding project works",
+   "steps": [
+    {
+     "title": "On-site evaluation",
+     "text": "We look at the siding, trim, transitions and any signs of water."
+    },
+    {
+     "title": "Itemized estimate",
+     "text": "Repair vs. replacement options, explained clearly."
+    },
+    {
+     "title": "Repair what's underneath",
+     "text": "Backing, sheathing and barrier fixed where needed."
+    },
+    {
+     "title": "Install & detail",
+     "text": "Siding, trim, corners and edges rebuilt clean."
+    },
+    {
+     "title": "Cleanup & walkthrough",
+     "text": "Daily cleanup and a final walkthrough with you."
+    }
+   ],
+   "warning_title": "",
+   "warning_text": "",
+   "gallery": [
+    {
+     "image": "plymouth-church-siding-gable",
+     "caption": "New siding on a church gable, Plymouth"
+    },
+    {
+     "image": "plymouth-church-siding-corner",
+     "caption": "Siding and corner details going on, Plymouth"
+    },
+    {
+     "image": "plymouth-church-gable-housewrap",
+     "caption": "Housewrap installed before the new siding"
+    },
+    {
+     "image": "cedar-cottage-exterior",
+     "caption": "Cedar shingle cottage on Cape Cod"
+    }
+   ],
+   "form_option": "",
+   "home_card": "1"
+  }
+ },
+ {
+  "slug": "decking",
+  "position": 3,
+  "active": 1,
+  "data": {
+   "name": "Decks, repairs & upgrades",
+   "short": "Decks",
+   "seo_title": "Deck Builder on Cape Cod, MA | Castro Finish Carpentry",
+   "seo_description": "Cape Cod deck builder: new decks, rebuilds, board replacement, railings and stairs in wood or composite. Free on-site estimate: (508) 566-1618.",
+   "h1": "Cape Cod deck builder:",
+   "h1_accent": "solid, safe and finished.",
+   "lead": "New builds, rebuilds, board replacement, railings, stairs and refinishing in wood or composite, framed accurately and fastened tight.",
+   "image": "deck-cable-railing",
+   "image_alt": "Composite deck with black cable railing in the pines",
+   "image2": "deck-black-railing",
+   "image2_alt": "Grey deck with black railing and new stairs",
+   "summary": "New builds, rebuilds, board replacement, railings, stairs and refinishing in wood or composite, framed square and fastened tight.",
+   "why_title": "Built right from",
+   "why_accent": "the framing up.",
+   "why": "A great deck starts underneath. We focus on framing accuracy, water management and proper fastening, so the surface stays flat and tight without wobble, bounce or squeaks.\n\nSafety comes first: railings and stairs are built solid, and any safety issue we find gets addressed before anything cosmetic.",
+   "points": [
+    {
+     "text": "Accurate framing and layout"
+    },
+    {
+     "text": "Safe, solid railings and stairs"
+    },
+    {
+     "text": "Water management to protect the structure"
+    },
+    {
+     "text": "Wood and composite options"
+    },
+    {
+     "text": "Workmanship warranty, explained in writing"
+    }
+   ],
+   "handle_title": "What we handle",
+   "handle": [
+    {
+     "title": "New deck builds",
+     "text": "Designed for your yard, your home and how you use it."
+    },
+    {
+     "title": "Full rebuilds",
+     "text": "Tear-off and rebuild when the structure has reached its limit."
+    },
+    {
+     "title": "Repairs & board replacement",
+     "text": "Boards swapped without a rebuild when the framing is solid."
+    },
+    {
+     "title": "Railings",
+     "text": "Wood, composite, black metal or cable, built safe and straight."
+    },
+    {
+     "title": "Stairs",
+     "text": "New or rebuilt stairs with proper rise, run and support."
+    },
+    {
+     "title": "Refinishing",
+     "text": "Cleaning, repairs and refinishing to bring a tired deck back."
+    }
+   ],
+   "diff_title": "Our deck process",
+   "diff": [
+    {
+     "title": "On-site assessment",
+     "text": "We check the structure, the boards, railings and stairs."
+    },
+    {
+     "title": "Measurements & layout",
+     "text": "Planned around your space, access and drainage."
+    },
+    {
+     "title": "Material guidance",
+     "text": "Wood vs. composite: look, maintenance and budget compared."
+    },
+    {
+     "title": "Final walkthrough",
+     "text": "We review the finished deck with you and leave the site clean."
+    }
+   ],
+   "steps_title": "Step by step",
+   "steps": [
+    {
+     "title": "Assessment",
+     "text": "Structure, boards, railings and stairs checked."
+    },
+    {
+     "title": "Measurements & layout",
+     "text": "Planned for your space and drainage."
+    },
+    {
+     "title": "Framing check",
+     "text": "Ledger, joists and footings verified."
+    },
+    {
+     "title": "Safety details",
+     "text": "Railings, stairs and connections done right."
+    },
+    {
+     "title": "Fastening & finish",
+     "text": "Tight, squeak-resistant surface."
+    },
+    {
+     "title": "Walkthrough & cleanup",
+     "text": "Reviewed together, site left clean."
+    }
+   ],
+   "warning_title": "",
+   "warning_text": "",
+   "gallery": [
+    {
+     "image": "chatham-deck-railing",
+     "caption": "Second-floor deck and railing, Chatham"
+    },
+    {
+     "image": "deck-cable-railing",
+     "caption": "Composite deck with black cable railing"
+    },
+    {
+     "image": "deck-black-railing",
+     "caption": "Grey deck with black railing and new stairs"
+    }
+   ],
+   "form_option": "",
+   "home_card": "1"
+  }
+ },
+ {
+  "slug": "windows-and-doors",
+  "position": 4,
+  "active": 1,
+  "data": {
+   "name": "Windows & doors",
+   "short": "Windows & Doors",
+   "seo_title": "Window & Door Replacement on Cape Cod | Castro Carpentry",
+   "seo_description": "Window and door installation and replacement on Cape Cod, flashed and sealed as a system with clean trim. Free estimate: (508) 566-1618.",
+   "h1": "Window & door installation,",
+   "h1_accent": "done as a system.",
+   "lead": "Installation and replacement with tight seals, smooth operation and water protection at every edge, finished with clean trim.",
+   "image": "siding-white-colonial",
+   "image_alt": "Colonial home with new windows and black shutters",
+   "image2": "siding-cedar-gable",
+   "image2_alt": "Cedar gable with new windows and trim",
+   "summary": "Windows and doors installed as a system: flashing, sealing, and square, level framing to stop drafts and leaks, finished with clean trim.",
+   "why_title": "A window is only as good",
+   "why_accent": "as its install.",
+   "why": "Most drafts and leaks around windows and doors come from how they were installed. We treat every opening as a system: framing checks, flashing, sealing and insulation, then clean trim transitions.\n\nThe result is a window that opens smoothly, a door that closes square, and an opening that stays dry.",
+   "points": [
+    {
+     "text": "Tight seals that stop drafts"
+    },
+    {
+     "text": "Square, level and smooth operation"
+    },
+    {
+     "text": "Water protection at sills, heads and transitions"
+    },
+    {
+     "text": "Trim finishing included in the job"
+    }
+   ],
+   "handle_title": "What we install",
+   "handle": [
+    {
+     "title": "Double-hung windows",
+     "text": "The classic Cape Cod window, replaced or newly installed."
+    },
+    {
+     "title": "Casement windows",
+     "text": "Crank-out windows sealed tight."
+    },
+    {
+     "title": "Sliders & picture windows",
+     "text": "Large openings framed and flashed properly."
+    },
+    {
+     "title": "Entry doors",
+     "text": "Hung square with tight weatherstripping."
+    },
+    {
+     "title": "Sliding patio doors",
+     "text": "Smooth operation and a dry sill."
+    },
+    {
+     "title": "Single-unit replacement",
+     "text": "Matched to your existing style and size."
+    }
+   ],
+   "diff_title": "What makes our installs last",
+   "diff": [
+    {
+     "title": "Framing checks",
+     "text": "Rough openings checked for square, level and rot before install."
+    },
+    {
+     "title": "Flashing & sealing",
+     "text": "Water managed at the sill, top edge and every transition."
+    },
+    {
+     "title": "Insulation",
+     "text": "Gaps filled to stop air leaks around the unit."
+    },
+    {
+     "title": "Clean trim",
+     "text": "Interior and exterior trim finished as part of the job."
+    }
+   ],
+   "steps_title": "How it works",
+   "steps": [
+    {
+     "title": "Free on-site estimate",
+     "text": "We measure and look at the openings."
+    },
+    {
+     "title": "Repair or replace?",
+     "text": "Honest recommendation for each unit."
+    },
+    {
+     "title": "Install as a system",
+     "text": "Framing, flashing, sealing, insulation."
+    },
+    {
+     "title": "Trim & walkthrough",
+     "text": "Clean finish and a final check with you."
+    }
+   ],
+   "warning_title": "",
+   "warning_text": "",
+   "gallery": [
+    {
+     "image": "plymouth-church-window-trim",
+     "caption": "New window with trim and flashing, Plymouth"
+    },
+    {
+     "image": "plymouth-church-gable-housewrap",
+     "caption": "Windows installed and wrapped before siding"
+    },
+    {
+     "image": "truro-door-casing",
+     "caption": "Interior door opening and casing, Truro"
+    }
+   ],
+   "form_option": "",
+   "home_card": "1"
+  }
+ },
+ {
+  "slug": "roofing",
+  "position": 5,
+  "active": 1,
+  "data": {
+   "name": "Roofing repairs",
+   "short": "Roofing",
+   "seo_title": "Roof Repair on Cape Cod, MA | Castro Finish Carpentry",
+   "seo_description": "Roof repair on Cape Cod: leaks traced to the source, chimney and skylight flashing, storm damage and shingles. Free estimate: (508) 566-1618.",
+   "h1": "Roof repair that stops leaks",
+   "h1_accent": "at the source.",
+   "lead": "Leak detection, chimney and skylight flashing, storm damage and shingle repairs, with photos, clear options and an itemized estimate.",
+   "image": "roofing-drone",
+   "image_alt": "Aerial view of a Cape Cod home with a new roof",
+   "image2": "roofing-install-aerial",
+   "image2_alt": "Castro crew installing new shingles",
+   "summary": "Leaks stopped at the source: damaged shingles, flashing at chimneys, skylights and valleys, storm repairs and preventive fixes.",
+   "why_title": "A quick patch vs.",
+   "why_accent": "a proper repair.",
+   "why": "Most leaks start at flashing, valleys, edges and tie-ins, rarely in the middle of the roof. A quick patch covers the symptom. We trace where the water gets in and rebuild the detail that failed.\n\nYou get photos of what we found, clear options, and an itemized estimate before any work starts.",
+   "points": [
+    {
+     "text": "Leak entry point traced, not guessed"
+    },
+    {
+     "text": "Flashing rebuilt where leaks start"
+    },
+    {
+     "text": "Itemized estimate before work"
+    },
+    {
+     "text": "Protected job site, photos and next steps"
+    }
+   ],
+   "handle_title": "What we repair",
+   "handle": [
+    {
+     "title": "Leak detection",
+     "text": "Water paths traced to the real entry point."
+    },
+    {
+     "title": "Chimney & skylight flashing",
+     "text": "Custom-fitted flashing instead of relying on sealant."
+    },
+    {
+     "title": "Storm damage",
+     "text": "Missing, lifted or cracked shingles repaired."
+    },
+    {
+     "title": "Valleys, eaves & edges",
+     "text": "Ice & water membrane and drip edges done right."
+    },
+    {
+     "title": "Vent boots & penetrations",
+     "text": "Failed boots and nail pops fixed."
+    },
+    {
+     "title": "Trim integration",
+     "text": "Fascia, soffits and drip edges aligned with the roof."
+    }
+   ],
+   "diff_title": "Built for the coast",
+   "diff": [
+    {
+     "title": "Leak-proof flashing",
+     "text": "Custom-fitted at chimneys, skylights and walls."
+    },
+    {
+     "title": "Ice & water shield",
+     "text": "Self-adhering membrane on eaves and valleys as a second line of defense."
+    },
+    {
+     "title": "High-wind fastening",
+     "text": "A 6-nail fastening pattern with straight, aligned rows."
+    },
+    {
+     "title": "Documentation",
+     "text": "Photos and notes you can use with your insurer after a storm."
+    }
+   ],
+   "steps_title": "What we inspect on-site",
+   "steps": [
+    {
+     "title": "Leak entry points",
+     "text": "And the path the water takes."
+    },
+    {
+     "title": "Chimney & skylight flashing",
+     "text": "The most common leak sources."
+    },
+    {
+     "title": "Valleys, eaves & edges",
+     "text": "Where water concentrates."
+    },
+    {
+     "title": "Shingles",
+     "text": "Missing, lifted or cracked."
+    },
+    {
+     "title": "Fasteners",
+     "text": "Nail pops and fastener issues."
+    },
+    {
+     "title": "Vents & penetrations",
+     "text": "Boots and seals."
+    },
+    {
+     "title": "Soft spots",
+     "text": "Early signs of rot in the deck."
+    },
+    {
+     "title": "Gutters & drainage",
+     "text": "Overflow and trouble spots."
+    }
+   ],
+   "warning_title": "After the visit, you receive",
+   "warning_text": "Photos and a clear explanation, repair options (best fix vs. budget fix), an itemized estimate for labor and materials, and a timeline for install day.",
+   "gallery": [
+    {
+     "image": "plymouth-church-roofing",
+     "caption": "Roofing crew at work, Plymouth"
+    },
+    {
+     "image": "plymouth-church-ice-water-shield",
+     "caption": "Ice and water membrane at the eaves before shingles"
+    },
+    {
+     "image": "aerial-roof-chimney",
+     "caption": "Finished roof with chimney and skylight"
+    },
+    {
+     "image": "roofing-new-shingles-aerial",
+     "caption": "New architectural shingles from above"
+    }
+   ],
+   "form_option": "",
+   "home_card": "1"
+  }
+ },
+ {
+  "slug": "adu",
+  "position": 6,
+  "active": 1,
+  "data": {
+   "name": "ADUs & garage conversions",
+   "short": "ADUs",
+   "seo_title": "ADU Builder on Cape Cod, MA | Castro Finish Carpentry",
+   "seo_description": "ADU builder on Cape Cod: garage conversions, in-law suites and backyard cottages, now allowed by right in Massachusetts. Free estimate: (508) 566-1618.",
+   "h1": "ADU construction & garage conversions",
+   "h1_accent": "on Cape Cod.",
+   "lead": "Turn unused space into a fully independent living unit: garage conversions, in-law suites and backyard cottages, with a clear estimate and a finish you'll be proud of.",
+   "image": "cedar-cottage-exterior",
+   "image_alt": "Small cedar shingle cottage on Cape Cod",
+   "image2": "cottage-interior-finish",
+   "image2_alt": "Cottage interior with new windows and finished walls",
+   "summary": "Garage conversions, in-law suites, attached additions and backyard cottages, now allowed by right in most Massachusetts single-family zones.",
+   "why_title": "What is an ADU,",
+   "why_accent": "and why now?",
+   "why": "An Accessory Dwelling Unit (ADU) is a small, independent home on the same lot as your main house, with its own kitchen, bathroom and entrance. It works for aging parents, adult children, guests or long-term rental income.\n\nSince February 2025, Massachusetts law allows one ADU by right in single-family zoning districts. A building permit and code compliance are still required, and towns can set local rules on things like setbacks and parking.",
+   "points": [
+    {
+     "text": "Up to 900 sq ft, or half the size of the main home, whichever is smaller"
+    },
+    {
+     "text": "No special permit required in single-family zones"
+    },
+    {
+     "text": "No owner-occupancy requirement under state law"
+    },
+    {
+     "text": "Building permit and code compliance still required"
+    }
+   ],
+   "handle_title": "ADU options we build",
+   "handle": [
+    {
+     "title": "Garage conversions",
+     "text": "Your garage already has a foundation, walls and a roof. We turn it into warm living space: insulation, framing, windows, doors, flooring and interior finish."
+    },
+    {
+     "title": "In-law suites",
+     "text": "A private space inside your existing home, including basement or attic units, for family who want to stay close."
+    },
+    {
+     "title": "Attached additions",
+     "text": "A connected unit with its own entrance, built to match your home's style."
+    },
+    {
+     "title": "Detached backyard cottages",
+     "text": "A standalone home on your lot, designed to fit the Cape Cod look and handle Cape Cod weather."
+    }
+   ],
+   "diff_title": "The Castro Standard for ADUs",
+   "diff": [
+    {
+     "title": "Finish-carpentry detail",
+     "text": "Solid framing, proper flashing and sealing, tight trim lines and openings set square."
+    },
+    {
+     "title": "Licensed trades coordinated",
+     "text": "Plumbing, electrical and HVAC handled by licensed trades, coordinated by us."
+    },
+    {
+     "title": "One team, start to finish",
+     "text": "One point of contact managing the job, with a clean site and fast communication."
+    },
+    {
+     "title": "Rental income or family space",
+     "text": "Planned around how you'll use it: renting, family close by, or more room for your own home."
+    }
+   ],
+   "steps_title": "How an ADU project works",
+   "steps": [
+    {
+     "title": "Free consultation",
+     "text": "We visit, look at your space and talk through the options."
+    },
+    {
+     "title": "Clear, itemized estimate",
+     "text": "Straightforward scope and pricing, so you know what to expect."
+    },
+    {
+     "title": "Permits & planning",
+     "text": "We help you through the building permit process with your town."
+    },
+    {
+     "title": "Construction",
+     "text": "Organized job site, daily cleanup and regular updates."
+    },
+    {
+     "title": "Final walkthrough",
+     "text": "We don't finish until every detail looks right."
+    }
+   ],
+   "warning_title": "Septic comes up early on the Cape",
+   "warning_text": "Many Cape Cod homes use septic systems, and adding a bedroom may require a septic review or upgrade. We talk this through at the first visit, so there are no surprises.",
+   "gallery": [
+    {
+     "image": "cedar-cottage-exterior",
+     "caption": "Cedar shingle cottage on Cape Cod"
+    },
+    {
+     "image": "cottage-interior-finish",
+     "caption": "Interior finish work inside the cottage"
+    },
+    {
+     "image": "cottage-bathroom",
+     "caption": "New bathroom with vanity in the cottage"
+    }
+   ],
+   "form_option": "",
+   "home_card": ""
+  }
+ }
+]

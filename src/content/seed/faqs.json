@@ -1,0 +1,407 @@
+[
+ {
+  "topic": "service:trim",
+  "question": "Do you offer free on-site trim estimates?",
+  "answer": "Yes. We visit, inspect fascia, soffits, corners and windows, and give you an itemized scope and estimate.",
+  "position": 1
+ },
+ {
+  "topic": "service:trim",
+  "question": "Do you do repairs, or only full replacement?",
+  "answer": "Both. We repair what's still sound and replace when that's the safer long-term fix. Either way, we'll explain why.",
+  "position": 2
+ },
+ {
+  "topic": "service:trim",
+  "question": "What trim materials do you use?",
+  "answer": "Common exterior materials used on the Cape, including wood and PVC. We recommend based on exposure, budget and look.",
+  "position": 3
+ },
+ {
+  "topic": "service:trim",
+  "question": "Do you repair fascia and soffits too?",
+  "answer": "Yes. They're some of the most common failure points in coastal weather.",
+  "position": 4
+ },
+ {
+  "topic": "service:trim",
+  "question": "How long does a trim project take?",
+  "answer": "It depends on how many areas need work and whether there's hidden rot. You'll get a timeline after the visit.",
+  "position": 5
+ },
+ {
+  "topic": "service:siding",
+  "question": "What types of siding do you work with?",
+  "answer": "Cedar shingle, vinyl and fiber cement, plus the trim, fascia and soffits around them.",
+  "position": 1
+ },
+ {
+  "topic": "service:siding",
+  "question": "Can you match my existing siding?",
+  "answer": "When possible. If it's discontinued or has aged, we'll show you the closest option.",
+  "position": 2
+ },
+ {
+  "topic": "service:siding",
+  "question": "Can you repair one section instead of replacing everything?",
+  "answer": "Often, yes. Many homes need a targeted repair. We'll explain when replacement is the better long-term choice.",
+  "position": 3
+ },
+ {
+  "topic": "service:siding",
+  "question": "What if there's hidden rot behind the siding?",
+  "answer": "We document it and repair the compromised backing or sheathing before closing up.",
+  "position": 4
+ },
+ {
+  "topic": "service:siding",
+  "question": "How long do siding repairs take?",
+  "answer": "It depends on scope and weather. You'll get a timeline after the evaluation, before work starts.",
+  "position": 5
+ },
+ {
+  "topic": "service:decking",
+  "question": "Do you build new decks or only repair?",
+  "answer": "Both. We do new builds, full rebuilds, repairs and upgrades.",
+  "position": 1
+ },
+ {
+  "topic": "service:decking",
+  "question": "Can you replace boards without rebuilding the frame?",
+  "answer": "Sometimes. If the framing is solid, we can replace boards only. We'll check and tell you honestly.",
+  "position": 2
+ },
+ {
+  "topic": "service:decking",
+  "question": "Wood or composite?",
+  "answer": "We build with both and will walk you through the trade-offs in look, maintenance and budget.",
+  "position": 3,
+  "home": 1
+ },
+ {
+  "topic": "service:decking",
+  "question": "How do you prevent wobble, bounce and squeaks?",
+  "answer": "Careful layout, accurate framing and proper fastening.",
+  "position": 4
+ },
+ {
+  "topic": "service:decking",
+  "question": "Do you build stairs and railings?",
+  "answer": "Yes, new and replacement stairs and railings, built safe and straight.",
+  "position": 5
+ },
+ {
+  "topic": "service:windows-and-doors",
+  "question": "Do you repair windows and doors or only replace them?",
+  "answer": "Both, whichever makes the most sense for each unit.",
+  "position": 1
+ },
+ {
+  "topic": "service:windows-and-doors",
+  "question": "Can you replace a single window or door?",
+  "answer": "Yes, and we can match the existing style and size.",
+  "position": 2
+ },
+ {
+  "topic": "service:windows-and-doors",
+  "question": "What types do you install?",
+  "answer": "Double-hung, casement, sliders, picture windows, entry doors and sliding patio doors.",
+  "position": 3,
+  "home": 1
+ },
+ {
+  "topic": "service:windows-and-doors",
+  "question": "I have drafts or water around a window. Can you fix it?",
+  "answer": "Yes. We install every opening as a system: flashing, sealing, insulation and clean trim transitions.",
+  "position": 4
+ },
+ {
+  "topic": "service:windows-and-doors",
+  "question": "Do you repair the trim around windows?",
+  "answer": "Yes, trim repair and finishing are part of what we do.",
+  "position": 5
+ },
+ {
+  "topic": "service:roofing",
+  "question": "Should I repair or replace my roof?",
+  "answer": "Many leaks come from flashing, valleys, edges or a small damaged area. We'll tell you honestly whether a targeted repair makes sense.",
+  "position": 1
+ },
+ {
+  "topic": "service:roofing",
+  "question": "What are the most common roof repairs on Cape Cod?",
+  "answer": "Storm damage, missing or lifted shingles, chimney and skylight flashing, valley leaks, nail pops, vent boots and edge problems.",
+  "position": 2
+ },
+ {
+  "topic": "service:roofing",
+  "question": "How fast can you respond to an active leak?",
+  "answer": "We prioritize active leaks when we can. Timing depends on weather and schedule, and we'll set the soonest available visit.",
+  "position": 3
+ },
+ {
+  "topic": "service:roofing",
+  "question": "Will the repair match my existing shingles?",
+  "answer": "When possible. Otherwise we'll show you the closest option.",
+  "position": 4
+ },
+ {
+  "topic": "service:roofing",
+  "question": "Can you help with an insurance claim?",
+  "answer": "We provide photos and documentation. You work with your insurer on approvals and coverage.",
+  "position": 5
+ },
+ {
+  "topic": "service:adu",
+  "question": "Do I need a special permit to build an ADU in Massachusetts?",
+  "answer": "In most single-family zoning districts, no. ADUs up to 900 sq ft are allowed by right. You'll still need a building permit, and your town may have local rules on things like setbacks and parking.",
+  "position": 1
+ },
+ {
+  "topic": "service:adu",
+  "question": "How big can my ADU be?",
+  "answer": "Up to 900 sq ft or half the size of your main home, whichever is smaller.",
+  "position": 2
+ },
+ {
+  "topic": "service:adu",
+  "question": "Can I rent out my ADU?",
+  "answer": "In general, yes. State law doesn't require the owner to live on the property. Some towns limit short-term rentals, so check your town's rules.",
+  "position": 3
+ },
+ {
+  "topic": "service:adu",
+  "question": "What about septic on Cape Cod?",
+  "answer": "Adding a bedroom may require a septic review or upgrade. We'll talk through this early, so there are no surprises.",
+  "position": 4
+ },
+ {
+  "topic": "service:adu",
+  "question": "How long does an ADU project take?",
+  "answer": "It depends on the type of ADU and the permit timeline in your town. You'll get a clear schedule with your estimate.",
+  "position": 5
+ },
+ {
+  "topic": "general",
+  "question": "Do you offer free estimates?",
+  "answer": "Yes. We provide free on-site estimates, and every quote is itemized so you can see exactly what's included.",
+  "position": 1,
+  "home": 1
+ },
+ {
+  "topic": "general",
+  "question": "Which towns do you serve?",
+  "answer": "We're based in Sandwich, MA and work across Cape Cod, from the Upper Cape to Provincetown, plus Plymouth. See our [service areas](/service-areas/), or tell us your town or ZIP and we'll confirm.",
+  "position": 2,
+  "home": 1
+ },
+ {
+  "topic": "general",
+  "question": "Are you licensed and insured?",
+  "answer": "Yes. We're licensed (HIC/CSL) and insured in Massachusetts, and BBB accredited. A certificate of insurance is available on request.",
+  "position": 3,
+  "home": 1
+ },
+ {
+  "topic": "general",
+  "question": "Do you repair, or only replace?",
+  "answer": "Both. If a repair will hold up, we'll recommend it. If replacement is the safer long-term fix, we'll explain why.",
+  "position": 4,
+  "home": 1
+ },
+ {
+  "topic": "general",
+  "question": "How long will my project take?",
+  "answer": "It depends on scope. After the site visit you'll get a realistic timeline in writing.",
+  "position": 5,
+  "home": 1
+ },
+ {
+  "topic": "general",
+  "question": "Do you offer financing?",
+  "answer": "Yes. Ask about it with your estimate, or see our [financing page](/financing-options/).",
+  "position": 6,
+  "home": 0
+ },
+ {
+  "topic": "general",
+  "question": "Do you offer a warranty?",
+  "answer": "Yes, a workmanship warranty. Terms depend on scope and materials and are explained in writing.",
+  "position": 7,
+  "home": 0
+ },
+ {
+  "topic": "financing",
+  "question": "Will checking my options affect my credit score?",
+  "answer": "No. You can check your options without affecting your credit score.",
+  "position": 1
+ },
+ {
+  "topic": "financing",
+  "question": "How fast is approval?",
+  "answer": "Approval is fast, and funds can be available in as little as 24 hours.",
+  "position": 2
+ },
+ {
+  "topic": "financing",
+  "question": "Can I pay it off early?",
+  "answer": "Yes. There are no prepayment penalties.",
+  "position": 3
+ },
+ {
+  "topic": "financing",
+  "question": "How do I get started?",
+  "answer": "Request a free estimate and mention you're interested in financing. We'll walk you through the next steps.",
+  "position": 4
+ },
+ {
+  "topic": "area:sandwich-ma",
+  "question": "Where is Castro Finish Carpentry located?",
+  "answer": "Our shop is in Sandwich, MA. We serve all of Sandwich, including the village, East Sandwich, Forestdale and South Sandwich, and the rest of Cape Cod.",
+  "position": 1
+ },
+ {
+  "topic": "area:sandwich-ma",
+  "question": "Do you take small repair jobs in Sandwich?",
+  "answer": "Yes. A rotted sill, a sticking door or a few courses of shingle are all worth a call. Being local makes small jobs practical.",
+  "position": 2
+ },
+ {
+  "topic": "area:sandwich-ma",
+  "question": "Do you work on antique homes in Sandwich Village?",
+  "answer": "Yes. On older homes we repair and match original trim where it's sound, and replace only what has failed.",
+  "position": 3
+ },
+ {
+  "topic": "area:sandwich-ma",
+  "question": "Does my project need historic district approval?",
+  "answer": "If the home is in the Old King's Highway district and the change is visible from a public way, it usually does. We'll tell you at the estimate and plan around the review.",
+  "position": 4
+ },
+ {
+  "topic": "area:dennis-ma",
+  "question": "Do you work in Dennis Port and West Dennis?",
+  "answer": "Yes, all of Dennis: Dennis Village, East Dennis, South Dennis, West Dennis and Dennis Port.",
+  "position": 1
+ },
+ {
+  "topic": "area:dennis-ma",
+  "question": "Can you repair a rental property's deck before the summer season?",
+  "answer": "Yes. Tell us your booking dates when you request the estimate, and we'll plan the work around them.",
+  "position": 2
+ },
+ {
+  "topic": "area:dennis-ma",
+  "question": "Do you build new decks in Dennis or only repair them?",
+  "answer": "Both. New decks, full rebuilds, board replacement, railings and stairs, in wood or composite.",
+  "position": 3
+ },
+ {
+  "topic": "area:dennis-ma",
+  "question": "My home is on Route 6A. Is that a problem?",
+  "answer": "Not a problem, just a step. Visible exterior changes in the Old King's Highway district may need committee approval, and we'll plan the timeline around it.",
+  "position": 4
+ },
+ {
+  "topic": "area:orleans-ma",
+  "question": "Do you work in East Orleans and South Orleans?",
+  "answer": "Yes, all of Orleans, including the village, East Orleans and South Orleans.",
+  "position": 1
+ },
+ {
+  "topic": "area:orleans-ma",
+  "question": "What trim holds up best near Nauset or Pleasant Bay?",
+  "answer": "On exposed walls we often recommend PVC or cellular trim with stainless or coated fasteners. Wood still works where it's protected. We'll go through options at the estimate.",
+  "position": 2
+ },
+ {
+  "topic": "area:orleans-ma",
+  "question": "I don't live in Orleans year-round. Can you still do the work?",
+  "answer": "Yes. We agree the scope and price in writing and keep you updated with photos, so you don't need to be on site.",
+  "position": 3
+ },
+ {
+  "topic": "area:orleans-ma",
+  "question": "Do you replace cedar shingles or only repair them?",
+  "answer": "Both. Sometimes a few courses are enough. When the wall has reached its limit, we re-shingle with proper flashing at every window and corner.",
+  "position": 4
+ },
+ {
+  "topic": "area:chatham-ma",
+  "question": "Do you work in North Chatham, South Chatham and Chathamport?",
+  "answer": "Yes, all of Chatham, including North, South and West Chatham and Chathamport.",
+  "position": 1
+ },
+ {
+  "topic": "area:chatham-ma",
+  "question": "I'm not in Chatham full-time. Can you manage the job while I'm away?",
+  "answer": "Yes. We agree the scope in writing, send photos when we find something hidden, and keep you updated through the job.",
+  "position": 2
+ },
+ {
+  "topic": "area:chatham-ma",
+  "question": "Can you match existing trim profiles and details?",
+  "answer": "Usually, yes. Finish detail is our specialty. If a profile is no longer made, we'll show you the closest match before installing.",
+  "position": 3
+ },
+ {
+  "topic": "area:chatham-ma",
+  "question": "Wood or composite for a Chatham deck?",
+  "answer": "Both work. Composite needs less upkeep in salt air; wood can suit a traditional home. We'll compare look, maintenance and budget.",
+  "position": 4
+ },
+ {
+  "topic": "area:provincetown-truro-ma",
+  "question": "Do you really come out to Provincetown and Truro?",
+  "answer": "Yes. We've worked in Provincetown, and we serve the whole Outer Cape, including Truro and North Truro.",
+  "position": 1
+ },
+ {
+  "topic": "area:provincetown-truro-ma",
+  "question": "Will my project need historic district approval?",
+  "answer": "In much of Provincetown, visible exterior changes go through the historic district commission. We'll tell you what's likely needed before you commit.",
+  "position": 2
+ },
+ {
+  "topic": "area:provincetown-truro-ma",
+  "question": "How do you handle tight lots and parking in Provincetown?",
+  "answer": "We plan deliveries, staging and parking with you before the job starts, so the street and your neighbors aren't an afterthought.",
+  "position": 3
+ },
+ {
+  "topic": "area:provincetown-truro-ma",
+  "question": "Can you work on my rental between bookings?",
+  "answer": "Yes. Share your booking calendar with the estimate request and we'll plan around it, ideally in the off-season.",
+  "position": 4
+ },
+ {
+  "topic": "area:plymouth-ma",
+  "question": "Have you worked in Plymouth before?",
+  "answer": "Yes. Recent work includes new siding, roofing and window trim on a church in Plymouth, shown above.",
+  "position": 1
+ },
+ {
+  "topic": "area:plymouth-ma",
+  "question": "Do you work in Plymouth even though it's off-Cape?",
+  "answer": "Yes. Plymouth is part of our regular service area, a short drive over the Sagamore Bridge from our Sandwich shop.",
+  "position": 2
+ },
+ {
+  "topic": "area:plymouth-ma",
+  "question": "Do you work in the Pinehills and Manomet?",
+  "answer": "Yes, all of Plymouth, including downtown, North Plymouth, Manomet, Cedarville, White Horse Beach and the Pinehills.",
+  "position": 3
+ },
+ {
+  "topic": "area:plymouth-ma",
+  "question": "Can you replace my deck boards with composite?",
+  "answer": "Often, yes, if the framing is solid. We check the structure first and tell you honestly whether boards alone make sense.",
+  "position": 4
+ },
+ {
+  "topic": "area:plymouth-ma",
+  "question": "Do you fix PVC trim that has separated?",
+  "answer": "Yes. Open joints in PVC trim usually come from expansion and fastening; we re-fasten, re-join and seal them properly.",
+  "position": 5
+ }
+]
