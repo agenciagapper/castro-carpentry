@@ -48,7 +48,7 @@ npm test
 Este projeto substitui o site estático + PHP. A hospedagem passa a ser um **Node.js Web App**:
 
 1. Sites > Adicionar site > Node.js Web App > importar do GitHub (este repositório, branch `main`).
-2. Predefinição **Express**, Node **22.x**, comando de construção `npm run build`, diretório de saída vazio, arquivo de entrada `server/index.mjs`.
+2. Predefinição **Express**, Node **22.x**, comando de construção `npm run build`, diretório de saída vazio, arquivo de entrada `server.js`.
 3. Variáveis de ambiente, sem aspas:
    - `NODE_ENV=production`
    - `PUBLIC_URL=https://castrocarpentryinc.com`
